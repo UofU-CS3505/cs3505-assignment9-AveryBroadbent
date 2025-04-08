@@ -14,176 +14,169 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="LearnSudoku">
-   <widget class="QFrame" name="Introduction">
+   <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>30</y>
-      <width>271</width>
-      <height>191</height>
+      <x>0</x>
+      <y>0</y>
+      <width>791</width>
+      <height>531</height>
      </rect>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::Shape::StyledPanel</enum>
+    <property name="currentIndex">
+     <number>0</number>
     </property>
-    <property name="frameShadow">
-     <enum>QFrame::Shadow::Raised</enum>
-    </property>
-    <widget class="QPushButton" name="SomeButton">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>140</y>
-       <width>80</width>
-       <height>18</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QFrame" name="HiddenPairs">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>30</y>
-      <width>271</width>
-      <height>191</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Shape::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Shadow::Raised</enum>
-    </property>
-    <widget class="QFrame" name="Steps">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>20</y>
-       <width>271</width>
-       <height>191</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Shadow::Raised</enum>
-     </property>
-     <widget class="QPushButton" name="Next">
+    <widget class="QWidget" name="HomePage">
+     <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>240</x>
         <y>140</y>
-        <width>80</width>
-        <height>18</height>
+        <width>311</width>
+        <height>71</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>50</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Learn Sudoku</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Menu">
+     <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>80</width>
-        <height>18</height>
+        <x>310</x>
+        <y>220</y>
+        <width>151</width>
+        <height>41</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>25</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Introduction</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Back">
+     <widget class="QPushButton" name="pushButton_2">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>80</width>
-        <height>18</height>
+        <x>280</x>
+        <y>270</y>
+        <width>211</width>
+        <height>41</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>25</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Helpful Strategies</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>320</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>25</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Techniques</string>
       </property>
      </widget>
     </widget>
-   </widget>
-   <widget class="QFrame" name="NakedPairs">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>30</y>
-      <width>271</width>
-      <height>191</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Shape::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Shadow::Raised</enum>
-    </property>
-    <widget class="QFrame" name="Steps_2">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>20</y>
-       <width>271</width>
-       <height>191</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Shadow::Raised</enum>
-     </property>
-     <widget class="QPushButton" name="Next_2">
+    <widget class="QWidget" name="Intro1">
+     <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>140</y>
-        <width>80</width>
-        <height>18</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="Menu_2">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>80</width>
-        <height>18</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="Back_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
+        <x>20</x>
         <y>10</y>
-        <width>80</width>
-        <height>18</height>
+        <width>161</width>
+        <height>41</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>30</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Introduction</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>10</y>
+        <width>100</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>25</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Home</string>
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="Intro2">
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>161</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>30</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Introduction</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_13">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>10</y>
+        <width>100</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>25</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Home</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="HelpfulStrats"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -192,7 +185,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>17</height>
+     <height>36</height>
     </rect>
    </property>
   </widget>
