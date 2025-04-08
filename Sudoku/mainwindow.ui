@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>838</width>
+    <height>730</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(218, 218, 218);</string>
   </property>
   <widget class="QWidget" name="LearnSudoku">
    <widget class="QStackedWidget" name="stackedWidget">
@@ -20,19 +23,25 @@
       <x>0</x>
       <y>0</y>
       <width>791</width>
-      <height>531</height>
+      <height>681</height>
      </rect>
     </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Plain</enum>
+    </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="HomePage">
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>140</y>
-        <width>311</width>
+        <x>120</x>
+        <y>130</y>
+        <width>511</width>
         <height>71</height>
        </rect>
       </property>
@@ -48,10 +57,10 @@
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>240</x>
         <y>220</y>
-        <width>151</width>
-        <height>41</height>
+        <width>261</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -66,10 +75,10 @@
      <widget class="QPushButton" name="pushButton_2">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>270</y>
-        <width>211</width>
-        <height>41</height>
+        <x>190</x>
+        <y>280</y>
+        <width>361</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -84,10 +93,10 @@
      <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
-        <x>310</x>
-        <y>320</y>
-        <width>151</width>
-        <height>41</height>
+        <x>260</x>
+        <y>340</y>
+        <width>221</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="font">
@@ -106,7 +115,7 @@
        <rect>
         <x>20</x>
         <y>10</y>
-        <width>161</width>
+        <width>271</width>
         <height>41</height>
        </rect>
       </property>
@@ -122,10 +131,10 @@
      <widget class="QPushButton" name="pushButton_4">
       <property name="geometry">
        <rect>
-        <x>640</x>
+        <x>600</x>
         <y>10</y>
-        <width>100</width>
-        <height>31</height>
+        <width>131</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -136,6 +145,1561 @@
       <property name="text">
        <string>Home</string>
       </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>110</y>
+        <width>491</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0,0,0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+       </property>
+       <property name="leftMargin">
+        <number>1</number>
+       </property>
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item row="2" column="1">
+        <widget class="Line" name="line_10">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="lineWidth">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="Line" name="line_8">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="lineWidth">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="Line" name="line_9">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="lineWidth">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <widget class="Line" name="line_5">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="lineWidth">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <layout class="QGridLayout" name="TopRight_5">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <item row="1" column="2">
+          <widget class="SudokuBox" name="box2_31">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="SudokuBox" name="box1_31">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="SudokuBox" name="box2_32">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="SudokuBox" name="box1_32">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="SudokuBox" name="box3_31">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="SudokuBox" name="box1_33">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="SudokuBox" name="box3_32">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="SudokuBox" name="box2_33">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="SudokuBox" name="box3_33">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="1">
+        <layout class="QGridLayout" name="TopLeft">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <item row="2" column="0">
+          <widget class="SudokuBox" name="box3_1">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="SudokuBox" name="box2_2">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="SudokuBox" name="box1_2">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="SudokuBox" name="box2_1">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="SudokuBox" name="box2_3">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="SudokuBox" name="box1_3">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="SudokuBox" name="box3_3">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="SudokuBox" name="box3_2">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+
+alternate-background-color: rgb(157, 255, 0);</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Shape::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Shadow::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>2</number>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="SudokuBox" name="box1_1">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Shape::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Shadow::Plain</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="5" column="3">
+        <layout class="QGridLayout" name="TopRight_7">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <item row="0" column="2">
+          <widget class="SudokuBox" name="box1_39">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="SudokuBox" name="box2_38">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="SudokuBox" name="box1_38">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="SudokuBox" name="box3_39">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="SudokuBox" name="box3_37">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="SudokuBox" name="box2_39">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="SudokuBox" name="box2_37">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="SudokuBox" name="box1_37">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="SudokuBox" name="box3_38">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="5" column="5">
+        <layout class="QGridLayout" name="BottomRight">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <item row="1" column="2">
+          <widget class="SudokuBox" name="box2_40">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="SudokuBox" name="box1_40">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="SudokuBox" name="box2_41">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="SudokuBox" name="box1_41">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="SudokuBox" name="box3_40">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="SudokuBox" name="box1_42">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="SudokuBox" name="box3_41">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="SudokuBox" name="box2_42">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="SudokuBox" name="box3_42">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="2">
+        <widget class="Line" name="line">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="lineWidth">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="Line" name="line_3">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="lineWidth">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="Line" name="line_2">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="lineWidth">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <layout class="QGridLayout" name="TopMiddle">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <item row="1" column="1">
+          <widget class="SudokuBox" name="box2_16">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="SudokuBox" name="box3_16">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="SudokuBox" name="box2_17">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="SudokuBox" name="box3_17">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="SudokuBox" name="box1_17">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="SudokuBox" name="box1_16">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="SudokuBox" name="box1_18">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="SudokuBox" name="box3_18">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="SudokuBox" name="box2_18">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="4">
+        <widget class="Line" name="line_6">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="lineWidth">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <layout class="QGridLayout" name="TopRight_2">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="SudokuBox" name="box1_23">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="SudokuBox" name="box2_24">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="SudokuBox" name="box2_23">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="SudokuBox" name="box3_23">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="SudokuBox" name="box1_24">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="SudokuBox" name="box1_22">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="SudokuBox" name="box3_24">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="SudokuBox" name="box3_22">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="SudokuBox" name="box2_22">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="5">
+        <layout class="QGridLayout" name="TopRight_6">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <item row="1" column="2">
+          <widget class="SudokuBox" name="box2_34">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="SudokuBox" name="box1_34">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="SudokuBox" name="box2_35">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="SudokuBox" name="box1_35">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="SudokuBox" name="box3_34">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="SudokuBox" name="box1_36">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="SudokuBox" name="box3_35">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="SudokuBox" name="box2_36">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="SudokuBox" name="box3_36">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="5" column="4">
+        <widget class="Line" name="line_4">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="lineWidth">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <layout class="QGridLayout" name="TopRight_4">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <item row="1" column="2">
+          <widget class="SudokuBox" name="box2_28">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="SudokuBox" name="box1_28">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="SudokuBox" name="box2_29">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="SudokuBox" name="box1_29">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="SudokuBox" name="box3_28">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="SudokuBox" name="box1_30">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="SudokuBox" name="box3_29">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="SudokuBox" name="box2_30">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="SudokuBox" name="box3_30">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="5">
+        <layout class="QGridLayout" name="TopRight">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <item row="1" column="2">
+          <widget class="SudokuBox" name="box2_21">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="SudokuBox" name="box1_19">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="SudokuBox" name="box2_19">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="SudokuBox" name="box1_21">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="SudokuBox" name="box3_20">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="SudokuBox" name="box1_20">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="SudokuBox" name="box3_21">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="SudokuBox" name="box2_20">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="SudokuBox" name="box3_19">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 14pt &quot;Myanmar Text&quot;;
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="4" column="5">
+        <widget class="Line" name="line_11">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="lineWidth">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
+        <widget class="Line" name="line_12">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="lineWidth">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="Line" name="line_13">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="lineWidth">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="Intro2">
@@ -184,13 +1748,20 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>36</height>
+     <width>838</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SudokuBox</class>
+   <extends>QLabel</extends>
+   <header>sudokubox.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
