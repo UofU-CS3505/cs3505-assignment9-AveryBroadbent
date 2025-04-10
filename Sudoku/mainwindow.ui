@@ -153,7 +153,7 @@ color: rgb(0, 0, 0);</string>
        <string>Home</string>
       </property>
      </widget>
-     <widget class="QFrame" name="frame">
+     <widget class="QFrame" name="sudokuFrame">
       <property name="geometry">
        <rect>
         <x>130</x>

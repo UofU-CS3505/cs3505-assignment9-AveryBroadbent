@@ -11,27 +11,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     for (int i = 1; i <= 81; i++) {
         QString sboxName = QString("sbox")+QString::number(i);
-        qDebug() << sboxName;
-        SudokuBox* thisBox = ui->sudokuGrid->findChild<SudokuBox *>(sboxName);
-        //thisBox->updateText(5);
+        SudokuBox* thisBox = ui->sudokuFrame->findChild<SudokuBox *>(sboxName);
 
-        connect(ui->sbox1,
+        connect(thisBox,
                 &SudokuBox::selected,
                 this,
                 &MainWindow::updateSelected);
 
         cells.push_back(thisBox);
     }
-
-    for(SudokuBox* box : cells){
-        connect(box,
-                &SudokuBox::selected,
-                this,
-                &MainWindow::updateSelected);
-    }
-
-
-    qDebug() << cells.size();
 }
 
 MainWindow::~MainWindow()
@@ -50,27 +38,35 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
         break;
 
     case Qt::Key_2:
+        selectedCell->updateText(2);
         break;
 
     case Qt::Key_3:
+        selectedCell->updateText(3);
         break;
 
     case Qt::Key_4:
+        selectedCell->updateText(4);
         break;
 
     case Qt::Key_5:
+        selectedCell->updateText(5);
         break;
 
     case Qt::Key_6:
+        selectedCell->updateText(6);
         break;
 
     case Qt::Key_7:
+        selectedCell->updateText(7);
         break;
 
     case Qt::Key_8:
+        selectedCell->updateText(8);
         break;
 
     case Qt::Key_9:
+        selectedCell->updateText(9);
         break;
     }
 
