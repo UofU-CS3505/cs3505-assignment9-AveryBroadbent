@@ -10,14 +10,16 @@ class SudokuBox : public QLabel
 private:
     int boxValue = 0;
 
-    void updateText();
-
 public:
     explicit SudokuBox(QWidget *parent = nullptr);
 
-    void mousePressEvent(QMouseEvent* event);
+    void mousePressEvent(QMouseEvent* event)override;
+    void updateText(int boxVal);
+public slots:
+
 
 signals:
+   void selected(SudokuBox* selectedBox);
 
 
 };

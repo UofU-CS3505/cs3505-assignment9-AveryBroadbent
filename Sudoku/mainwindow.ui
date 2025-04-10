@@ -183,7 +183,7 @@ color: rgb(0, 0, 0);</string>
          <height>501</height>
         </rect>
        </property>
-       <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0">
+       <layout class="QGridLayout" name="sudokuGrid" columnstretch="0,0,0,0">
         <property name="sizeConstraint">
          <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
         </property>
@@ -199,7 +199,7 @@ color: rgb(0, 0, 0);</string>
            <number>3</number>
           </property>
           <item row="2" column="0">
-           <widget class="SudokuBox" name="box3_1">
+           <widget class="SudokuBox" name="sbox19">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -224,7 +224,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="SudokuBox" name="box2_2">
+           <widget class="SudokuBox" name="sbox11">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -249,7 +249,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="SudokuBox" name="box1_2">
+           <widget class="SudokuBox" name="sbox2">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -274,7 +274,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="2">
-           <widget class="SudokuBox" name="box2_3">
+           <widget class="SudokuBox" name="sbox12">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -299,7 +299,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="SudokuBox" name="box1_3">
+           <widget class="SudokuBox" name="sbox3">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -325,7 +325,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="SudokuBox" name="box3_3">
+           <widget class="SudokuBox" name="sbox21">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -350,7 +350,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="SudokuBox" name="box3_2">
+           <widget class="SudokuBox" name="sbox20">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -384,7 +384,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="0">
-           <widget class="SudokuBox" name="box1_1">
+           <widget class="SudokuBox" name="sbox1">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -418,7 +418,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="SudokuBox" name="box1_4">
+           <widget class="SudokuBox" name="sbox10">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -459,7 +459,7 @@ border-color: rgb(0, 0, 0);</string>
            <number>3</number>
           </property>
           <item row="0" column="1">
-           <widget class="SudokuBox" name="box1_28">
+           <widget class="SudokuBox" name="sbox56">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -484,7 +484,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="SudokuBox" name="box2_29">
+           <widget class="SudokuBox" name="sbox65">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -509,7 +509,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="0">
-           <widget class="SudokuBox" name="box1_29">
+           <widget class="SudokuBox" name="sbox55">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -534,7 +534,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="SudokuBox" name="box3_28">
+           <widget class="SudokuBox" name="sbox75">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -559,7 +559,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="SudokuBox" name="box3_29">
+           <widget class="SudokuBox" name="sbox74">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -584,7 +584,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="SudokuBox" name="box2_30">
+           <widget class="SudokuBox" name="sbox64">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -609,7 +609,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="SudokuBox" name="box3_30">
+           <widget class="SudokuBox" name="sbox73">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -634,7 +634,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="2">
-           <widget class="SudokuBox" name="box1_5">
+           <widget class="SudokuBox" name="sbox66">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -668,7 +668,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="SudokuBox" name="box1_6">
+           <widget class="SudokuBox" name="sbox57">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -709,7 +709,7 @@ border-color: rgb(0, 0, 0);</string>
            <number>3</number>
           </property>
           <item row="1" column="0">
-           <widget class="SudokuBox" name="box2_24">
+           <widget class="SudokuBox" name="sbox37">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -734,7 +734,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="SudokuBox" name="box2_23">
+           <widget class="SudokuBox" name="sbox38">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -759,7 +759,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="SudokuBox" name="box3_23">
+           <widget class="SudokuBox" name="sbox47">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -784,7 +784,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="SudokuBox" name="box1_24">
+           <widget class="SudokuBox" name="sbox30">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -809,7 +809,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="SudokuBox" name="box1_22">
+           <widget class="SudokuBox" name="sbox29">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -834,7 +834,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="SudokuBox" name="box3_24">
+           <widget class="SudokuBox" name="sbox46">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -859,7 +859,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="SudokuBox" name="box3_22">
+           <widget class="SudokuBox" name="sbox48">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -884,7 +884,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="2">
-           <widget class="SudokuBox" name="box2_22">
+           <widget class="SudokuBox" name="sbox39">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -909,7 +909,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="0">
-           <widget class="SudokuBox" name="box1_23">
+           <widget class="SudokuBox" name="sbox28">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -941,7 +941,7 @@ border-color: rgb(0, 0, 0);</string>
            <number>3</number>
           </property>
           <item row="1" column="2">
-           <widget class="SudokuBox" name="box2_34">
+           <widget class="SudokuBox" name="sbox45">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -966,7 +966,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="SudokuBox" name="box2_35">
+           <widget class="SudokuBox" name="sbox44">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -991,7 +991,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="0">
-           <widget class="SudokuBox" name="box1_35">
+           <widget class="SudokuBox" name="sbox34">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1016,7 +1016,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="SudokuBox" name="box3_34">
+           <widget class="SudokuBox" name="sbox54">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1041,7 +1041,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="SudokuBox" name="box1_36">
+           <widget class="SudokuBox" name="sbox36">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1066,7 +1066,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="SudokuBox" name="box3_35">
+           <widget class="SudokuBox" name="sbox53">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1091,7 +1091,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="SudokuBox" name="box2_36">
+           <widget class="SudokuBox" name="sbox43">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1116,7 +1116,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="SudokuBox" name="box3_36">
+           <widget class="SudokuBox" name="sbox52">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1141,7 +1141,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="SudokuBox" name="box1_8">
+           <widget class="SudokuBox" name="sbox35">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1182,7 +1182,7 @@ border-color: rgb(0, 0, 0);</string>
            <number>3</number>
           </property>
           <item row="1" column="2">
-           <widget class="SudokuBox" name="box2_21">
+           <widget class="SudokuBox" name="sbox18">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1207,7 +1207,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="SudokuBox" name="box2_19">
+           <widget class="SudokuBox" name="sbox17">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1232,7 +1232,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="0">
-           <widget class="SudokuBox" name="box1_21">
+           <widget class="SudokuBox" name="sbox7">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1257,7 +1257,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="SudokuBox" name="box3_20">
+           <widget class="SudokuBox" name="sbox27">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1282,7 +1282,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="SudokuBox" name="box1_20">
+           <widget class="SudokuBox" name="sbox9">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1307,7 +1307,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="SudokuBox" name="box3_21">
+           <widget class="SudokuBox" name="sbox26">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1332,7 +1332,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="SudokuBox" name="box2_20">
+           <widget class="SudokuBox" name="sbox16">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1357,7 +1357,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="SudokuBox" name="box3_19">
+           <widget class="SudokuBox" name="sbox25">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1382,7 +1382,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="SudokuBox" name="box1_9">
+           <widget class="SudokuBox" name="sbox8">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1423,7 +1423,7 @@ border-color: rgb(0, 0, 0);</string>
            <number>3</number>
           </property>
           <item row="0" column="2">
-           <widget class="SudokuBox" name="box1_39">
+           <widget class="SudokuBox" name="sbox60">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1448,7 +1448,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="SudokuBox" name="box2_38">
+           <widget class="SudokuBox" name="sbox68">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1473,7 +1473,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="0">
-           <widget class="SudokuBox" name="box1_38">
+           <widget class="SudokuBox" name="sbox58">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1498,7 +1498,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="SudokuBox" name="box3_39">
+           <widget class="SudokuBox" name="sbox76">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1523,7 +1523,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="SudokuBox" name="box3_37">
+           <widget class="SudokuBox" name="sbox78">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1548,7 +1548,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="SudokuBox" name="box2_39">
+           <widget class="SudokuBox" name="sbox67">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1573,7 +1573,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="2">
-           <widget class="SudokuBox" name="box2_37">
+           <widget class="SudokuBox" name="sbox69">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1598,7 +1598,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="SudokuBox" name="box1_37">
+           <widget class="SudokuBox" name="sbox59">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1623,7 +1623,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="SudokuBox" name="box3_38">
+           <widget class="SudokuBox" name="sbox77">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1655,7 +1655,7 @@ border-color: rgb(0, 0, 0);</string>
            <number>3</number>
           </property>
           <item row="1" column="1">
-           <widget class="SudokuBox" name="box2_16">
+           <widget class="SudokuBox" name="sbox14">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1680,7 +1680,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="SudokuBox" name="box3_16">
+           <widget class="SudokuBox" name="sbox22">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1705,7 +1705,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="SudokuBox" name="box2_17">
+           <widget class="SudokuBox" name="sbox13">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1730,7 +1730,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="SudokuBox" name="box3_17">
+           <widget class="SudokuBox" name="sbox24">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1755,7 +1755,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="SudokuBox" name="box1_17">
+           <widget class="SudokuBox" name="sbox6">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1780,7 +1780,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="SudokuBox" name="box1_16">
+           <widget class="SudokuBox" name="sbox5">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1805,7 +1805,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="0">
-           <widget class="SudokuBox" name="box1_18">
+           <widget class="SudokuBox" name="sbox4">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1830,7 +1830,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="SudokuBox" name="box3_18">
+           <widget class="SudokuBox" name="sbox23">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1855,7 +1855,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="2">
-           <widget class="SudokuBox" name="box2_18">
+           <widget class="SudokuBox" name="sbox15">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1887,7 +1887,7 @@ border-color: rgb(0, 0, 0);</string>
            <number>3</number>
           </property>
           <item row="1" column="2">
-           <widget class="SudokuBox" name="box2_31">
+           <widget class="SudokuBox" name="sbox42">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1912,7 +1912,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="SudokuBox" name="box1_31">
+           <widget class="SudokuBox" name="sbox32">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1937,7 +1937,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="SudokuBox" name="box2_32">
+           <widget class="SudokuBox" name="sbox41">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1962,7 +1962,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="0">
-           <widget class="SudokuBox" name="box1_32">
+           <widget class="SudokuBox" name="sbox31">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -1987,7 +1987,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="SudokuBox" name="box3_31">
+           <widget class="SudokuBox" name="sbox51">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2012,7 +2012,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="SudokuBox" name="box1_33">
+           <widget class="SudokuBox" name="sbox33">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2037,7 +2037,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="SudokuBox" name="box3_32">
+           <widget class="SudokuBox" name="sbox50">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2062,7 +2062,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="SudokuBox" name="box2_33">
+           <widget class="SudokuBox" name="sbox40">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2087,7 +2087,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="SudokuBox" name="box3_33">
+           <widget class="SudokuBox" name="sbox49">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2119,7 +2119,7 @@ border-color: rgb(0, 0, 0);</string>
            <number>3</number>
           </property>
           <item row="1" column="2">
-           <widget class="SudokuBox" name="box2_40">
+           <widget class="SudokuBox" name="sbox72">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2144,7 +2144,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="SudokuBox" name="box2_41">
+           <widget class="SudokuBox" name="sbox71">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2169,7 +2169,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="0">
-           <widget class="SudokuBox" name="box1_41">
+           <widget class="SudokuBox" name="sbox61">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2194,7 +2194,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="SudokuBox" name="box3_40">
+           <widget class="SudokuBox" name="sbox81">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2219,7 +2219,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="SudokuBox" name="box1_42">
+           <widget class="SudokuBox" name="sbox63">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2244,7 +2244,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="SudokuBox" name="box3_41">
+           <widget class="SudokuBox" name="sbox80">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2269,7 +2269,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="SudokuBox" name="box2_42">
+           <widget class="SudokuBox" name="sbox70">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2294,7 +2294,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="SudokuBox" name="box3_42">
+           <widget class="SudokuBox" name="sbox79">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>
@@ -2319,7 +2319,7 @@ border-color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="SudokuBox" name="box1_7">
+           <widget class="SudokuBox" name="sbox62">
             <property name="font">
              <font>
               <family>Franklin Gothic</family>

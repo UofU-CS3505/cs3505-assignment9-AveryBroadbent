@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <vector>
+#include "sudokubox.h"
+
+using std::vector;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,8 +20,16 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    void keyPressEvent(QKeyEvent* event);
+public slots:
+    void updateSelected(SudokuBox* currentSelection);
 private:
     Ui::MainWindow *ui;
+    SudokuBox* selectedCell = nullptr;
+    vector<SudokuBox*> cells;
+
+signals:
+
+
 };
 #endif // MAINWINDOW_H
