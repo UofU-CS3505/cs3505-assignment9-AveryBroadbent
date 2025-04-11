@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <Box2D/Box2D.h>
+#include <QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,9 +18,17 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void mousePressEvent(QMouseEvent *event) override;
 
 private:
     Ui::MainWindow *ui;
     b2World world;
+    b2Body* body;
+    QTimer* timer;
+    QLabel* firstLabel;
+    void updatePhysics();
+
+private slots:
+
 };
 #endif // MAINWINDOW_H

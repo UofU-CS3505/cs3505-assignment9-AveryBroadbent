@@ -2382,6 +2382,19 @@ color: rgb(0, 0, 0);</string>
        <iconset theme="QIcon::ThemeIcon::AppointmentNew"/>
       </property>
      </widget>
+     <widget class="QLabel" name="firstLabel">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>160</y>
+        <width>71</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Hello I bounce</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="Intro2">
      <widget class="QLabel" name="label_7">
@@ -2430,7 +2443,7 @@ color: rgb(0, 0, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>838</width>
-     <height>26</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>
