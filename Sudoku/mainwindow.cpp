@@ -31,7 +31,6 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
     if (selectedCell == nullptr)
         return;
 
-    qDebug() << "Key pressed";
     switch(event->key()) {
     case Qt::Key_1:
         selectedCell->updateText(1);
@@ -69,12 +68,9 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
         selectedCell->updateText(9);
         break;
     }
-
-    qDebug() << "Finished switch";
 }
 
 void MainWindow::updateSelected(SudokuBox* currentSelection) {
-    qDebug() << "I HEAR YOU";
     selectedCell = currentSelection;
 }
 

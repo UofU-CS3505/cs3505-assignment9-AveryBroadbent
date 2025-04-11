@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/Icons">
+        <file>SVG/check-mark.png</file>
+        <file>SVG/light-bulb.png</file>
+    </qresource>
+</RCC>

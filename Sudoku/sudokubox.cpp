@@ -24,6 +24,5 @@ void SudokuBox::updateText(int boxVal)
 void SudokuBox::mousePressEvent(QMouseEvent* event) {
     if (event->button()==Qt::LeftButton) {
         emit selected(this);
-        qDebug() << "I HAVE BEEN CHOSEN";
     }
 }
