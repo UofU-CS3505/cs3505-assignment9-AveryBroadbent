@@ -12,7 +12,6 @@ void SudokuBox::updateText(int boxVal)
     if (!this->isEnabled())
         return;
 
-    qDebug() <<"Attempting to update";
     boxValue = boxVal;
     if (boxVal == 0) {
         setText("");
@@ -20,12 +19,10 @@ void SudokuBox::updateText(int boxVal)
     else{
         setText(QString::number(boxValue));
     }
-    qDebug() <<"Text Updated";
 }
 
 void SudokuBox::mousePressEvent(QMouseEvent* event) {
     if (event->button()==Qt::LeftButton) {
-        qDebug() <<"Cell Selected";
         emit selected(this);
     }
 }

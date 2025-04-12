@@ -132,6 +132,7 @@ void MainWindow::displayHint(int cellIndex, int answer) {
     hintCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(240, 212, 2); border-color: rgb(0, 0, 0);");
     hintCell->updateText(answer);
     hintCell->setDisabled(true);
+    qDebug() << "hint Displayed at box:" << cellIndex + 1;
 }
 
 

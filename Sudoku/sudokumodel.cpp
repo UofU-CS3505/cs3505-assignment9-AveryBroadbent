@@ -38,7 +38,8 @@ void SudokuModel::getHint() {
         }
     }
 
-    int chosenHint = std::rand() % emptyIndexes.size();
+    int chosenHint = emptyIndexes.at(std::rand() % emptyIndexes.size());
+    cellContents.at(chosenHint) = answerKey.at(chosenHint);
     emit showHint(chosenHint, answerKey.at(chosenHint));
 
 }
