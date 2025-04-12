@@ -9,6 +9,9 @@ SudokuBox::SudokuBox(QWidget *parent)
 
 void SudokuBox::updateText(int boxVal)
 {
+    if (!this->isEnabled())
+        return;
+
     qDebug() <<"Attempting to update";
     boxValue = boxVal;
     if (boxVal == 0) {

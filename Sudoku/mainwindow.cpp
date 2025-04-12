@@ -51,8 +51,7 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
         return;
 
     QString indexString = (selectedCell->objectName()).remove(QRegularExpression("\\D"));
-    int index = indexString.toInt();
-    qDebug() << index;
+    int index = indexString.toInt()-1;
 
     switch(event->key()) {
     case Qt::Key_1:
