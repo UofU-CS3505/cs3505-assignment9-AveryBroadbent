@@ -20,8 +20,10 @@ public:
 signals:
     void correctAnswer(int index);
     void incorrectAnswer(int index);
+    void showHint(int index, int showValue);
 public slots:
     void updateInput(int index, int value);
+    void getHint();
 
 };
 

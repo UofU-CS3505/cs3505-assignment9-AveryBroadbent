@@ -28,3 +28,17 @@ void SudokuModel::checkInputs(){
             emit incorrectAnswer(i);
     }
 }
+
+void SudokuModel::getHint() {
+    // Create vector for empty values
+    vector<int> emptyIndexes;
+    for (int i = 0; i < 81; i++) {
+        if (cellContents.at(i) == 0) {
+            emptyIndexes.push_back(i);
+        }
+    }
+
+    int chosenHint = std::rand() % emptyIndexes.size();
+    emit showHint(chosenHint, answerKey.at(chosenHint));
+
+}

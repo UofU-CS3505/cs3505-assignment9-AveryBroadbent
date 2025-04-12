@@ -31,6 +31,7 @@ public slots:
     void updateSelected(SudokuBox* currentSelection);
     void cellCorrect(int index);
     void cellIncorrect(int index);
+    void displayHint(int cellIndex, int answer);
 
 signals:
     void updateCell(int index, int value);

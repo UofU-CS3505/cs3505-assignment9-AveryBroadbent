@@ -39,6 +39,17 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &SudokuModel::incorrectAnswer,
             this,
             &MainWindow::cellIncorrect);
+
+    // Hints
+    connect(ui->hintButton,
+            &QPushButton::clicked,
+            model,
+            &SudokuModel::getHint);
+
+    connect(model,
+            &SudokuModel::showHint,
+            this,
+            &MainWindow::displayHint);
 }
 
 MainWindow::~MainWindow()
@@ -106,11 +117,21 @@ void MainWindow::updateSelected(SudokuBox* currentSelection) {
 }
 
 void MainWindow::cellCorrect(int index){
+    if (!cells.at(index)->isEnabled())
+        return;
+
     cells.at(index)->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(105, 197, 95); border-color: rgb(0, 0, 0);");
     cells.at(index)->setDisabled(true);
 }
 void MainWindow::cellIncorrect(int index){
     cells.at(index)->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(197, 49, 49); border-color: rgb(0, 0, 0);");
+}
+
+void MainWindow::displayHint(int cellIndex, int answer) {
+    SudokuBox* hintCell = cells.at(cellIndex);
+    hintCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(240, 212, 2); border-color: rgb(0, 0, 0);");
+    hintCell->updateText(answer);
+    hintCell->setDisabled(true);
 }
 
 
