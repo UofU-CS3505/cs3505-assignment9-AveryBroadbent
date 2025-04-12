@@ -2379,8 +2379,8 @@ color: rgb(0, 0, 0);</string>
        <string/>
       </property>
       <property name="icon">
-       <iconset>
-        <normaloff>SVG/check-mark.png</normaloff>SVG/check-mark.png</iconset>
+       <iconset resource="Icons.qrc">
+        <normaloff>:/Icons/SVG/check-mark.png</normaloff>:/Icons/SVG/check-mark.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -2398,17 +2398,21 @@ color: rgb(0, 0, 0);</string>
         <height>51</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+      </property>
       <property name="text">
        <string/>
       </property>
       <property name="icon">
-       <iconset>
-        <normaloff>SVG/light-bulb.png</normaloff>SVG/light-bulb.png</iconset>
+       <iconset resource="Icons.qrc">
+        <normaloff>:/Icons/SVG/light-bulb.png</normaloff>:/Icons/SVG/light-bulb.png</iconset>
       </property>
       <property name="iconSize">
        <size>
-        <width>50</width>
-        <height>50</height>
+        <width>40</width>
+        <height>40</height>
        </size>
       </property>
      </widget>
@@ -2473,6 +2477,8 @@ color: rgb(0, 0, 0);</string>
    <header>sudokubox.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="Icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
