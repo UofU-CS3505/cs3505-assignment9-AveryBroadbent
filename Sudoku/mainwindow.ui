@@ -2357,7 +2357,7 @@ border-color: rgb(0, 0, 0);</string>
        </layout>
       </widget>
      </widget>
-     <widget class="QPushButton" name="checkAnswer">
+     <widget class="QPushButton" name="checkAnswerButton">
       <property name="geometry">
        <rect>
         <x>310</x>

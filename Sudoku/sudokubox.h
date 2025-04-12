@@ -19,8 +19,7 @@ public slots:
 
 
 signals:
-   void selected(SudokuBox* selectedBox);
-
+    void selected(SudokuBox* selectedBox);
 
 };
 

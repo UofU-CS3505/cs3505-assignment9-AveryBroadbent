@@ -11,11 +11,13 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    sudokubox.cpp
+    sudokubox.cpp \
+    sudokumodel.cpp
 
 HEADERS += \
     mainwindow.h \
-    sudokubox.h
+    sudokubox.h \
+    sudokumodel.h
 
 FORMS += \
     mainwindow.ui
