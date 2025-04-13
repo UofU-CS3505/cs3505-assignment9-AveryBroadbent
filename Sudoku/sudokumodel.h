@@ -17,6 +17,7 @@ public:
     void uploadNewPuzzle();
     void uploadAnswerKey();
     void checkInputs();
+    void uploadKey(QString fileName);
 signals:
     void correctAnswer(int index);
     void incorrectAnswer(int index);

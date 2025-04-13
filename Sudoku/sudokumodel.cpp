@@ -1,9 +1,13 @@
 #include "sudokumodel.h"
 #include <QDebug>
+#include <QFile>
+#include <QMessageBox>
 
 SudokuModel::SudokuModel() {
     cellContents = vector<int>(81, 0);
     answerKey = vector<int>(81, 5);
+
+    uploadKey(":/textFiles/puzzleFiles/TestKey.txt");
 }
 
 void SudokuModel::uploadNewPuzzle() {
@@ -42,4 +46,29 @@ void SudokuModel::getHint() {
     cellContents.at(chosenHint) = answerKey.at(chosenHint);
     emit showHint(chosenHint, answerKey.at(chosenHint));
 
+}
+
+void SudokuModel::uploadKey(QString fileName) {
+    if (fileName.isEmpty())
+        return;
+    else {
+        QFile file(fileName);
+        if (!file.open(QIODevice::ReadOnly)) {
+            // error
+            QMessageBox::information(nullptr, QString("Could not load key file"), file.errorString());
+        }
+
+        QDataStream in(&file);
+        QString key;
+        in >> key;
+
+        qDebug() << key.length();
+
+        answerKey.clear();
+        for (int i = 0; i < key.length(); i++) {
+            int value = key.at(i).digitValue();
+        }
+
+        // TODO: populate cell contents and send starting values to grid
+    }
 }
