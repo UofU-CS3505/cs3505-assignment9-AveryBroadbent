@@ -15,7 +15,6 @@ private:
 public:
     SudokuModel();
     void uploadNewPuzzle();
-    void uploadAnswerKey();
     void checkInputs();
     void uploadKey(QString fileName);
 signals:

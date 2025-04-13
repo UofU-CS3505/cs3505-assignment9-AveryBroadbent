@@ -1,6 +1,7 @@
 #include "sudokumodel.h"
 #include <QDebug>
 #include <QFile>
+#include <QTextStream>
 #include <QMessageBox>
 
 SudokuModel::SudokuModel() {
@@ -11,10 +12,6 @@ SudokuModel::SudokuModel() {
 }
 
 void SudokuModel::uploadNewPuzzle() {
-
-}
-
-void SudokuModel::uploadAnswerKey() {
 
 }
 
@@ -53,22 +50,23 @@ void SudokuModel::uploadKey(QString fileName) {
         return;
     else {
         QFile file(fileName);
-        if (!file.open(QIODevice::ReadOnly)) {
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
             // error
             QMessageBox::information(nullptr, QString("Could not load key file"), file.errorString());
         }
 
-        QDataStream in(&file);
-        QString key;
-        in >> key;
+        QTextStream in(&file);
+        QString key = in.readAll();
+        file.close();
 
         qDebug() << key.length();
 
         answerKey.clear();
         for (int i = 0; i < key.length(); i++) {
             int value = key.at(i).digitValue();
+            answerKey.push_back(value);
         }
-
+        qDebug() << answerKey.size();
         // TODO: populate cell contents and send starting values to grid
     }
 }
