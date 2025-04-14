@@ -17,13 +17,16 @@ public:
     void uploadNewPuzzle();
     void checkInputs();
     void uploadKey(QString fileName);
+
 signals:
     void correctAnswer(int index);
     void incorrectAnswer(int index);
     void showHint(int index, int showValue);
+    void showStartingValues(std::map<int, int> startingValues);
 public slots:
     void updateInput(int index, int value);
     void getHint();
+    void tutorialSetup();
 
 };
 

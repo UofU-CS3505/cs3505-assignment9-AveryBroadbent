@@ -3,6 +3,7 @@
 
 #include <QMouseEvent>
 #include <QRegularExpression>
+#include <ostream>
 MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -24,6 +25,11 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &QPushButton::clicked,
             model,
             &SudokuModel::checkInputs);
+
+    connect(ui->startTutorialButton,
+            &QPushButton::clicked,
+            model,
+            &SudokuModel::tutorialSetup);
 
     connect(this,
             &MainWindow::updateCell,
@@ -50,6 +56,11 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &SudokuModel::showHint,
             this,
             &MainWindow::displayHint);
+
+    connect(model,
+            &SudokuModel::showStartingValues,
+            this,
+            &MainWindow::displayStartingValues);
 }
 
 MainWindow::~MainWindow()
@@ -135,4 +146,11 @@ void MainWindow::displayHint(int cellIndex, int answer) {
     qDebug() << "hint Displayed at box:" << cellIndex + 1;
 }
 
+void MainWindow::displayStartingValues(std::map<int, int> startingValues){
+    for (const auto& pair : startingValues) {
+        cells.at(pair.first)->updateText(pair.second);
+        cells.at(pair.first)->setDisabled(true);
+        cells.at(pair.first)->setStyleSheet("background-color: rgb(219, 219, 219); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);");
+    }
+}
 

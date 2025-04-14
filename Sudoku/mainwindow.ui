@@ -2416,6 +2416,19 @@ color: rgb(0, 0, 0);</string>
        </size>
       </property>
      </widget>
+     <widget class="QPushButton" name="startTutorialButton">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>50</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Start Tutorial</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="Intro2">
      <widget class="QLabel" name="label_7">

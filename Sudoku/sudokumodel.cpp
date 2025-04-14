@@ -8,7 +8,33 @@ SudokuModel::SudokuModel() {
     cellContents = vector<int>(81, 0);
     answerKey = vector<int>(81, 5);
 
-    uploadKey(":/textFiles/puzzleFiles/TestKey.txt");
+
+}
+
+void SudokuModel::tutorialSetup() {
+    uploadKey(":/textFiles/puzzleFiles/TutorialPuzzle.txt");
+    vector<int> startingIndexes;
+    std::map<int, int> startingValues;
+
+    QFile file(":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        // error
+        QMessageBox::information(nullptr, QString("Could not load key file"), file.errorString());
+    }
+
+    QTextStream in(&file);
+
+    while(!in.atEnd()){
+        QString index = in.readLine();
+        startingIndexes.push_back(index.toInt());
+    }
+
+    for(int index : startingIndexes){
+        startingValues[index] = answerKey.at(index);
+    }
+
+    file.close();
+    emit showStartingValues(startingValues);
 }
 
 void SudokuModel::uploadNewPuzzle() {
