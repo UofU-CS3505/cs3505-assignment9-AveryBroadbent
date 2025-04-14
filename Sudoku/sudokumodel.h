@@ -23,6 +23,7 @@ signals:
     void incorrectAnswer(int index);
     void showHint(int index, int showValue);
     void showStartingValues(std::map<int, int> startingValues);
+    void rowCorrect(int rowNum);
 public slots:
     void updateInput(int index, int value);
     void getHint();

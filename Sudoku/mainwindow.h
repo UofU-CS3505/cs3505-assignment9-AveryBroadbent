@@ -33,6 +33,7 @@ public slots:
     void cellIncorrect(int index);
     void displayHint(int cellIndex, int answer);
     void displayStartingValues(std::map<int, int> startingValues);
+    void rowFinished(int row);
 
 signals:
     void updateCell(int index, int value);

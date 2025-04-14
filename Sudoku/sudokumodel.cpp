@@ -31,6 +31,7 @@ void SudokuModel::tutorialSetup() {
 
     for(int index : startingIndexes){
         startingValues[index] = answerKey.at(index);
+        cellContents.at(index) = answerKey.at(index);
     }
 
     file.close();
@@ -46,6 +47,8 @@ void SudokuModel::updateInput(int index, int value) {
 }
 
 void SudokuModel::checkInputs(){
+    //Add a check to see if entire row/box/column is correct and if so, emit correctRow, correctColumn, correctBox that
+    //pulses the row/box/column green
     for(int i = 0; i < 81; i++) {
         if(cellContents.at(i) == 0)
             continue;
@@ -54,6 +57,25 @@ void SudokuModel::checkInputs(){
         else
             emit incorrectAnswer(i);
     }
+
+
+
+    //check if row is correct
+    bool isRowCorrect;
+    for(int row = 0; row < 9; row++) {
+        isRowCorrect = true;
+        for(int col = 0; col < 9; col++) {
+            //box number = i * 9 + j
+            if(!(cellContents.at(row*9+col) == answerKey.at(row*9+col))) {
+                isRowCorrect = false;
+                break;
+            }
+        }
+        if(isRowCorrect == true){
+            emit rowCorrect(row);
+        }
+    }
+
 }
 
 void SudokuModel::getHint() {
