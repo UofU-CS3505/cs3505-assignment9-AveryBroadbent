@@ -26,6 +26,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             model,
             &SudokuModel::checkInputs);
 
+    //might want to change which button is mapped to tutorial setup
     connect(ui->startTutorialButton,
             &QPushButton::clicked,
             model,
@@ -72,6 +73,7 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
     if (selectedCell == nullptr)
         return;
 
+    selectedCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);");
     QString indexString = (selectedCell->objectName()).remove(QRegularExpression("\\D"));
     int index = indexString.toInt()-1;
 
