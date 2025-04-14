@@ -67,6 +67,11 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &SudokuModel::rowCorrect,
             this,
             &MainWindow::rowFinished);
+
+    connect(model,
+            &SudokuModel::colCorrect,
+            this,
+            &MainWindow::colFinished);
 }
 
 MainWindow::~MainWindow()
@@ -164,6 +169,12 @@ void MainWindow::displayStartingValues(std::map<int, int> startingValues){
 void MainWindow::rowFinished(int row) {
     int startingIndex = row * 9;
     for(int i = startingIndex; i < startingIndex + 9; i++) {
+        cells.at(i)->setStyleSheet("background-color: rgb(163, 222, 149); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);");
+    }
+}
+
+void MainWindow::colFinished(int col) {
+    for(int i = col; i <= (col + (9 * 8)); i += 9) {
         cells.at(i)->setStyleSheet("background-color: rgb(163, 222, 149); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);");
     }
 }

@@ -76,6 +76,21 @@ void SudokuModel::checkInputs(){
         }
     }
 
+    //check if col is correct
+    bool isColCorrect;
+    for(int col = 0; col < 9; col++) {
+        isColCorrect = true;
+        for(int row = 0; row < 9; row++) {
+            if(!(cellContents.at(row*9+col) == answerKey.at(row*9+col))) {
+                isColCorrect = false;
+                break;
+            }
+        }
+        if(isColCorrect == true){
+            emit colCorrect(col);
+        }
+    }
+
 }
 
 void SudokuModel::getHint() {
