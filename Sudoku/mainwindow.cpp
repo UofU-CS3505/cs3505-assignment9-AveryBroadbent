@@ -3,16 +3,17 @@
 
 #include <QMouseEvent>
 #include <QRegularExpression>
-#include <ostream>
-MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
 #include <QTimer>
+
+
+MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , world(b2Vec2(0.0f, -10.0f))
     , timer(new QTimer(this))
 {
     ui->setupUi(this);
-    firstLabel = ui->firstLabel;
+    //firstLabel = ui->firstLabel;
 
     connect(timer, &QTimer::timeout, this, &MainWindow::updatePhysics); // timer starts below and emits timeout? updatePhysics is signal
     timer->start(16);
@@ -20,13 +21,18 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     b2BodyDef bodyDef;
     bodyDef.type = b2_kinematicBody;
     // from lab
+    /*
     float pixelX = ui->firstLabel->x();
     float pixelY = ui->firstLabel->y();
     bodyDef.position.Set(pixelX / 30, pixelY / 30); // converts pixels to 'world' by dividing by 30
     body = world.CreateBody(&bodyDef);
+    */
     // from video but this doesnt work
     // bodyDef.position.set(box2d.coordPixelToWorld(x,y));
 
+
+
+    // Set up references to sboxes
     for (int i = 1; i <= 81; i++) {
         QString sboxName = QString("sbox")+QString::number(i);
         SudokuBox* thisBox = ui->sudokuFrame->findChild<SudokuBox *>(sboxName);
@@ -89,6 +95,8 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &SudokuModel::colCorrect,
             this,
             &MainWindow::colFinished);
+
+    qDebug() << "finished constructor";
 }
 
 MainWindow::~MainWindow()
@@ -206,14 +214,11 @@ void MainWindow::updatePhysics()
     int32 positionIterations = 2;
     world.Step(timeStep, velocityIterations, positionIterations);
     b2Vec2 position = body->GetPosition();
-    ui->firstLabel->move(position.x * 30, position.y * 30); // converts 'world' to pixels by multiplying by 30
+    //ui->firstLabel->move(position.x * 30, position.y * 30); // converts 'world' to pixels by multiplying by 30
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-
-
-
     body->SetLinearVelocity(b2Vec2(5.0f, 0.0f));
 
     QTimer::singleShot(50, this, [=]() {

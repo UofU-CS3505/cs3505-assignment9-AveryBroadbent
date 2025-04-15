@@ -23,11 +23,17 @@ private:
     Ui::MainWindow *ui;
     SudokuBox* selectedCell = nullptr;
     vector<SudokuBox*> cells;
+    b2World world;
+    b2Body* body;
+    QTimer* timer;
+    QLabel* firstLabel;
+    void updatePhysics();
 
 public:
     MainWindow(SudokuModel* model, QWidget *parent = nullptr);
     ~MainWindow();
     void keyPressEvent(QKeyEvent* event);
+    void mousePressEvent(QMouseEvent *event) override;
 
 public slots:
     void updateSelected(SudokuBox* currentSelection);
@@ -41,17 +47,6 @@ public slots:
 signals:
     void updateCell(int index, int value);
 
-
-
-public:
-    void mousePressEvent(QMouseEvent *event) override;
-
-private:
-    b2World world;
-    b2Body* body;
-    QTimer* timer;
-    QLabel* firstLabel;
-    void updatePhysics();
 
 };
 #endif // MAINWINDOW_H
