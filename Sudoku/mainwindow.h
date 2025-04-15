@@ -7,6 +7,8 @@
 #include "sudokumodel.h"
 
 using std::vector;
+#include <Box2D/Box2D.h>
+#include <QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -41,6 +43,15 @@ signals:
 
 
 
+public:
+    void mousePressEvent(QMouseEvent *event) override;
+
+private:
+    b2World world;
+    b2Body* body;
+    QTimer* timer;
+    QLabel* firstLabel;
+    void updatePhysics();
 
 };
 #endif // MAINWINDOW_H
