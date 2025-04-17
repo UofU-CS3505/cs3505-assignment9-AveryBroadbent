@@ -81,11 +81,13 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             this,
             &MainWindow::displayHint);
 
+    // Start values
     connect(model,
             &SudokuModel::showStartingValues,
             this,
             &MainWindow::displayStartingValues);
 
+    // Display
     connect(model,
             &SudokuModel::rowCorrect,
             this,
@@ -100,6 +102,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &SudokuModel::boxCorrect,
             this,
             &MainWindow::boxFinished);
+
 
     qDebug() << "finished constructor";
 }
@@ -163,21 +166,37 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
         emit updateCell(index, 9);
         break;
     }
+
+    // Remove selected cell
+    // NOTE: I added this since setting the color back to white made it look like it unselected after entering a number
+    // I actually like that as a design choice so I'm adding it. If we don't like it, we can just remove this.
+    selectedCell = nullptr;
 }
 
 void MainWindow::updateSelected(SudokuBox* currentSelection) {
+    qDebug() << "Updating selected Color";
+    if (selectedCell != nullptr && selectedCell->isEnabled())
+        selectedCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);"); // White
+    currentSelection->setStyleSheet("background-color: rgb(165, 210, 242); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);"); // Blue
     selectedCell = currentSelection;
 }
 
 void MainWindow::cellCorrect(int index){
-    if (!cells.at(index)->isEnabled())
+    SudokuBox* correctCell = cells.at(index);
+
+    if (!correctCell->isEnabled())
         return;
 
-    cells.at(index)->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(105, 197, 95); border-color: rgb(0, 0, 0);");
-    cells.at(index)->setDisabled(true);
+    if (selectedCell == correctCell)
+        selectedCell = nullptr;
+
+    correctCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(105, 197, 95); border-color: rgb(0, 0, 0);");
+    correctCell->setDisabled(true);
 }
 void MainWindow::cellIncorrect(int index){
     cells.at(index)->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(197, 49, 49); border-color: rgb(0, 0, 0);");
+    if (cells.at(index) == selectedCell)
+        selectedCell = nullptr;
 }
 
 void MainWindow::displayHint(int cellIndex, int answer) {
@@ -186,6 +205,9 @@ void MainWindow::displayHint(int cellIndex, int answer) {
     hintCell->updateText(answer);
     hintCell->setDisabled(true);
     qDebug() << "hint Displayed at box:" << cellIndex + 1;
+
+    if (selectedCell == hintCell)
+        selectedCell = nullptr;
 }
 
 void MainWindow::displayStartingValues(std::map<int, int> startingValues){
@@ -200,12 +222,16 @@ void MainWindow::rowFinished(int row) {
     int startingIndex = row * 9;
     for(int i = startingIndex; i < startingIndex + 9; i++) {
         cells.at(i)->setStyleSheet("background-color: rgb(163, 222, 149); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);");
+        if (selectedCell == cells.at(i))
+            selectedCell = nullptr;
     }
 }
 
 void MainWindow::colFinished(int col) {
     for(int i = col; i <= (col + (9 * 8)); i += 9) {
         cells.at(i)->setStyleSheet("background-color: rgb(163, 222, 149); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);");
+        if (selectedCell == cells.at(i))
+            selectedCell = nullptr;
     }
 }
 
@@ -217,6 +243,8 @@ void MainWindow::boxFinished(int boxRow, int boxCol){
     while(currentIndex <= bottomRightCell && currentIndex < 81) {
         for(; currentIndex < rowStart + 3; currentIndex ++){
             cells.at(currentIndex)->setStyleSheet("background-color: rgb(163, 222, 149); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);");
+            if (selectedCell == cells.at(currentIndex))
+                selectedCell = nullptr;
         }
         rowStart += 9;
         currentIndex = rowStart;
