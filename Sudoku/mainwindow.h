@@ -33,7 +33,7 @@ public:
     MainWindow(SudokuModel* model, QWidget *parent = nullptr);
     ~MainWindow();
     void keyPressEvent(QKeyEvent* event);
-    void mousePressEvent(QMouseEvent *event) override;
+    // void mousePressEvent(QMouseEvent *event) override;
 
 public slots:
     void updateSelected(SudokuBox* currentSelection);
@@ -43,6 +43,7 @@ public slots:
     void displayStartingValues(std::map<int, int> startingValues);
     void rowFinished(int row);
     void colFinished(int col);
+    void boxFinished(int boxRow, int boxCol);
 
 signals:
     void updateCell(int index, int value);

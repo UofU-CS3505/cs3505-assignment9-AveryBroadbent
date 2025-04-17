@@ -25,6 +25,7 @@ signals:
     void showStartingValues(std::map<int, int> startingValues);
     void rowCorrect(int rowNum);
     void colCorrect(int colNum);
+    void boxCorrect(int boxRow, int boxCol);
 public slots:
     void updateInput(int index, int value);
     void getHint();

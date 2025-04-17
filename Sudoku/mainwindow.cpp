@@ -15,9 +15,9 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     ui->setupUi(this);
     //firstLabel = ui->firstLabel;
 
+    //is this supposed to be a single shot? This would updatePhysics every 16ms. is this what we want?
     connect(timer, &QTimer::timeout, this, &MainWindow::updatePhysics); // timer starts below and emits timeout? updatePhysics is signal
-    timer->start(16);
-
+    // timer->start(16);
     b2BodyDef bodyDef;
     bodyDef.type = b2_kinematicBody;
     // from lab
@@ -95,6 +95,11 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &SudokuModel::colCorrect,
             this,
             &MainWindow::colFinished);
+
+    connect(model,
+            &SudokuModel::boxCorrect,
+            this,
+            &MainWindow::boxFinished);
 
     qDebug() << "finished constructor";
 }
@@ -203,6 +208,20 @@ void MainWindow::colFinished(int col) {
         cells.at(i)->setStyleSheet("background-color: rgb(163, 222, 149); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);");
     }
 }
+
+void MainWindow::boxFinished(int boxRow, int boxCol){
+    int rowStart = (boxCol * 3) + (boxRow * 27);
+    int bottomRightCell = rowStart + 20;
+    int currentIndex = rowStart;
+
+    while(currentIndex <= bottomRightCell && currentIndex < 81) {
+        for(; currentIndex < rowStart + 3; currentIndex ++){
+            cells.at(currentIndex)->setStyleSheet("background-color: rgb(163, 222, 149); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);");
+        }
+        rowStart += 9;
+        currentIndex = rowStart;
+    }
+}
 void MainWindow::updatePhysics()
 {
     // from lab:
@@ -217,17 +236,17 @@ void MainWindow::updatePhysics()
     //ui->firstLabel->move(position.x * 30, position.y * 30); // converts 'world' to pixels by multiplying by 30
 }
 
-void MainWindow::mousePressEvent(QMouseEvent *event)
-{
-    body->SetLinearVelocity(b2Vec2(5.0f, 0.0f));
+// void MainWindow::mousePressEvent(QMouseEvent *event)
+// {
+//     body->SetLinearVelocity(b2Vec2(5.0f, 0.0f));
 
-    QTimer::singleShot(50, this, [=]() {
-        body->SetLinearVelocity(b2Vec2(-5.0f, 0.0f));
-    });
+//     QTimer::singleShot(50, this, [=]() {
+//         body->SetLinearVelocity(b2Vec2(-5.0f, 0.0f));
+//     });
 
-    QTimer::singleShot(100, this, [=]() {
-        body->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
-    });
-}
+//     QTimer::singleShot(100, this, [=]() {
+//         body->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+//     });
+// }
 
 

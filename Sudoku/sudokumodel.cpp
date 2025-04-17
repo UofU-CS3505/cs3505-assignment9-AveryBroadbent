@@ -91,6 +91,38 @@ void SudokuModel::checkInputs(){
         }
     }
 
+
+    bool isBoxCorrect;
+    for(int boxRow = 0; boxRow <= 2; boxRow++){
+        for(int boxCol = 0; boxCol <= 2; boxCol++){
+            isBoxCorrect = true;
+
+            //top left cell of box is (boxCol * 3) + (boxRow * 27), this is also the start of the first row of the box.
+            //bottom right cell is top left + 20
+            int rowStart = (boxCol * 3) + (boxRow * 27);
+            int bottomRightCell = rowStart + 20;
+            int currentIndex = rowStart;
+
+            //check each cell within the current box
+            while(currentIndex <= bottomRightCell && currentIndex < 81) {
+                for(; currentIndex < rowStart + 3; currentIndex ++){
+                    if(!(cellContents.at(currentIndex) == answerKey.at(currentIndex))) {
+                        isBoxCorrect = false;
+                        break;
+                    }
+                }
+                if(isBoxCorrect == false) {
+                    break;
+                }
+                rowStart += 9;
+                currentIndex = rowStart;
+            }
+            //if entire box is correct, tell the view
+            if(isBoxCorrect == true){
+                emit boxCorrect(boxRow, boxCol);
+            }
+        }
+    }
 }
 
 void SudokuModel::getHint() {
