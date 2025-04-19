@@ -107,61 +107,60 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
     if (selectedCell == nullptr)
         return;
 
-    selectedCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);");
+    //selectedCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);");
     QString indexString = (selectedCell->objectName()).remove(QRegularExpression("\\D"));
     int index = indexString.toInt()-1;
 
+    int value = 0;
     switch(event->key()) {
     case Qt::Key_1:
-        selectedCell->updateText(1);
-        emit updateCell(index, 1);
+        value = 1;
         break;
 
     case Qt::Key_2:
-        selectedCell->updateText(2);
-        emit updateCell(index, 2);
+        value = 2;
         break;
 
     case Qt::Key_3:
-        selectedCell->updateText(3);
-        emit updateCell(index, 3);
+        value = 3;
         break;
 
     case Qt::Key_4:
-        selectedCell->updateText(4);
-        emit updateCell(index, 4);
+        value = 4;
         break;
 
     case Qt::Key_5:
-        selectedCell->updateText(5);
-        emit updateCell(index, 5);
+        value = 5;
         break;
 
     case Qt::Key_6:
-        selectedCell->updateText(6);
-        emit updateCell(index, 6);
+        value = 6;
         break;
 
     case Qt::Key_7:
-        selectedCell->updateText(7);
-        emit updateCell(index, 7);
+        value = 7;
         break;
 
     case Qt::Key_8:
-        selectedCell->updateText(8);
-        emit updateCell(index, 8);
+        value = 8;
         break;
 
     case Qt::Key_9:
-        selectedCell->updateText(9);
-        emit updateCell(index, 9);
+        value = 9;
         break;
     }
 
-    // Remove selected cell
-    // NOTE: I added this since setting the color back to white made it look like it unselected after entering a number
-    // I actually like that as a design choice so I'm adding it. If we don't like it, we can just remove this.
-    selectedCell = nullptr;
+    if (ui->noteCheck->isChecked()) {
+        // Set box to 0
+        selectedCell->updateText(0);
+        emit updateCell(index, 0);
+        // Add note
+        selectedCell->setNote(value);
+    }
+    else {
+        selectedCell->updateText(value);
+        emit updateCell(index, value);
+    }
 }
 
 void MainWindow::updateSelected(SudokuBox* currentSelection) {

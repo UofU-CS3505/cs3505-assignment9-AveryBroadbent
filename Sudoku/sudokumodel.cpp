@@ -139,6 +139,9 @@ void SudokuModel::getHint() {
         }
     }
 
+    if (emptyIndexes.empty())
+        return;
+
     int chosenHint = emptyIndexes.at(std::rand() % emptyIndexes.size());
     cellContents.at(chosenHint) = answerKey.at(chosenHint);
     emit showHint(chosenHint, answerKey.at(chosenHint));

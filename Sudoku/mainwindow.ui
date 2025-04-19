@@ -2429,6 +2429,22 @@ color: rgb(0, 0, 0);</string>
        <string>Start Tutorial</string>
       </property>
      </widget>
+     <widget class="QCheckBox" name="noteCheck">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>650</y>
+        <width>91</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Note Mode</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="Intro2">
      <widget class="QLabel" name="label_7">
@@ -2477,7 +2493,7 @@ color: rgb(0, 0, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>838</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
