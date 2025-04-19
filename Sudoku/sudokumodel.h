@@ -19,8 +19,8 @@ public:
     void uploadKey(QString fileName);
 
 signals:
-    void correctAnswer(int index);
-    void incorrectAnswer(int index);
+    void correctAnswers(vector<int> correctIndexes);
+    void incorrectAnswers(vector<int> incorrectIndexes);
     void showHint(int index, int showValue);
     void showStartingValues(std::map<int, int> startingValues);
     void rowCorrect(int rowNum);

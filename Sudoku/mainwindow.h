@@ -24,10 +24,17 @@ private:
     SudokuBox* selectedCell = nullptr;
     vector<SudokuBox*> cells;
     b2World world;
-    b2Body* body;
+    vector <b2Body*> correctBodies;
+    vector <b2Body*> incorrectBodies;
     QTimer* timer;
     QLabel* firstLabel;
-    void updatePhysics();
+    float32 timeStep;
+    int32 velocityIterations;
+    int32 positionIterations;
+    b2BodyDef bodyDef;
+    const float scale = 30.0f;
+    vector<SudokuBox*> correctCells;
+    vector<SudokuBox*> incorrectCells;
 
 public:
     MainWindow(SudokuModel* model, QWidget *parent = nullptr);
@@ -37,14 +44,14 @@ public:
 
 public slots:
     void updateSelected(SudokuBox* currentSelection);
-    void cellCorrect(int index);
-    void cellIncorrect(int index);
+    void cellsCorrect(vector <int> correctIndexes);
+    void cellsIncorrect(vector <int> incorrectIndexes);
     void displayHint(int cellIndex, int answer);
     void displayStartingValues(std::map<int, int> startingValues);
     void rowFinished(int row);
     void colFinished(int col);
     void boxFinished(int boxRow, int boxCol);
-
+    void updatePhysics();
 signals:
     void updateCell(int index, int value);
 

@@ -13,24 +13,15 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     , timer(new QTimer(this))
 {
     ui->setupUi(this);
-    //firstLabel = ui->firstLabel;
 
-    //is this supposed to be a single shot? This would updatePhysics every 16ms. is this what we want?
-    connect(timer, &QTimer::timeout, this, &MainWindow::updatePhysics); // timer starts below and emits timeout? updatePhysics is signal
-    // timer->start(16);
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_kinematicBody;
-    // from lab
-    /*
-    float pixelX = ui->firstLabel->x();
-    float pixelY = ui->firstLabel->y();
-    bodyDef.position.Set(pixelX / 30, pixelY / 30); // converts pixels to 'world' by dividing by 30
-    body = world.CreateBody(&bodyDef);
-    */
-    // from video but this doesnt work
-    // bodyDef.position.set(box2d.coordPixelToWorld(x,y));
+    timeStep = 1.0f / 60.0f;
+    velocityIterations = 6;
+    positionIterations = 2;
 
-
+    connect(timer,
+            &QTimer::timeout,
+            this,
+            &MainWindow::updatePhysics); // timer starts below and emits timeout? updatePhysics is signal
 
     // Set up references to sboxes
     for (int i = 1; i <= 81; i++) {
@@ -61,14 +52,14 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &SudokuModel::updateInput);
 
     connect(model,
-            &SudokuModel::correctAnswer,
+            &SudokuModel::correctAnswers,
             this,
-            &MainWindow::cellCorrect);
+            &MainWindow::cellsCorrect);
 
     connect(model,
-            &SudokuModel::incorrectAnswer,
+            &SudokuModel::incorrectAnswers,
             this,
-            &MainWindow::cellIncorrect);
+            &MainWindow::cellsIncorrect);
 
     // Hints
     connect(ui->hintButton,
@@ -181,22 +172,90 @@ void MainWindow::updateSelected(SudokuBox* currentSelection) {
     selectedCell = currentSelection;
 }
 
-void MainWindow::cellCorrect(int index){
-    SudokuBox* correctCell = cells.at(index);
+void MainWindow::cellsCorrect(vector<int> correctIndexes){
+    correctBodies.clear();
+    correctCells.clear();
+    for(int correctIndex : correctIndexes){
+        SudokuBox* correctCell = cells.at(correctIndex);
+        if (!correctCell->isEnabled())
+            continue;
+        correctCells.push_back(correctCell);
+        correctCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(105, 197, 95); border-color: rgb(0, 0, 0);");
 
-    if (!correctCell->isEnabled())
-        return;
+        //animation stuff
+        bodyDef.type = b2_kinematicBody;
+        float pixelX = correctCell->x();
+        float pixelY = correctCell->y();
+        bodyDef.position.Set(pixelX/scale, pixelY/scale); // converts pixels to 'world' by dividing by 30
+        b2Body* currentBody = world.CreateBody(&bodyDef);
 
-    if (selectedCell == correctCell)
-        selectedCell = nullptr;
+        currentBody->SetLinearVelocity(b2Vec2(0.0f, -10.0f));
 
-    correctCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(105, 197, 95); border-color: rgb(0, 0, 0);");
-    correctCell->setDisabled(true);
+        QTimer::singleShot(50, correctCell, [=]() {
+            currentBody->SetLinearVelocity(b2Vec2(0.0f, 10.0f));
+        });
+
+        QTimer::singleShot(100, correctCell, [=]() {
+            currentBody->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+        });
+
+        QTimer::singleShot(150, correctCell, [=]() {
+            timer->stop();
+            correctCell->setDisabled(true);
+            selectedCell = nullptr;
+        });
+
+        correctBodies.push_back(currentBody);
+    }
+
+    if(!timer->isActive()){
+        timer->start(16);
+    }
 }
-void MainWindow::cellIncorrect(int index){
-    cells.at(index)->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(197, 49, 49); border-color: rgb(0, 0, 0);");
-    if (cells.at(index) == selectedCell)
-        selectedCell = nullptr;
+void MainWindow::cellsIncorrect(vector<int> incorrectIndexes){
+    incorrectBodies.clear();
+    incorrectCells.clear();
+    for(int incorrectIndex : incorrectIndexes){
+        SudokuBox* incorrectCell = cells.at(incorrectIndex);
+        if (!incorrectCell->isEnabled())
+            continue;
+        incorrectCells.push_back(incorrectCell);
+        incorrectCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(197, 49, 49); border-color: rgb(0, 0, 0);");
+
+        //animation stuff
+        bodyDef.type = b2_kinematicBody;
+        float pixelX = incorrectCell->x();
+        float pixelY = incorrectCell->y();
+        bodyDef.position.Set(pixelX/scale, pixelY/scale); // converts pixels to 'world' by dividing by 30
+        b2Body* currentBody = world.CreateBody(&bodyDef);
+
+        QTimer::singleShot(0, incorrectCell, [=]() {
+            currentBody->SetLinearVelocity(b2Vec2(-20.0f, 0.0f));
+        });
+
+        QTimer::singleShot(50, incorrectCell, [=]() {
+            currentBody->SetLinearVelocity(b2Vec2(40.0f, 0.0f));
+        });
+
+        QTimer::singleShot(100, incorrectCell, [=]() {
+            currentBody->SetLinearVelocity(b2Vec2(-20.0f, 0.0f));
+        });
+
+        QTimer::singleShot(150, incorrectCell, [=]() {
+            currentBody->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+        });
+
+        QTimer::singleShot(200, incorrectCell, [=]() {
+            timer->stop();
+            selectedCell = nullptr;
+        });
+
+        incorrectBodies.push_back(currentBody);
+    }
+
+    if(!timer->isActive()){
+        timer->start(16);
+    }
 }
 
 void MainWindow::displayHint(int cellIndex, int answer) {
@@ -256,25 +315,17 @@ void MainWindow::updatePhysics()
         // Prepare for simulation. Typically we use a time step of 1/60 of a
         // second (60Hz) and 10 iterations. This provides a high quality simulation
         // in most game scenarios.
-    float32 timeStep = 1.0f / 60.0f;
-    int32 velocityIterations = 6;
-    int32 positionIterations = 2;
+
     world.Step(timeStep, velocityIterations, positionIterations);
-    b2Vec2 position = body->GetPosition();
-    //ui->firstLabel->move(position.x * 30, position.y * 30); // converts 'world' to pixels by multiplying by 30
+    for(size_t i = 0; i < correctBodies.size(); i++) {
+        b2Vec2 pos = correctBodies[i]->GetPosition();
+        correctCells.at(i)->move(pos.x * scale, pos.y * scale);
+    }
+
+    for(size_t i = 0; i < incorrectBodies.size(); i++) {
+        b2Vec2 pos = incorrectBodies[i]->GetPosition();
+        incorrectCells.at(i)->move(pos.x * scale, pos.y * scale);
+    }
 }
-
-// void MainWindow::mousePressEvent(QMouseEvent *event)
-// {
-//     body->SetLinearVelocity(b2Vec2(5.0f, 0.0f));
-
-//     QTimer::singleShot(50, this, [=]() {
-//         body->SetLinearVelocity(b2Vec2(-5.0f, 0.0f));
-//     });
-
-//     QTimer::singleShot(100, this, [=]() {
-//         body->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
-//     });
-// }
 
 

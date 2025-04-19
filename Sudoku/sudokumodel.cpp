@@ -49,14 +49,19 @@ void SudokuModel::updateInput(int index, int value) {
 void SudokuModel::checkInputs(){
     //Add a check to see if entire row/box/column is correct and if so, emit correctRow, correctColumn, correctBox that
     //pulses the row/box/column green
+    vector<int> correctBoxes;
+    vector<int> incorrectBoxes;
     for(int i = 0; i < 81; i++) {
         if(cellContents.at(i) == 0)
             continue;
         else if(cellContents.at(i) == answerKey.at(i))
-            emit correctAnswer(i);
+            correctBoxes.push_back(i);
         else
-            emit incorrectAnswer(i);
+            incorrectBoxes.push_back(i);
     }
+
+    emit correctAnswers(correctBoxes);
+    emit incorrectAnswers(incorrectBoxes);
 
 
 
