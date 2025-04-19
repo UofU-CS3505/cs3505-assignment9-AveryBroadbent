@@ -2,6 +2,9 @@
 #define SUDOKUMODEL_H
 #include <vector>
 #include <QObject>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 using std::vector;
 
@@ -17,6 +20,9 @@ public:
     void uploadNewPuzzle();
     void checkInputs();
     void uploadKey(QString fileName);
+    void genKey();
+    void updateSudoku(std::vector<int>* sudoku, int changedIndex, int guessVal, bool* backingSolvedIndex);
+    void genCellContents();
 
 signals:
     void correctAnswers(vector<int> correctIndexes);

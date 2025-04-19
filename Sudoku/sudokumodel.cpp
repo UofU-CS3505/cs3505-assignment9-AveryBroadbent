@@ -173,3 +173,114 @@ void SudokuModel::uploadKey(QString fileName) {
         // TODO: populate cell contents and send starting values to grid
     }
 }
+
+//SUDOKU GENERATION STUFF
+/**
+ * Replaces the answerKey with a new solved sudoku
+ * board randomly generated using wave propogation.
+ */
+void SudokuModel::genKey(){
+    //Make a backing double array. The way
+    //Wave propogate works is the following:
+    //
+    std::vector<int>* solvedSudoku = new std::vector<int>[81];
+    srand(time(NULL));
+    for(int i=0; i <81; i++){
+        for(int num = 1; num < 10; num++)
+            solvedSudoku[i].push_back(num);
+    }
+    bool backingSolvedIndex[81]{};
+    for(int i=0; i <81; i++){
+        backingSolvedIndex[i] = false;
+    }
+    bool notSolved = true;
+    bool needReset = false;
+    while(notSolved){
+        int index = rand() % 81;
+        int lowestEntropyIndex = index;
+        int maxLoopVal = 81 + index;
+        for(int i = index; i < maxLoopVal ;i++){
+            int currentIndex = (index+i) % 81;
+            if(solvedSudoku[currentIndex].size() < solvedSudoku[lowestEntropyIndex].size() && !backingSolvedIndex[currentIndex]){
+                lowestEntropyIndex = currentIndex;
+            }
+        }
+        int size = solvedSudoku[lowestEntropyIndex].size();
+        int guessIndex = rand()%size;
+        int guessVal = solvedSudoku[lowestEntropyIndex].at(guessIndex);
+        solvedSudoku[lowestEntropyIndex].clear();
+        solvedSudoku[lowestEntropyIndex].push_back(guessVal);
+        backingSolvedIndex[lowestEntropyIndex] = true;
+        updateSudoku(solvedSudoku, lowestEntropyIndex, guessVal, backingSolvedIndex);
+        notSolved = false;
+        for(int i = 0; i < 81; i++){
+            if(solvedSudoku[i].size() != 1)
+                notSolved = true;
+            if(solvedSudoku[i].size() == 0){
+                needReset = true;
+            }
+        }
+
+        if(needReset){
+            for(int i = 0; i < 81; i++){
+                solvedSudoku[i].clear();
+                for(int num = 1; num < 10; num++)
+                    solvedSudoku[i].push_back(num);
+            }
+            for(int i=0; i <81; i++){
+                backingSolvedIndex[i] = false;
+            }
+            notSolved = true;
+            needReset = false;
+        }
+    }
+    answerKey.clear();
+    for(int i = 0; i < 81; i++){
+        answerKey.push_back(solvedSudoku[i].at(0));
+    }
+    delete[] solvedSudoku;
+}
+
+/**
+ * Helper method for genKey. Used to repeatedly update
+ * other values in the progogate stage of wave function
+ * collapse.
+ */
+void SudokuModel::updateSudoku(std::vector<int>* sudoku, int changedIndex, int guessVal, bool* backingSolvedIndex){
+    int row = changedIndex / 9;
+    int col = changedIndex % 9;
+    int box = (row/3)*3 + col/3;
+    for(int i = 0; i < 81; i ++){
+        if(i != changedIndex && !backingSolvedIndex[i]){
+            int currentRow = i / 9;
+            int currentCol = i % 9;
+            int currentBox = (currentRow/3)*3 + currentCol/3;
+            if((currentRow == row) || (currentCol == col) || (currentBox == box)){
+                sudoku[i].erase(std::remove(sudoku[i].begin(), sudoku[i].end(), guessVal), sudoku[i].end());
+            }
+        }
+    }
+}
+
+/**
+ * Fills cellContents with answerKey then removes all
+ * but 32 to 28 randomly chosen values by setting to
+ * 0.
+ */
+void SudokuModel::genCellContents(){
+    cellContents = vector<int>(81, 0);
+    for(int i = 0; i < 81; i++){
+        cellContents.push_back(answerKey.at(i));
+    }
+    srand(time(NULL));
+    int endFilledNum = 32 - (rand() % 5);
+    int currFilledNum = 81;
+    while(currFilledNum > endFilledNum){
+        int toRemove = rand() % 81;
+        while(cellContents.at(toRemove)!= 0){
+            toRemove = rand() % 81;
+        }
+        cellContents.at(toRemove) = 0;
+        currFilledNum--;
+    }
+}
