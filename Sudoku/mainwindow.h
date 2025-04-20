@@ -52,6 +52,11 @@ public slots:
     void colFinished(int col);
     void boxFinished(int boxRow, int boxCol);
     void updatePhysics();
+
+    void displayTextBox1();
+    void displayTextBox2();
+    void displayTextBox3();
+
 signals:
     void updateCell(int index, int value);
 

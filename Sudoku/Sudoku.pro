@@ -58,7 +58,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     sudokubox.cpp \
-    sudokumodel.cpp
+    sudokumodel.cpp \
+    tutorial.cpp
 
 HEADERS += \
     Box2D/Box2D.h \
@@ -110,7 +111,8 @@ HEADERS += \
     Box2D/Rope/b2Rope.h \
     mainwindow.h \
     sudokubox.h \
-    sudokumodel.h
+    sudokumodel.h \
+    tutorial.h
 
 FORMS += \
     mainwindow.ui

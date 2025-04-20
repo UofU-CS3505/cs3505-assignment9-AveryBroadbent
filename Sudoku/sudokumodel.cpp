@@ -7,8 +7,12 @@
 SudokuModel::SudokuModel() {
     cellContents = vector<int>(81, 0);
     answerKey = vector<int>(81, 5);
+    introduction = new Tutorial(":/textFiles/tutorials/introduction.txt", "Intro"); //TODO add this for all tutorials
+}
 
+SudokuModel::~SudokuModel() {
 
+    delete introduction;
 }
 
 void SudokuModel::tutorialSetup() {
