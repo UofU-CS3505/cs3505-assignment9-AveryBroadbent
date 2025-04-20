@@ -26,7 +26,8 @@ private:
     b2World world;
     vector <b2Body*> correctBodies;
     vector <b2Body*> incorrectBodies;
-    QTimer* timer;
+    QTimer* correctTimer;
+    QTimer* incorrectTimer;
     QLabel* firstLabel;
     float32 timeStep;
     int32 velocityIterations;
@@ -51,7 +52,8 @@ public slots:
     void rowFinished(int row);
     void colFinished(int col);
     void boxFinished(int boxRow, int boxCol);
-    void updatePhysics();
+    void updateCorrectPhysics();
+    void updateIncorrectPhysics();
 
     void displayTextBox1();
     void displayTextBox2();

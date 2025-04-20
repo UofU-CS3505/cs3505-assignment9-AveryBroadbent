@@ -10,7 +10,8 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , world(b2Vec2(0.0f, -10.0f))
-    , timer(new QTimer(this))
+    , correctTimer(new QTimer(this))
+    , incorrectTimer(new QTimer(this))
 {
     ui->setupUi(this);
 
@@ -20,10 +21,15 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     velocityIterations = 6;
     positionIterations = 2;
 
-    connect(timer,
+    connect(correctTimer,
             &QTimer::timeout,
             this,
-            &MainWindow::updatePhysics); // timer starts below and emits timeout? updatePhysics is signal
+            &MainWindow::updateCorrectPhysics); // timer starts below and emits timeout? updatePhysics is signal
+
+    connect(incorrectTimer,
+            &QTimer::timeout,
+            this,
+            &MainWindow::updateIncorrectPhysics);
 
     // Set up references to sboxes
     for (int i = 1; i <= 81; i++) {
@@ -193,7 +199,8 @@ void MainWindow::cellsCorrect(vector<int> correctIndexes){
         float pixelY = correctCell->y();
         bodyDef.position.Set(pixelX/scale, pixelY/scale); // converts pixels to 'world' by dividing by 30
         b2Body* currentBody = world.CreateBody(&bodyDef);
-
+        b2Vec2 originalPos = currentBody->GetPosition();
+        ui->checkAnswerButton->setDisabled(true);
         currentBody->SetLinearVelocity(b2Vec2(0.0f, -10.0f));
 
         QTimer::singleShot(50, correctCell, [=]() {
@@ -202,19 +209,21 @@ void MainWindow::cellsCorrect(vector<int> correctIndexes){
 
         QTimer::singleShot(100, correctCell, [=]() {
             currentBody->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+            currentBody->SetTransform(originalPos, 0.0f);
         });
 
         QTimer::singleShot(150, correctCell, [=]() {
-            timer->stop();
             correctCell->setDisabled(true);
             selectedCell = nullptr;
+            ui->checkAnswerButton->setDisabled(false);
+            correctTimer->stop();
         });
 
         correctBodies.push_back(currentBody);
     }
 
-    if(!timer->isActive()){
-        timer->start(16);
+    if(!correctTimer->isActive()){
+        correctTimer->start(16);
     }
 }
 void MainWindow::cellsIncorrect(vector<int> incorrectIndexes){
@@ -233,10 +242,10 @@ void MainWindow::cellsIncorrect(vector<int> incorrectIndexes){
         float pixelY = incorrectCell->y();
         bodyDef.position.Set(pixelX/scale, pixelY/scale); // converts pixels to 'world' by dividing by 30
         b2Body* currentBody = world.CreateBody(&bodyDef);
+        b2Vec2 originalPos = currentBody->GetPosition();
+        ui->checkAnswerButton->setDisabled(true);
 
-        QTimer::singleShot(0, incorrectCell, [=]() {
-            currentBody->SetLinearVelocity(b2Vec2(-20.0f, 0.0f));
-        });
+        currentBody->SetLinearVelocity(b2Vec2(-20.0f, 0.0f));
 
         QTimer::singleShot(50, incorrectCell, [=]() {
             currentBody->SetLinearVelocity(b2Vec2(40.0f, 0.0f));
@@ -248,18 +257,20 @@ void MainWindow::cellsIncorrect(vector<int> incorrectIndexes){
 
         QTimer::singleShot(150, incorrectCell, [=]() {
             currentBody->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+            currentBody->SetTransform(originalPos, 0.0f);
         });
 
         QTimer::singleShot(200, incorrectCell, [=]() {
-            timer->stop();
             selectedCell = nullptr;
+            ui->checkAnswerButton->setDisabled(false);
+            incorrectTimer->stop();
         });
 
         incorrectBodies.push_back(currentBody);
     }
 
-    if(!timer->isActive()){
-        timer->start(16);
+    if(!incorrectTimer->isActive()){
+        incorrectTimer->start(16);
     }
 }
 
@@ -322,7 +333,8 @@ void MainWindow::boxFinished(int boxRow, int boxCol){
         currentIndex = rowStart;
     }
 }
-void MainWindow::updatePhysics()
+
+void MainWindow::updateCorrectPhysics()
 {
     // from lab:
         // Prepare for simulation. Typically we use a time step of 1/60 of a
@@ -334,7 +346,15 @@ void MainWindow::updatePhysics()
         b2Vec2 pos = correctBodies[i]->GetPosition();
         correctCells.at(i)->move(pos.x * scale, pos.y * scale);
     }
+}
 
+void MainWindow::updateIncorrectPhysics()
+{
+    // from lab:
+    // Prepare for simulation. Typically we use a time step of 1/60 of a
+    // second (60Hz) and 10 iterations. This provides a high quality simulation
+    // in most game scenarios.
+    world.Step(timeStep, velocityIterations, positionIterations);
     for(size_t i = 0; i < incorrectBodies.size(); i++) {
         b2Vec2 pos = incorrectBodies[i]->GetPosition();
         incorrectCells.at(i)->move(pos.x * scale, pos.y * scale);
