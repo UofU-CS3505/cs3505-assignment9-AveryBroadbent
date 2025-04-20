@@ -18,7 +18,7 @@ SudokuModel::~SudokuModel() {
 void SudokuModel::tutorialSetup() {
     uploadKey(":/textFiles/puzzleFiles/TutorialPuzzle.txt");
     vector<int> startingIndexes;
-    std::map<int, int> startingValues;
+    std::map<int, int> startingValues; //<index, val>
 
     QFile file(":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -179,6 +179,20 @@ void SudokuModel::uploadKey(QString fileName) {
 }
 
 //SUDOKU GENERATION STUFF
+void SudokuModel::newPuzzleSetup(){
+    std::map<int, int> startingValues; //<index, val>
+    genKey();
+    genCellContents();
+    for(int i = 0; i < 81; i++){
+        if(cellContents.at(i) != 0){
+            startingValues.insert({i, cellContents.at(i)});
+            std::cout<<cellContents.at(i) << std::endl;
+            //cellContents.at(i);
+        }
+    }
+    emit showStartingValues(startingValues);
+}
+
 /**
  * Replaces the answerKey with a new solved sudoku
  * board randomly generated using wave propogation.
@@ -240,7 +254,7 @@ void SudokuModel::genKey(){
     }
     answerKey.clear();
     for(int i = 0; i < 81; i++){
-        answerKey.push_back(solvedSudoku[i].at(0));
+        answerKey.push_back(solvedSudoku[i][0]);
     }
     delete[] solvedSudoku;
 }
@@ -272,7 +286,7 @@ void SudokuModel::updateSudoku(std::vector<int>* sudoku, int changedIndex, int g
  * 0.
  */
 void SudokuModel::genCellContents(){
-    cellContents = vector<int>(81, 0);
+    cellContents.clear();
     for(int i = 0; i < 81; i++){
         cellContents.push_back(answerKey.at(i));
     }
@@ -281,7 +295,7 @@ void SudokuModel::genCellContents(){
     int currFilledNum = 81;
     while(currFilledNum > endFilledNum){
         int toRemove = rand() % 81;
-        while(cellContents.at(toRemove)!= 0){
+        while(cellContents.at(toRemove)== 0){
             toRemove = rand() % 81;
         }
         cellContents.at(toRemove) = 0;
