@@ -2425,6 +2425,9 @@ color: rgb(0, 0, 0);</string>
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
       <property name="text">
        <string>Start Tutorial</string>
       </property>
@@ -2443,6 +2446,22 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="text">
        <string>Note Mode</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="newPuzzleButton">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>60</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Generate Puzzle</string>
       </property>
      </widget>
     </widget>
@@ -2493,7 +2512,7 @@ color: rgb(0, 0, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>838</width>
-     <height>36</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

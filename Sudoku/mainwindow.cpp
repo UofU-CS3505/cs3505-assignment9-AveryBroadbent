@@ -275,6 +275,14 @@ void MainWindow::displayHint(int cellIndex, int answer) {
 }
 
 void MainWindow::displayStartingValues(std::map<int, int> startingValues){
+    // Clear grid before showing start values
+    for (int i = 0; i < 81; i++) {
+        cells.at(i)->reset();
+        cells.at(i)->setDisabled(false);
+        cells.at(i)->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);");
+    }
+
+    // Fill out starting values
     for (const auto& pair : startingValues) {
         cells.at(pair.first)->updateText(pair.second);
         cells.at(pair.first)->setDisabled(true);

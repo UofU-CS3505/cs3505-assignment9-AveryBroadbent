@@ -17,6 +17,7 @@ public:
     void mousePressEvent(QMouseEvent* event)override;
     void updateText(int boxVal);
     void setNote(int value);
+    void reset();
 
 protected:
     void paintEvent(QPaintEvent* event) override;

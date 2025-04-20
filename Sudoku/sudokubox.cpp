@@ -30,6 +30,15 @@ void SudokuBox::setNote(int value) {
     update();
 }
 
+void SudokuBox::reset() {
+    for (int i = 0; i < 9; i++) {
+        notes[i] = false;
+    }
+    boxValue = 0;
+    setText("");
+    update();
+}
+
 void SudokuBox::mousePressEvent(QMouseEvent* event) {
     if (event->button()==Qt::LeftButton) {
         emit selected(this);
