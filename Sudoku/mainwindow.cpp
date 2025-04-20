@@ -14,7 +14,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->textBox1->hide();
+    //ui->textBox1->hide();
 
     timeStep = 1.0f / 60.0f;
     velocityIterations = 6;
@@ -335,8 +335,8 @@ void MainWindow::updatePhysics()
 
 void MainWindow::displayTextBox1()
 {
-    ui->textBox1->show();
-    ui->textBox1->setText("hello");
+    // ui->textBox1->show();
+    // ui->textBox1->setText();
 }
 
 void MainWindow::displayTextBox2()
