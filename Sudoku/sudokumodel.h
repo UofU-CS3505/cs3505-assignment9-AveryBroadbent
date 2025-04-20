@@ -23,6 +23,7 @@ public:
     void genKey();
     void updateSudoku(std::vector<int>* sudoku, int changedIndex, int guessVal, bool* backingSolvedIndex);
     void genCellContents();
+    void newPuzzleSetup();
 
 signals:
     void correctAnswers(vector<int> correctIndexes);

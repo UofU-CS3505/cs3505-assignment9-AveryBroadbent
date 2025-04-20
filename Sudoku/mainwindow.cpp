@@ -46,6 +46,11 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             model,
             &SudokuModel::tutorialSetup);
 
+    connect(ui->newPuzzleButton,
+            &QPushButton::clicked,
+            model,
+            &SudokuModel::newPuzzleSetup);
+
     connect(this,
             &MainWindow::updateCell,
             model,

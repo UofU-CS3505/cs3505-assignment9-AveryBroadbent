@@ -2445,6 +2445,19 @@ color: rgb(0, 0, 0);</string>
        <string>Note Mode</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="newPuzzleButton">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>50</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>New Puzzle</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="Intro2">
      <widget class="QLabel" name="label_7">
@@ -2493,7 +2506,7 @@ color: rgb(0, 0, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>838</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
