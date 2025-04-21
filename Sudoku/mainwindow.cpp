@@ -15,8 +15,14 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
 {
     ui->setupUi(this);
 
+    // starts stackedWidget at the home page
+    ui->stackedWidget->setCurrentWidget(ui->HomePage);
+    connect(ui->IntroductionButton, &QPushButton::clicked, this, &MainWindow::startIntroduction);
+
     //ui->textBox1->hide();
 
+
+    // Setup for SudokuGame widget
     timeStep = 1.0f / 60.0f;
     velocityIterations = 6;
     positionIterations = 2;
@@ -375,5 +381,24 @@ void MainWindow::displayTextBox2()
 void MainWindow::displayTextBox3()
 {
 
+}
+
+void MainWindow::startIntroduction()
+{
+    ui->stackedWidget->setCurrentWidget(ui->IntroductionTutorial);
+
+    // QFrame* introSudokuFrame = ui->IntroductionTutorial->findChild<QFrame*>("introSudokuFrame");
+
+    // for (int i = 1; i <= 81; i++) {
+    //     QString sboxName = QString("sbox")+QString::number(i);
+    //     SudokuBox* thisBox = introSudokuFrame->findChild<SudokuBox*>(sboxName);
+
+    //     connect(thisBox,
+    //             &SudokuBox::selected,
+    //             this,
+    //             &MainWindow::updateSelected);
+
+    //     cells.push_back(thisBox);
+    // }
 }
 

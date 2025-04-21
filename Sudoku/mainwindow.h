@@ -59,6 +59,8 @@ public slots:
     void displayTextBox2();
     void displayTextBox3();
 
+    void startIntroduction();
+
 signals:
     void updateCell(int index, int value);
 
