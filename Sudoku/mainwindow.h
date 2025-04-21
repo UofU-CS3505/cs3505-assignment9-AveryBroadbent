@@ -40,19 +40,70 @@ private:
 public:
     MainWindow(SudokuModel* model, QWidget *parent = nullptr);
     ~MainWindow();
+
     void keyPressEvent(QKeyEvent* event);
     // void mousePressEvent(QMouseEvent *event) override;
 
 public slots:
+    /**
+     * Slot that updates the view to properly display a newly selected sudokubox.
+     * Additonally, clears the previously selected sudoku box.
+     * @param currentSelection - The newly selected sudoku box
+     */
     void updateSelected(SudokuBox* currentSelection);
-    void cellsCorrect(vector <int> correctIndexes);
-    void cellsIncorrect(vector <int> incorrectIndexes);
+
+    /**
+     * Slot to the view that displays a list of sudokubox indexs as correct, animates them, and disables them.
+     * @param correctIndexes - A vector of indexes representing the locations of the correct sudoku boxes.
+     */
+    void cellsCorrect(vector<int> correctIndexes);
+
+    /**
+     * Slot to the view that displays a list of sudokubox indexs as incorrect and animates them.
+     * @param correctIndexes - A vector of indexes representing the locations of the incorrect sudoku boxes.
+     */
+    void cellsIncorrect(vector<int> incorrectIndexes);
+
+    /**
+     * Slot to the view that displays a sudokubox's answer, and disables it.
+     * @param cellIndex - The index of the sudokubox to place the hint at.
+     * @param answer - The correct value of the sudokubox.
+     */
     void displayHint(int cellIndex, int answer);
+
+    /**
+     * Slot to the view that clears the current grid displays the starting values of a new sudoku puzzle
+     * @param startingValues - A map of (index, value) that marks each starting value.
+     */
     void displayStartingValues(std::map<int, int> startingValues);
+
+    /**
+     * Slot to the view that marks a row in the sudoku grid as completed.
+     * @param row - index of the row to mark as complete.
+     */
     void rowFinished(int row);
+
+    /**
+     * Slot to the view that marks a column in the sudoku grid as completed.
+     * @param col - index of the column to mark as complete.
+     */
     void colFinished(int col);
+
+    /**
+     * Slot to the view that marks a 3x3 section of the sudoku grid as completed.
+     * @param boxRow - index of the box's first row
+     * @param boxCol - index of the box's first column
+     */
     void boxFinished(int boxRow, int boxCol);
+
+    /**
+     * Prepares the correct sudoku boxes for animation.
+     */
     void updateCorrectPhysics();
+
+    /**
+     * Prepares the incorrect sudoku boxes for animation.
+     */
     void updateIncorrectPhysics();
 
     void displayTextBox1();
@@ -63,6 +114,11 @@ public slots:
     void toHomePage();
 
 signals:
+    /**
+     * Signal to update the model to a changed value on a sudoku box.
+     * @param index - the index of the entered value.
+     * @param value - the value of the sudoku box.
+     */
     void updateCell(int index, int value);
 
 
