@@ -60,6 +60,7 @@ public slots:
     void displayTextBox3();
 
     void startIntroduction();
+    void toHomePage();
 
 signals:
     void updateCell(int index, int value);

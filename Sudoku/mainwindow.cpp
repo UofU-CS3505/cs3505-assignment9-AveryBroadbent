@@ -17,7 +17,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
 
     // starts stackedWidget at the home page
     ui->stackedWidget->setCurrentWidget(ui->HomePage);
-    connect(ui->IntroductionButton, &QPushButton::clicked, this, &MainWindow::startIntroduction);
+    connect(ui->Start, &QPushButton::clicked, this, &MainWindow::startIntroduction);
 
     //ui->textBox1->hide();
 
@@ -49,6 +49,14 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
 
         cells.push_back(thisBox);
     }
+
+    connect(ui->homeButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::toHomePage);
+    //     connect(ui->Start, &QPushButton::clicked, this, &MainWindow::startIntroduction);
+
+
     connect(ui->checkAnswerButton,
             &QPushButton::clicked,
             model,
@@ -385,20 +393,11 @@ void MainWindow::displayTextBox3()
 
 void MainWindow::startIntroduction()
 {
-    ui->stackedWidget->setCurrentWidget(ui->IntroductionTutorial);
+    ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
+}
 
-    // QFrame* introSudokuFrame = ui->IntroductionTutorial->findChild<QFrame*>("introSudokuFrame");
-
-    // for (int i = 1; i <= 81; i++) {
-    //     QString sboxName = QString("sbox")+QString::number(i);
-    //     SudokuBox* thisBox = introSudokuFrame->findChild<SudokuBox*>(sboxName);
-
-    //     connect(thisBox,
-    //             &SudokuBox::selected,
-    //             this,
-    //             &MainWindow::updateSelected);
-
-    //     cells.push_back(thisBox);
-    // }
+void MainWindow::toHomePage()
+{
+    ui->stackedWidget->setCurrentWidget(ui->HomePage);
 }
 
