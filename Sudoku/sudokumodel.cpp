@@ -7,7 +7,11 @@
 SudokuModel::SudokuModel() {
     cellContents = vector<int>(81, 0);
     answerKey = vector<int>(81, 5);
-    introduction = new Tutorial(":/textFiles/tutorials/introduction.txt", "Intro"); //TODO add this for all tutorials
+
+    introduction = new Tutorial(":/textFiles/tutorials/SudokuIntroduction.txt", "Intro"); //TODO these are not the offical file names yet
+    noteTaking = new Tutorial(":/textFiles/tutorials/SudokuNoteTaking.txt", "Note Taking");
+
+    currentTutorialIndex = 0;
 }
 
 SudokuModel::~SudokuModel() {
@@ -300,5 +304,66 @@ void SudokuModel::genCellContents(){
         }
         cellContents.at(toRemove) = 0;
         currFilledNum--;
+    }
+}
+
+void SudokuModel::introTutorial()
+{
+    currentTutorialIndex = 0;
+    emit hideNote();
+    currentTutorialLines = introduction->getLines();
+    decipherNextLine(currentTutorialLines.at(0));
+}
+
+void SudokuModel::noteTutorial()
+{
+    currentTutorialIndex = 0;
+    //currentTutorialLines = noteTaking->getLines();
+    decipherNextLine(currentTutorialLines.at(currentTutorialIndex));
+}
+
+void SudokuModel::decipherNextLine(QStringList words)
+{
+    QString text;
+    for(int i = 0; i < 2; i++) //loop through the command prompts at the beginning of the line
+    {
+        if(words.at(0)!="[]")
+        {
+            emit highlightCell(words.at(0).toInt());
+            // this means the tutorial is expecting user input rather jsut than clicking to continue. Perhaps emitting another signal waitUserInput?
+        }
+        words.removeFirst(); //remove command prompt
+    }
+
+    if(words.at(0)=="[textbox1]")
+    {
+        words.removeFirst();
+        for (const QString &word : words) {
+            text += word + " ";
+        }
+        emit updateTutorialTextBox1(text);
+    }
+
+    else if(words.at(0)=="[textbox2]")
+    {
+        words.removeFirst();
+        for (const QString &word : words) {
+            text += word + " ";
+        }
+        emit updateTutorialTextBox2(text);
+    }
+
+    else
+    {
+        words.removeFirst();
+        for (const QString &word : words) {
+            text += word + " ";
+        }
+        emit updateTutorialTextBox3(text);
+    }
+    currentTutorialIndex++;
+    if (currentTutorialIndex==currentTutorialLines.size())
+    {
+        emit;
     }
 }

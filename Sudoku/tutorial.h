@@ -13,6 +13,8 @@
 #include <QFile>
 #include <QMessageBox>
 #include <QRegularExpression>
+#include <vector>
+using std::vector;
 
 class Tutorial : public QWidget
 {
@@ -32,17 +34,19 @@ public:
      */
     QString tutorialName;
 
+    /**
+     * @brief getNextLine calls the file reader to read the lines from a tutorial's text file
+     * @return a vector of QStringLists- each QStringList is derived from a line from the text file
+     */
+    vector<QStringList> getLines();
+
 signals:
 
 
 
 
 public slots:
-    /**
-     * @brief getNextLine calls the file reader to read the next line and handles commands at the beginning of the line.
-     * This is called when the user clicks- could be changed to a timer based thing.
-     */
-    void getNextLine();
+
 
 private:
 
