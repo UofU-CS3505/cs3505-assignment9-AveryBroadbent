@@ -197,10 +197,6 @@ void SudokuModel::newPuzzleSetup(){
     emit showStartingValues(startingValues);
 }
 
-/**
- * Replaces the answerKey with a new solved sudoku
- * board randomly generated using wave propogation.
- */
 void SudokuModel::genKey(){
     //Make a backing double array. The way
     //Wave propogate works is the following:

@@ -45,6 +45,10 @@ public slots:
 
 
 signals:
+    /**
+     * Signals to the view which sudoku box has been selected by the mouse.
+     * @param selectedBox - Pointer to the sudoku box ui element selected
+     */
     void selected(SudokuBox* selectedBox);
 
 };

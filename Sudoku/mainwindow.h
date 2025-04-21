@@ -53,44 +53,44 @@ public slots:
     void updateSelected(SudokuBox* currentSelection);
 
     /**
-     * Slot to the view that displays a list of sudokubox indexs as correct, animates them, and disables them.
+     * Displays a list of sudokubox indexs as correct, animates them, and disables them.
      * @param correctIndexes - A vector of indexes representing the locations of the correct sudoku boxes.
      */
     void cellsCorrect(vector<int> correctIndexes);
 
     /**
-     * Slot to the view that displays a list of sudokubox indexs as incorrect and animates them.
+     * Displays a list of sudokubox indexs as incorrect and animates them.
      * @param correctIndexes - A vector of indexes representing the locations of the incorrect sudoku boxes.
      */
     void cellsIncorrect(vector<int> incorrectIndexes);
 
     /**
-     * Slot to the view that displays a sudokubox's answer, and disables it.
+     * Displays a sudokubox's answer, and disables it.
      * @param cellIndex - The index of the sudokubox to place the hint at.
      * @param answer - The correct value of the sudokubox.
      */
     void displayHint(int cellIndex, int answer);
 
     /**
-     * Slot to the view that clears the current grid displays the starting values of a new sudoku puzzle
+     * Clears the current grid displays the starting values of a new sudoku puzzle
      * @param startingValues - A map of (index, value) that marks each starting value.
      */
     void displayStartingValues(std::map<int, int> startingValues);
 
     /**
-     * Slot to the view that marks a row in the sudoku grid as completed.
+     * Marks a row in the sudoku grid as completed.
      * @param row - index of the row to mark as complete.
      */
     void rowFinished(int row);
 
     /**
-     * Slot to the view that marks a column in the sudoku grid as completed.
+     * Marks a column in the sudoku grid as completed.
      * @param col - index of the column to mark as complete.
      */
     void colFinished(int col);
 
     /**
-     * Slot to the view that marks a 3x3 section of the sudoku grid as completed.
+     * Marks a 3x3 section of the sudoku grid as completed.
      * @param boxRow - index of the box's first row
      * @param boxCol - index of the box's first column
      */
