@@ -10,7 +10,7 @@ SudokuModel::SudokuModel() {
     cellContents = vector<int>(81, 0);
     answerKey = vector<int>(81, 5);
 
-    introduction = new Tutorial(":/textFiles/tutorials/SudokuIntroduction.txt", "Intro"); //TODO these are not the offical file names yet
+    introduction = new Tutorial(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt", "Intro"); //TODO these are not the offical file names yet
     noteTaking = new Tutorial(":/textFiles/tutorials/SudokuNoteTaking.txt", "Note Taking");
 
     currentTutorialIndex = 0;
