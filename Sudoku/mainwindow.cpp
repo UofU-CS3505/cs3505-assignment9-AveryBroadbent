@@ -135,8 +135,6 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &SudokuModel::boxCorrect,
             this,
             &MainWindow::boxFinished);
-
-    qDebug() << "finished constructor";
 }
 
 MainWindow::~MainWindow()
@@ -205,10 +203,10 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
 }
 
 void MainWindow::updateSelected(SudokuBox* currentSelection) {
-    qDebug() << "Updating selected Color";
     if (selectedCell != nullptr && selectedCell->isEnabled())
         selectedCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);"); // White
-    currentSelection->setStyleSheet("background-color: rgb(165, 210, 242); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);"); // Blue
+    if(currentSelection != nullptr)
+        currentSelection->setStyleSheet("background-color: rgb(165, 210, 242); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);"); // Blue
     selectedCell = currentSelection;
 }
 
@@ -308,7 +306,6 @@ void MainWindow::displayHint(int cellIndex, int answer) {
     hintCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(240, 212, 2); border-color: rgb(0, 0, 0);");
     hintCell->updateText(answer);
     hintCell->setDisabled(true);
-    qDebug() << "hint Displayed at box:" << cellIndex + 1;
 
     if (selectedCell == hintCell)
         selectedCell = nullptr;
@@ -402,6 +399,9 @@ void MainWindow::saveGame(const QString& filePath){
     QJsonObject toSave;
     QJsonArray mainWindowArray;
     QJsonArray modelArray;
+    QJsonArray notesArray;
+
+    updateSelected(nullptr);
 
     for(SudokuBox* box : cells){
         QJsonObject json;
@@ -409,12 +409,15 @@ void MainWindow::saveGame(const QString& filePath){
         json["style"] = box->styleSheet();
         json["isEnabled"] = box->isEnabled();
         mainWindowArray.append(json);
+        notesArray.append(box->toJson());
     }
 
     modelArray = m->toJson();
 
+
     toSave["View"] = mainWindowArray;
     toSave["Model"] = modelArray;
+    toSave["Notes"] = notesArray;
 
     QJsonDocument doc(toSave);
     QFile file(filePath);
@@ -438,11 +441,13 @@ void MainWindow::loadGame(const QString& filePath){
     QJsonObject root = doc.object();
 
     int index = 0;
+    QJsonArray notes = root["Notes"].toArray();
     for(const auto& val : root["View"].toArray()){
         QJsonObject obj = val.toObject();
         cells.at(index)->updateText(obj["value"].toString().toInt());
         cells.at(index)->setStyleSheet(obj["style"].toString());
         cells.at(index)->setDisabled(!(obj["isEnabled"].toBool()));
+        cells.at(index)->fromJson(notes.at(index).toArray());
         index++;
     }
 

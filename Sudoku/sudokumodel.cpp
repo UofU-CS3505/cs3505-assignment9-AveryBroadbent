@@ -172,14 +172,11 @@ void SudokuModel::uploadKey(QString fileName) {
         QString key = in.readAll();
         file.close();
 
-        qDebug() << key.length();
-
         answerKey.clear();
         for (int i = 0; i < key.length(); i++) {
             int value = key.at(i).digitValue();
             answerKey.push_back(value);
         }
-        qDebug() << answerKey.size();
     }
 }
 
@@ -323,12 +320,6 @@ void SudokuModel::fromJson(const QJsonArray& loadedFile) {
         cellContents.at(index)= obj["contents"].toInt();
         answerKey.at(index) = obj["answer"].toInt();
         index++;
-    }
-
-    for(int i = 0; i < 81; i++){
-        qDebug() << cellContents.at(i);
-        qDebug() << answerKey.at(i);
-        qDebug() << "";
     }
 }
 

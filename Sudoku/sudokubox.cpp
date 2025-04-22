@@ -3,6 +3,8 @@
 #include <QKeyEvent>
 #include <QPainter>
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonObject>
 
 SudokuBox::SudokuBox(QWidget *parent)
     : QLabel{parent}
@@ -37,6 +39,26 @@ void SudokuBox::reset() {
     boxValue = 0;
     setText("");
     update();
+}
+
+QJsonArray SudokuBox::toJson() const{
+    QJsonArray jsonObj;
+    for(int i = 0; i < 9; i++){
+        QJsonObject json;
+        json["notes"] = notes[i];
+        jsonObj.append(json);
+    }
+
+    return jsonObj;
+}
+
+void SudokuBox::fromJson(const QJsonArray& loadedFile) {
+    int index = 0;
+    for(const auto& val : loadedFile){
+        QJsonObject obj = val.toObject();
+        notes[index] = obj["notes"].toBool();
+        index++;
+    }
 }
 
 void SudokuBox::mousePressEvent(QMouseEvent* event) {

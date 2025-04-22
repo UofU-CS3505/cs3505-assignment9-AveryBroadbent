@@ -38,6 +38,10 @@ public:
      */
     void reset();
 
+    QJsonArray toJson() const;
+
+    void fromJson(const QJsonArray& loadedFile);
+
 protected:
     void paintEvent(QPaintEvent* event) override;
 
