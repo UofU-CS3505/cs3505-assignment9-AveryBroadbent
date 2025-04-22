@@ -165,6 +165,12 @@ signals:
     void highlightCell(int cellIndex);
 
     /**
+     * @brief enableCell
+     * @param cellIndex
+     */
+    void enableCell(int cellIndex);
+
+    /**
      * @brief endOfIntoTutorial
      */
     void endOfIntroTutorial();

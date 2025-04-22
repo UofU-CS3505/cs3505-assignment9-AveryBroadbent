@@ -335,14 +335,43 @@ void SudokuModel::noteTutorial()
 void SudokuModel::decipherNextLine(QStringList words)
 {
     QString text;
-    for(int i = 0; i < 2; i++) //loop through the command prompts at the beginning of the line
+    if(words.at(0)=="enable")
     {
-        if(words.at(0)!="[]")
+        words.removeFirst();
+        for(int i = 0; i < 2; i++) //loop through the command prompts at the beginning of the line
         {
-            emit highlightCell(words.at(0).toInt());
-            // this means the tutorial is expecting user input rather jsut than clicking to continue. Perhaps emitting another signal waitUserInput?
+            if(words.at(0)!="[]")
+            {
+                emit enableCell(words.at(0).toInt());
+                // this means the tutorial is expecting user input rather jsut than clicking to continue. Perhaps emitting another signal waitUserInput?
+            }
+            words.removeFirst(); //remove command prompt
         }
-        words.removeFirst(); //remove command prompt
+    }
+    else if(words.at(0)=="highlight")
+    {
+        words.removeFirst();
+        for(int i = 0; i < 2; i++) //loop through the command prompts at the beginning of the line
+        {
+            if(words.at(0)!="[]")
+            {
+                emit highlightCell(words.at(0).toInt());
+            }
+            words.removeFirst(); //remove command prompt
+        }
+    }
+    else
+    {
+        for(int i = 0; i < 2; i++) //loop through the command prompts at the beginning of the line
+        {
+            if(words.at(0)!="[]")
+            {
+                emit highlightCell(words.at(0).toInt());
+                emit enableCell(words.at(0).toInt());
+                // this means the tutorial is expecting user input rather jsut than clicking to continue. Perhaps emitting another signal waitUserInput?
+            }
+            words.removeFirst(); //remove command prompt
+        }
     }
 
     if(words.at(0)=="[textBox1]")
