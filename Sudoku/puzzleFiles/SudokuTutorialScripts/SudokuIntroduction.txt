@@ -1,0 +1,7 @@
+﻿[] [] [textBox1] Welcome to Learn Sudoku! Sudoku is a number-based puzzle game that is quite easy to learn. (Click Anywhere to Continue)
+[] [] [textBox2] A sudoku puzzle is set up as a 9x9 board. The goal is to fill in all 81 cells with a single digit 1-9.
+[] [] [textBox3] When you start, there will be numbers already filled in. There are three rules you must follow when filling out the sudoku:
+20 [] [textBox1] First, notice how the puzzle is divided into smaller, 3x3 boxes. Each 3x3 box must have every number 1-9 only once. Try filling out this first cell!
+40 [] [textBox2] Nice! Next, each row must follow the same rule. Let’s fill in this row.
+76 32 [textBox3] Great work! Lastly, each column must also contain each digit 1-9. Figure out what fills these two boxes- keep in mind the other two rules!
+[] [] [textBox1] Amazing- the sudoku puzzle is complete. Click Next Tutorial to keep learning, or click Practice to try out a puzzle!
