@@ -44,6 +44,11 @@ void SudokuModel::tutorialSetup() {
 
     file.close();
     emit showStartingValues(startingValues);
+
+    // Emit the first tutorial text
+    qDebug() << "in the sudokuModel";
+    QString firstTutorialText = "Welcome to Learn Sudoku! Sudoku is a number-based puzzle game that is quite easy to learn. (Click to Continue)";
+    emit updateTutorialTextBox1(firstTutorialText);
 }
 
 void SudokuModel::uploadNewPuzzle() {

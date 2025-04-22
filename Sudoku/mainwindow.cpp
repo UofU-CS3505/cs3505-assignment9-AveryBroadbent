@@ -19,7 +19,10 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     ui->stackedWidget->setCurrentWidget(ui->HomePage);
     connect(ui->Start, &QPushButton::clicked, this, &MainWindow::startIntroduction);
 
-    //ui->textBox1->hide();
+    // TODO START HERE
+    ui->textLabel1->hide();
+    ui->textLabel2->hide();
+    ui->textLabel3->hide();
 
 
     // Setup for SudokuGame widget
@@ -55,7 +58,6 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             this,
             &MainWindow::toHomePage);
     //     connect(ui->Start, &QPushButton::clicked, this, &MainWindow::startIntroduction);
-
 
     connect(ui->checkAnswerButton,
             &QPushButton::clicked,
@@ -104,6 +106,12 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &SudokuModel::showStartingValues,
             this,
             &MainWindow::displayStartingValues);
+
+
+    connect(model,
+            &SudokuModel::showStartingValues,
+            this,
+            &MainWindow::displayTextBox1);
 
     // Display
     connect(model,
@@ -375,8 +383,10 @@ void MainWindow::updateIncorrectPhysics()
     }
 }
 
-void MainWindow::displayTextBox1()
+void MainWindow::displayTextBox1(const QString &text)
 {
+    textLabel1->setText(text);
+    qDebug() << "we made it to the mainwindow";
     // ui->textBox1->show();
     // ui->textBox1->setText();
 }

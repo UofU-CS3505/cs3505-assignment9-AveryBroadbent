@@ -3,5 +3,7 @@
         <file>puzzleFiles/TestKey.txt</file>
         <file>puzzleFiles/TutorialPuzzle.txt</file>
         <file>puzzleFiles/TutorialStartingIndexes.txt</file>
+        <file>../../../../../Downloads/SudokuIntroduction.txt</file>
+        <file>puzzleFiles/IntroductionTutorial</file>
     </qresource>
 </RCC>

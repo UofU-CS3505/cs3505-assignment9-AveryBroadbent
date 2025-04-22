@@ -2438,7 +2438,7 @@ color: rgb(0, 0, 0);</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>label1</string>
       </property>
      </widget>
      <widget class="QLabel" name="textLabel2">
@@ -2451,7 +2451,7 @@ color: rgb(0, 0, 0);</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>label2</string>
       </property>
      </widget>
      <widget class="QLabel" name="textLabel3">
@@ -2464,7 +2464,7 @@ color: rgb(0, 0, 0);</string>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>label3</string>
       </property>
      </widget>
     </widget>

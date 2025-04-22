@@ -36,6 +36,9 @@ private:
     const float scale = 30.0f;
     vector<SudokuBox*> correctCells;
     vector<SudokuBox*> incorrectCells;
+    QLabel* textLabel1;
+    QLabel* textLabel2;
+    QLabel* textLabel3;
 
 public:
     MainWindow(SudokuModel* model, QWidget *parent = nullptr);
@@ -106,7 +109,7 @@ public slots:
      */
     void updateIncorrectPhysics();
 
-    void displayTextBox1();
+    void displayTextBox1(const QString &text);
     void displayTextBox2();
     void displayTextBox3();
 
