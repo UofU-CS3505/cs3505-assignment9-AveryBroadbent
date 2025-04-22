@@ -40,6 +40,8 @@ public:
      */
     vector<QStringList> getLines();
 
+    int numbOfLines;
+
 signals:
 
 
@@ -54,6 +56,8 @@ private:
      * @brief file tutorial's script file
      */
     QFile file;
+
+
 
 
 

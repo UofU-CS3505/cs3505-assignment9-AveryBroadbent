@@ -37,7 +37,7 @@ private:
     const float scale = 30.0f;
     vector<SudokuBox*> correctCells;
     vector<SudokuBox*> incorrectCells;
-
+    int counter = 0;
 
 public:
     MainWindow(SudokuModel* model, QWidget *parent = nullptr);

@@ -47,7 +47,7 @@ void SudokuModel::tutorialSetup() {
     file.close();
     emit showStartingValues(startingValues);
 
-    introTutorial();
+    introTutorial(0);
 }
 
 void SudokuModel::uploadNewPuzzle() {
@@ -315,11 +315,12 @@ void SudokuModel::fromJson(const QJsonArray& loadedFile) {
     }
 }
 
-void SudokuModel::introTutorial()
+void SudokuModel::introTutorial(int x)
 {
-    currentTutorialIndex = 0;
+    currentTutorialIndex = x;
     currentTutorialLines = introduction->getLines();
-    decipherNextLine(currentTutorialLines.at(0));
+    if(x == introduction->numbOfLines)
+    decipherNextLine(currentTutorialLines.at(x));
 }
 
 void SudokuModel::noteTutorial()

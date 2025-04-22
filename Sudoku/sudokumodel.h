@@ -188,7 +188,7 @@ public slots:
     /**
      * @brief introTutorial handles the logic when the intro tutorial has been selected in mainwindow
      */
-    void introTutorial();
+    void introTutorial(int x);
 
     /**
      * @brief noteTutorial handles the logic when the note taking tutorial has been selected in mainwindow

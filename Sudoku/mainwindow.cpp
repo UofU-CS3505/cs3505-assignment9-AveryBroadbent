@@ -144,10 +144,6 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &MainWindow::boxFinished);
 
     // introduction tutorial connections
-    // connect(model,
-    //         &SudokuModel::updateTutorialTextBox1,
-    //         [this] (QString text){ui->textLabel1->setText(text);});
-
     connect(model,
             &SudokuModel::updateTutorialTextBox1,
             this,
@@ -162,6 +158,10 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &SudokuModel::updateTutorialTextBox3,
             this,
             &MainWindow::displayTextBox3);
+    connect(ui->NextButton,
+            &QPushButton::clicked, this, [=]() {
+                model->introTutorial(counter);
+    });
 }
 
 MainWindow::~MainWindow()
@@ -491,20 +491,31 @@ void MainWindow::loadGame(const QString& filePath){
 void MainWindow::displayTextBox1(QString text)
 {
     ui->textLabel1->show();
-    QString string = "hello";
     ui->textLabel1->setText(text);
+    counter++;
+    ui->textLabel2->hide();
+    ui->textLabel3->hide();
 }
 
 void MainWindow::displayTextBox2(QString text)
 {
+    ui->textLabel2->show();
+    ui->textLabel2->setText(text);
+    counter++;
 
+    ui->textLabel1->hide();
+    ui->textLabel3->hide();
 }
 
 void MainWindow::displayTextBox3(QString text)
 {
-    ui->textLabel1->show();
-    QString string = "text box 3";
-    ui->textLabel1->setText(string);
+    ui->textLabel3->show();
+    ui->textLabel3->setText(text);
+    counter++;
+
+    ui->textLabel1->hide();
+    ui->textLabel2->hide();
+
 }
 
 void MainWindow::startGame()
@@ -515,6 +526,7 @@ void MainWindow::startGame()
     ui->hintButton->show();
     ui->newPuzzleButton->show();
     ui->noteCheck->show();
+    ui->NextButton->hide();
 }
 
 void MainWindow::startIntroduction()
@@ -527,6 +539,7 @@ void MainWindow::startIntroduction()
     ui->checkAnswerButton->hide();
     ui->newPuzzleButton->hide();
     ui->noteCheck->hide();
+    ui->NextButton->show();
 }
 
 void MainWindow::toHomePage()

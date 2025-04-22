@@ -4,7 +4,6 @@
 
 Tutorial::Tutorial(const QString &filename, QString tutorialName): file(filename), tutorialName(tutorialName)
 {
-
 }
 
 vector<QStringList> Tutorial::getLines()
@@ -24,6 +23,7 @@ vector<QStringList> Tutorial::getLines()
         lines.push_back(words);
     }
 
+    numbOfLines = lines.size();
     file.close();
     return lines;
 }
