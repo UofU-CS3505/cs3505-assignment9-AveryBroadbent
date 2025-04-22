@@ -4,7 +4,11 @@
 #include <QMouseEvent>
 #include <QRegularExpression>
 #include <QTimer>
-
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QFileDialog>
+#include <QVariant>
 
 MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     : QMainWindow(parent)
@@ -14,6 +18,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     , incorrectTimer(new QTimer(this))
 {
     ui->setupUi(this);
+    m = model;
 
     // starts stackedWidget at the home page
     ui->stackedWidget->setCurrentWidget(ui->HomePage);
@@ -61,6 +66,16 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &QPushButton::clicked,
             model,
             &SudokuModel::checkInputs);
+
+    connect(ui->actionLoad,
+            &QAction::triggered,
+            this,
+            &MainWindow::pickLoadFile);
+
+    connect(ui->actionSave,
+            &QAction::triggered,
+            this,
+            &MainWindow::pickSaveFile);
 
     //might want to change which button is mapped to tutorial setup
     connect(ui->startTutorialButton,
@@ -373,6 +388,65 @@ void MainWindow::updateIncorrectPhysics()
         b2Vec2 pos = incorrectBodies[i]->GetPosition();
         incorrectCells.at(i)->move(pos.x * scale, pos.y * scale);
     }
+}
+
+void MainWindow::pickLoadFile() {
+    loadGame(QFileDialog::getOpenFileName(this, "Choose project to load", "", "Project files (*.sudoku)"));
+}
+
+void MainWindow::pickSaveFile() {
+    saveGame(QFileDialog::getSaveFileName(this, "Choose Save Location", "", "Project files (*.sudoku)"));
+}
+
+void MainWindow::saveGame(const QString& filePath){
+    QJsonObject toSave;
+    QJsonArray mainWindowArray;
+    QJsonArray modelArray;
+
+    for(SudokuBox* box : cells){
+        QJsonObject json;
+        json["value"] = box->text();
+        json["style"] = box->styleSheet();
+        json["isEnabled"] = box->isEnabled();
+        mainWindowArray.append(json);
+    }
+
+    modelArray = m->toJson();
+
+    toSave["View"] = mainWindowArray;
+    toSave["Model"] = modelArray;
+
+    QJsonDocument doc(toSave);
+    QFile file(filePath);
+    if (!file.open(QIODevice::WriteOnly)) {
+        qWarning("Couldn't open file.");
+        return;
+    }
+
+    file.write(doc.toJson(QJsonDocument::Indented));
+    file.close();
+}
+
+void MainWindow::loadGame(const QString& filePath){
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        qWarning("Couldn't open file to read.");
+        return;
+    }
+
+    QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+    QJsonObject root = doc.object();
+
+    int index = 0;
+    for(const auto& val : root["View"].toArray()){
+        QJsonObject obj = val.toObject();
+        cells.at(index)->updateText(obj["value"].toString().toInt());
+        cells.at(index)->setStyleSheet(obj["style"].toString());
+        cells.at(index)->setDisabled(!(obj["isEnabled"].toBool()));
+        index++;
+    }
+
+    m->fromJson(root["Model"].toArray());
 }
 
 void MainWindow::displayTextBox1()

@@ -3,6 +3,8 @@
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QJsonArray>
+#include <QJsonObject>
 
 SudokuModel::SudokuModel() {
     cellContents = vector<int>(81, 0);
@@ -178,7 +180,6 @@ void SudokuModel::uploadKey(QString fileName) {
             answerKey.push_back(value);
         }
         qDebug() << answerKey.size();
-        // TODO: populate cell contents and send starting values to grid
     }
 }
 
@@ -303,6 +304,34 @@ void SudokuModel::genCellContents(){
     }
 }
 
+QJsonArray SudokuModel::toJson() const{
+    QJsonArray jsonObj;
+    for(int i = 0; i < 81; i++){
+        QJsonObject json;
+        json["contents"] = cellContents.at(i);
+        json["answer"] = answerKey.at(i);
+        jsonObj.append(json);
+    }
+
+    return jsonObj;
+}
+
+void SudokuModel::fromJson(const QJsonArray& loadedFile) {
+    int index = 0;
+    for(const auto& val : loadedFile){
+        QJsonObject obj = val.toObject();
+        cellContents.at(index)= obj["contents"].toInt();
+        answerKey.at(index) = obj["answer"].toInt();
+        index++;
+    }
+
+    for(int i = 0; i < 81; i++){
+        qDebug() << cellContents.at(i);
+        qDebug() << answerKey.at(i);
+        qDebug() << "";
+    }
+}
+
 void SudokuModel::introTutorial()
 {
     currentTutorialIndex = 0;
@@ -358,7 +387,7 @@ void SudokuModel::decipherNextLine(QStringList words)
         emit updateTutorialTextBox3(text);
     }
     currentTutorialIndex++;
-    if (currentTutorialIndex==currentTutorialLines.size())
+    if (currentTutorialIndex == currentTutorialLines.size())
     {
         emit;
     }

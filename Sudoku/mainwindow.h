@@ -21,6 +21,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 private:
     Ui::MainWindow *ui;
+    SudokuModel* m;
     SudokuBox* selectedCell = nullptr;
     vector<SudokuBox*> cells;
     b2World world;
@@ -43,6 +44,10 @@ public:
 
     void keyPressEvent(QKeyEvent* event);
     // void mousePressEvent(QMouseEvent *event) override;
+
+    void saveGame(const QString& filePath);
+
+    void loadGame(const QString& filePath);
 
 public slots:
     /**
@@ -106,6 +111,18 @@ public slots:
      */
     void updateIncorrectPhysics();
 
+    /**
+     * Allows you to pick a file to load.
+     */
+    void pickLoadFile();
+
+
+    /**
+     * Allows you to save a file and give it a name
+     */
+    void pickSaveFile();
+
+
     void displayTextBox1();
     void displayTextBox2();
     void displayTextBox3();
@@ -120,7 +137,6 @@ signals:
      * @param value - the value of the sudoku box.
      */
     void updateCell(int index, int value);
-
 
 };
 #endif // MAINWINDOW_H

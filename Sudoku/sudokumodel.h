@@ -19,7 +19,7 @@ private:
      */
     vector<QStringList> currentTutorialLines;
 
-    int currentTutorialIndex;
+    size_t currentTutorialIndex;
 
 public:
     SudokuModel();
@@ -65,6 +65,10 @@ public:
      */
     void newPuzzleSetup();
 
+    QJsonArray toJson() const;
+
+    void fromJson(const QJsonArray& loadedFile);
+
     /**
      * @brief introduction tutorial
      */
@@ -74,6 +78,10 @@ public:
      * @brief noteTaking
      */
     Tutorial *noteTaking;
+
+
+
+
 
 signals:
     /**
