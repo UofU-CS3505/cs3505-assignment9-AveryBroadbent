@@ -143,10 +143,14 @@ public slots:
     void displayTextBox1(QString text);
     void displayTextBox2(QString text);
     void displayTextBox3(QString text);
+    void highlightCell(int x);
 
     void startGame();
     void startIntroduction();
+    void endOfIntroTutorial();
+    void startNoteTaking();
     void toHomePage();
+
 
 signals:
     /**

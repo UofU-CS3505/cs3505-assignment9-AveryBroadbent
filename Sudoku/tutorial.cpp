@@ -23,7 +23,6 @@ vector<QStringList> Tutorial::getLines()
         lines.push_back(words);
     }
 
-    numbOfLines = lines.size();
     file.close();
     return lines;
 }

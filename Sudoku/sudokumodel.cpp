@@ -14,6 +14,7 @@ SudokuModel::SudokuModel() {
     noteTaking = new Tutorial(":/textFiles/tutorials/SudokuNoteTaking.txt", "Note Taking");
 
     currentTutorialIndex = 0;
+
 }
 
 SudokuModel::~SudokuModel() {
@@ -47,7 +48,7 @@ void SudokuModel::tutorialSetup() {
     file.close();
     emit showStartingValues(startingValues);
 
-    introTutorial(0);
+    // introTutorial(0);
 }
 
 void SudokuModel::uploadNewPuzzle() {
@@ -319,8 +320,9 @@ void SudokuModel::introTutorial(int x)
 {
     currentTutorialIndex = x;
     currentTutorialLines = introduction->getLines();
-    if(x == introduction->numbOfLines)
+    tutorialSetup();
     decipherNextLine(currentTutorialLines.at(x));
+
 }
 
 void SudokuModel::noteTutorial()
@@ -372,6 +374,10 @@ void SudokuModel::decipherNextLine(QStringList words)
     currentTutorialIndex++;
     if (currentTutorialIndex == currentTutorialLines.size())
     {
-        emit;
+        if(currentTutorial == 0)
+        {
+            currentTutorial++;
+            emit endOfIntroTutorial();
+        }
     }
 }

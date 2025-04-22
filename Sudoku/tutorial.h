@@ -40,8 +40,6 @@ public:
      */
     vector<QStringList> getLines();
 
-    int numbOfLines;
-
 signals:
 
 

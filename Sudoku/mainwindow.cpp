@@ -86,7 +86,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     connect(ui->IntroductionButton,
             &QPushButton::clicked,
             model,
-            &SudokuModel::tutorialSetup);
+            &SudokuModel::introTutorial);
     // ui->startTutorialButton->hide();
 
 
@@ -162,6 +162,14 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &QPushButton::clicked, this, [=]() {
                 model->introTutorial(counter);
     });
+    connect(ui->toNoteTakingButton,
+            &QPushButton::clicked,
+            model,
+            &SudokuModel::tutorialSetup);
+    connect(model,
+            &SudokuModel::endOfIntroTutorial,
+            this,
+            &MainWindow::endOfIntroTutorial);
 }
 
 MainWindow::~MainWindow()
@@ -527,6 +535,8 @@ void MainWindow::startGame()
     ui->newPuzzleButton->show();
     ui->noteCheck->show();
     ui->NextButton->hide();
+    ui->toNoteTakingButton->hide();
+
 }
 
 void MainWindow::startIntroduction()
@@ -540,6 +550,26 @@ void MainWindow::startIntroduction()
     ui->newPuzzleButton->hide();
     ui->noteCheck->hide();
     ui->NextButton->show();
+    ui->toNoteTakingButton->hide();
+}
+
+void MainWindow::endOfIntroTutorial()
+{
+    ui->NextButton->hide();
+    ui->toNoteTakingButton->show();
+}
+
+void MainWindow::startNoteTaking()
+{
+    ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
+    ui->TitleLabel->setText("Note Taking");
+    ui->TitleLabel->show();
+    ui->startTutorialButton->hide();
+    ui->hintButton->hide();
+    ui->checkAnswerButton->hide();
+    ui->newPuzzleButton->hide();
+    ui->noteCheck->show();
+    ui->NextButton->show();
 }
 
 void MainWindow::toHomePage()
@@ -547,3 +577,12 @@ void MainWindow::toHomePage()
     ui->stackedWidget->setCurrentWidget(ui->HomePage);
 }
 
+void MainWindow::highlightCell(int x)
+{
+    // TODO
+    // if (selectedCell != nullptr && selectedCell->isEnabled())
+    //     selectedCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);"); // White
+    // if(currentSelection != nullptr)
+    //     currentSelection->setStyleSheet("background-color: rgb(165, 210, 242); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);"); // Blue
+    // selectedCell = currentSelection;
+}

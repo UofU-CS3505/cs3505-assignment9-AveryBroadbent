@@ -21,6 +21,8 @@ private:
 
     size_t currentTutorialIndex;
 
+    int currentTutorial = 0;
+
 public:
     SudokuModel();
     ~SudokuModel();
@@ -78,6 +80,7 @@ public:
      * @brief noteTaking
      */
     Tutorial *noteTaking;
+
 
 
 
@@ -155,7 +158,6 @@ signals:
      * @param tutorialMessage the tutorial text being set in the QLabel
      */
     void updateTutorialTextBox3(QString tutorialMessage);
-
     /**
      * @brief highlightCell informs the sudoku grid to highlight/enable a given cell
      * @param the cell being highlighted
@@ -163,9 +165,11 @@ signals:
     void highlightCell(int cellIndex);
 
     /**
-     * @brief endOfTutorial
+     * @brief endOfIntoTutorial
      */
-    void endOfTutorial();
+    void endOfIntroTutorial();
+
+
 
 public slots:
     /**
