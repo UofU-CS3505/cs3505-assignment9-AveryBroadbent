@@ -158,18 +158,22 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &SudokuModel::updateTutorialTextBox3,
             this,
             &MainWindow::displayTextBox3);
+
     connect(ui->NextButton,
             &QPushButton::clicked, this, [=]() {
-                model->introTutorial(counter);
-    });
+                model->introTutorial(counter);});
+
     connect(ui->toNoteTakingButton,
             &QPushButton::clicked,
             model,
             &SudokuModel::tutorialSetup);
+
     connect(model,
             &SudokuModel::endOfIntroTutorial,
             this,
             &MainWindow::endOfIntroTutorial);
+
+    connect(model, &SudokuModel::highlightCell, this, &MainWindow::highlightCell);
 }
 
 MainWindow::~MainWindow()
@@ -579,10 +583,7 @@ void MainWindow::toHomePage()
 
 void MainWindow::highlightCell(int x)
 {
-    // TODO
-    // if (selectedCell != nullptr && selectedCell->isEnabled())
-    //     selectedCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);"); // White
-    // if(currentSelection != nullptr)
-    //     currentSelection->setStyleSheet("background-color: rgb(165, 210, 242); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);"); // Blue
-    // selectedCell = currentSelection;
+    SudokuBox *selectedCell = cells.at(x);
+    if (selectedCell != nullptr)
+        selectedCell->setStyleSheet("background-color: rgb(100, 220, 100); border-width: 2px"); // White
 }
