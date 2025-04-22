@@ -83,11 +83,11 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &MainWindow::pickSaveFile);
 
     //might want to change which button is mapped to tutorial setup
-    // connect(ui->startTutorialButton,
-    //         &QPushButton::clicked,
-    //         model,
-    //         &SudokuModel::tutorialSetup);
-    ui->startTutorialButton->hide();
+    connect(ui->IntroductionButton,
+            &QPushButton::clicked,
+            model,
+            &SudokuModel::tutorialSetup);
+    // ui->startTutorialButton->hide();
 
 
     connect(ui->newPuzzleButton,
@@ -142,6 +142,26 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &SudokuModel::boxCorrect,
             this,
             &MainWindow::boxFinished);
+
+    // introduction tutorial connections
+    // connect(model,
+    //         &SudokuModel::updateTutorialTextBox1,
+    //         [this] (QString text){ui->textLabel1->setText(text);});
+
+    connect(model,
+            &SudokuModel::updateTutorialTextBox1,
+            this,
+            &MainWindow::displayTextBox1);
+
+    connect(model,
+            &SudokuModel::updateTutorialTextBox2,
+            this,
+            &MainWindow::displayTextBox2);
+
+    connect(model,
+            &SudokuModel::updateTutorialTextBox3,
+            this,
+            &MainWindow::displayTextBox3);
 }
 
 MainWindow::~MainWindow()
@@ -468,26 +488,29 @@ void MainWindow::loadGame(const QString& filePath){
     m->fromJson(root["Model"].toArray());
 }
 
-void MainWindow::displayTextBox1()
+void MainWindow::displayTextBox1(QString text)
 {
-    // ui->textBox1->show();
-    // ui->textBox1->setText();
+    ui->textLabel1->show();
+    QString string = "hello";
+    ui->textLabel1->setText(text);
 }
 
-void MainWindow::displayTextBox2()
+void MainWindow::displayTextBox2(QString text)
 {
 
 }
 
-void MainWindow::displayTextBox3()
+void MainWindow::displayTextBox3(QString text)
 {
-
+    ui->textLabel1->show();
+    QString string = "text box 3";
+    ui->textLabel1->setText(string);
 }
 
 void MainWindow::startGame()
 {
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
-    ui->IntroductionLabel->hide(); // change to say Game or something
+    ui->TitleLabel->setText("Game");
     ui->checkAnswerButton->show();
     ui->hintButton->show();
     ui->newPuzzleButton->show();
@@ -497,7 +520,8 @@ void MainWindow::startGame()
 void MainWindow::startIntroduction()
 {
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
-    ui->IntroductionLabel->show();
+    ui->TitleLabel->setText("Introduction");
+    ui->TitleLabel->show();
     ui->startTutorialButton->hide();
     ui->hintButton->hide();
     ui->checkAnswerButton->hide();

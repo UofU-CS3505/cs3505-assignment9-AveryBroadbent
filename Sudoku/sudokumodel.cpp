@@ -46,6 +46,8 @@ void SudokuModel::tutorialSetup() {
 
     file.close();
     emit showStartingValues(startingValues);
+
+    introTutorial();
 }
 
 void SudokuModel::uploadNewPuzzle() {
@@ -316,7 +318,6 @@ void SudokuModel::fromJson(const QJsonArray& loadedFile) {
 void SudokuModel::introTutorial()
 {
     currentTutorialIndex = 0;
-    emit hideNote();
     currentTutorialLines = introduction->getLines();
     decipherNextLine(currentTutorialLines.at(0));
 }
@@ -341,7 +342,7 @@ void SudokuModel::decipherNextLine(QStringList words)
         words.removeFirst(); //remove command prompt
     }
 
-    if(words.at(0)=="[textbox1]")
+    if(words.at(0)=="[textBox1]")
     {
         words.removeFirst();
         for (const QString &word : words) {
@@ -350,7 +351,7 @@ void SudokuModel::decipherNextLine(QStringList words)
         emit updateTutorialTextBox1(text);
     }
 
-    else if(words.at(0)=="[textbox2]")
+    else if(words.at(0)=="[textBox2]")
     {
         words.removeFirst();
         for (const QString &word : words) {

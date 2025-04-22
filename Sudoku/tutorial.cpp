@@ -1,4 +1,6 @@
 #include "tutorial.h"
+#include <QDebug>
+
 
 Tutorial::Tutorial(const QString &filename, QString tutorialName): file(filename), tutorialName(tutorialName)
 {
@@ -7,7 +9,7 @@ Tutorial::Tutorial(const QString &filename, QString tutorialName): file(filename
 
 vector<QStringList> Tutorial::getLines()
 {
-    QFile file(":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
+    QFile file(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // error
         QMessageBox::information(nullptr, QString("Could not load key file"), file.errorString());

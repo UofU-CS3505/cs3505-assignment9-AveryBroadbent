@@ -140,9 +140,9 @@ public slots:
     void pickSaveFile();
 
 
-    void displayTextBox1();
-    void displayTextBox2();
-    void displayTextBox3();
+    void displayTextBox1(QString text);
+    void displayTextBox2(QString text);
+    void displayTextBox3(QString text);
 
     void startGame();
     void startIntroduction();
