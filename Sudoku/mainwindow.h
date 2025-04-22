@@ -38,6 +38,7 @@ private:
     vector<SudokuBox*> correctCells;
     vector<SudokuBox*> incorrectCells;
 
+
 public:
     MainWindow(SudokuModel* model, QWidget *parent = nullptr);
     ~MainWindow();
@@ -143,6 +144,7 @@ public slots:
     void displayTextBox2();
     void displayTextBox3();
 
+    void startGame();
     void startIntroduction();
     void toHomePage();
 

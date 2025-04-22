@@ -22,9 +22,14 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
 
     // starts stackedWidget at the home page
     ui->stackedWidget->setCurrentWidget(ui->HomePage);
-    connect(ui->Start, &QPushButton::clicked, this, &MainWindow::startIntroduction);
+    connect(ui->StartButton, &QPushButton::clicked, this, &MainWindow::startGame);
 
-    //ui->textBox1->hide();
+    //
+    connect(ui->IntroductionButton, &QPushButton::clicked, this, &MainWindow::startIntroduction);
+
+    ui->textLabel1->hide();
+    ui->textLabel2->hide();
+    ui->textLabel3->hide();
 
 
     // Setup for SudokuGame widget
@@ -78,10 +83,12 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &MainWindow::pickSaveFile);
 
     //might want to change which button is mapped to tutorial setup
-    connect(ui->startTutorialButton,
-            &QPushButton::clicked,
-            model,
-            &SudokuModel::tutorialSetup);
+    // connect(ui->startTutorialButton,
+    //         &QPushButton::clicked,
+    //         model,
+    //         &SudokuModel::tutorialSetup);
+    ui->startTutorialButton->hide();
+
 
     connect(ui->newPuzzleButton,
             &QPushButton::clicked,
@@ -477,9 +484,25 @@ void MainWindow::displayTextBox3()
 
 }
 
+void MainWindow::startGame()
+{
+    ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
+    ui->IntroductionLabel->hide(); // change to say Game or something
+    ui->checkAnswerButton->show();
+    ui->hintButton->show();
+    ui->newPuzzleButton->show();
+    ui->noteCheck->show();
+}
+
 void MainWindow::startIntroduction()
 {
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
+    ui->IntroductionLabel->show();
+    ui->startTutorialButton->hide();
+    ui->hintButton->hide();
+    ui->checkAnswerButton->hide();
+    ui->newPuzzleButton->hide();
+    ui->noteCheck->hide();
 }
 
 void MainWindow::toHomePage()
