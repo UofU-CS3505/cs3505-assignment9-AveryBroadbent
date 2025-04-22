@@ -1,0 +1,6 @@
+﻿[] [] [textBox1] Now that we know how to use candidates, we can start exploring techniques.
+[] [] [textBox2] When there are no immediately obvious rows, columns, or boxes, looking for “hidden singles” is a great idea.
+[15] [] [textBox3] A hidden single is a cell that is the only possible option a number can go in a 3x3 box, row, or column, such as this one.
+[77] [51] [textBox1] Fill in all the notes for these two cells.
+[76] [] [textBox1] Perfect! Notice anything?
+[76] [] [textBox2] Exactly! This was the only cell that 4 could go in that 3x3 box.

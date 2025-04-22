@@ -4,5 +4,7 @@
         <file>puzzleFiles/TutorialPuzzle.txt</file>
         <file>puzzleFiles/TutorialStartingIndexes.txt</file>
         <file>puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt</file>
+        <file>puzzleFiles/SudokuTutorialScripts/SudokuNoteTaking.txt</file>
+        <file>puzzleFiles/SudokuTutorialScripts/SudokuHiddenSingles.txt</file>
     </qresource>
 </RCC>
