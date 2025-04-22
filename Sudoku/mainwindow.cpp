@@ -430,6 +430,13 @@ void MainWindow::saveGame(const QString& filePath){
     file.close();
 }
 
+/**
+ * @brief Open's the file at the filepath, and then fills the cells
+ * by converting the QJsonObject into the necessary datatype. When
+ * failing to find a file, issues a qWarning and returns.
+ *
+ * @param filePath to read from
+ */
 void MainWindow::loadGame(const QString& filePath){
     QFile file(filePath);
     if (!file.open(QIODevice::ReadOnly)) {

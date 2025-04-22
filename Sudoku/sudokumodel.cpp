@@ -257,11 +257,6 @@ void SudokuModel::genKey(){
     delete[] solvedSudoku;
 }
 
-/**
- * Helper method for genKey. Used to repeatedly update
- * other values in the progogate stage of wave function
- * collapse.
- */
 void SudokuModel::updateSudoku(std::vector<int>* sudoku, int changedIndex, int guessVal, bool* backingSolvedIndex){
     int row = changedIndex / 9;
     int col = changedIndex % 9;
@@ -278,11 +273,6 @@ void SudokuModel::updateSudoku(std::vector<int>* sudoku, int changedIndex, int g
     }
 }
 
-/**
- * Fills cellContents with answerKey then removes all
- * but 32 to 28 randomly chosen values by setting to
- * 0.
- */
 void SudokuModel::genCellContents(){
     cellContents.clear();
     for(int i = 0; i < 81; i++){

@@ -45,8 +45,24 @@ public:
     void keyPressEvent(QKeyEvent* event);
     // void mousePressEvent(QMouseEvent *event) override;
 
+    /**
+     * @brief Called by pickSaveFile(). Creates a QJsonArray and
+     * appapends a QJSON Object of each box in SudokuBox containing
+     * its text, stylesheet, and isEnabled. It then opens and writes
+     * this json to the given filepath. Failure issues a qWarning and
+     * returns.
+     * @param filePath to save on
+     */
     void saveGame(const QString& filePath);
 
+    /**
+     * @brief Open's the file at the filepath, and then fills the cells
+     * SudokuBox by converting the QJsonObject into the necessary
+     * datatype. When failing to find a file, issues a qWarning and
+     * returns.
+     *
+     * @param filePath to read from
+     */
     void loadGame(const QString& filePath);
 
 public slots:
