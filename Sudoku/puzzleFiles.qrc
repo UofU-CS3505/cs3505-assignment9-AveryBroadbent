@@ -9,5 +9,7 @@
         <file>puzzleFiles/NotesPuzzle.txt</file>
         <file>puzzleFiles/NotesStartingIndexes.txt</file>
         <file>puzzleFiles/NoteSudoku.sudoku</file>
+        <file>puzzleFiles/SudokuTutorialScripts/SudokuHiddenPairs.txt</file>
+        <file>puzzleFiles/SudokuTutorialScripts/SudokuNakedPairs.txt</file>
     </qresource>
 </RCC>
