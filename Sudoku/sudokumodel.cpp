@@ -17,14 +17,15 @@ SudokuModel::SudokuModel() {
 SudokuModel::~SudokuModel() {
 }
 
-void SudokuModel::tutorialGridSetup(QString keyFile, QString startFile) {
+void SudokuModel::tutorialGridSetup(QString keyFile, QString startingIndexesFile) {
     //uploadKey(":/textFiles/puzzleFiles/TutorialPuzzle.txt"); //key
     uploadKey(keyFile);
+    qDebug() << "uploadKey keyFile ran";
     vector<int> startingIndexes;
     std::map<int, int> startingValues; //<index, val>
 
     //QFile file(":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
-    QFile file(startFile);
+    QFile file(startingIndexesFile);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // error
         QMessageBox::information(nullptr, QString("Could not load key file"), file.errorString());

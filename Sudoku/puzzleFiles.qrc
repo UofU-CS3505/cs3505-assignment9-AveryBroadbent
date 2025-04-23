@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/textFiles/puzzleFiles">
+    <qresource prefix="/textFiles">
         <file>puzzleFiles/TestKey.txt</file>
         <file>puzzleFiles/TutorialPuzzle.txt</file>
         <file>puzzleFiles/TutorialStartingIndexes.txt</file>

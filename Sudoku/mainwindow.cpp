@@ -611,7 +611,9 @@ void MainWindow::startGame()
 
 void MainWindow::startIntroduction()
 {
+
     emit setupTutorial(":/textFiles/puzzleFiles/TutorialPuzzle.txt", ":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
+    qDebug() << "after emit";
     introduction->loadLines();
 
     disableAllBoxes();
