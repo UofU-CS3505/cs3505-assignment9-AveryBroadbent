@@ -1,5 +1,5 @@
 ﻿[] [] [textBox1] Sometimes, a more difficult puzzle to solve won’t have cells with only one possible solution that you can fill in using visual elimination. These are called “Open Singles”
 [] [] [textBox2] When there are no open singles, it’s a good idea to keep track of possible solutions for each cell. A helpful tactic is pencilling in possible solutions, or “Candidates”
- [] [] [textBox3] To add these candidates, enable the pencil tool, and enter all possible candidates for a cell.
-[50] [15] [textBox1] Let’s fill in these cells with their appropriate candidates!
+[] [] [textBox3] To add these candidates, enable the pencil tool, and enter all possible candidates for a cell.
+[1] [10] [textBox1] Use the prefilled notes to solve the highlighted boxes!
 [] [] [textBox2] Nicely done! Taking notes is a great technique to use in sudoku. Click Next Tutorial to keep learning, or click Practice to try out a puzzle!

@@ -1,10 +1,13 @@
 <RCC>
-    <qresource prefix="/textFiles">
+    <qresource prefix="/textFiles/puzzleFiles">
         <file>puzzleFiles/TestKey.txt</file>
         <file>puzzleFiles/TutorialPuzzle.txt</file>
         <file>puzzleFiles/TutorialStartingIndexes.txt</file>
         <file>puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt</file>
         <file>puzzleFiles/SudokuTutorialScripts/SudokuNoteTaking.txt</file>
         <file>puzzleFiles/SudokuTutorialScripts/SudokuHiddenSingles.txt</file>
+        <file>puzzleFiles/NotesPuzzle.txt</file>
+        <file>puzzleFiles/NotesStartingIndexes.txt</file>
+        <file>puzzleFiles/NoteSudoku.sudoku</file>
     </qresource>
 </RCC>
