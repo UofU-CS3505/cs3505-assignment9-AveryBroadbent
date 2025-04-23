@@ -64,6 +64,24 @@ private:
      */
     Tutorial *noteTaking;
 
+    /**
+     * @brief hiddenSingles
+     */
+    Tutorial *hiddenSingles;
+
+    /**
+     * @brief hiddenPairs
+     */
+    Tutorial *hiddenPairs;
+
+    /**
+     * @brief nakedPairs
+     */
+    Tutorial *nakedPairs;
+
+    /**
+     * @brief currentTutorial
+     */
     Tutorial* currentTutorial;
 
 public:

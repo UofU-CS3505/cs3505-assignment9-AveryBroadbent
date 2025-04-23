@@ -34,6 +34,11 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     ui->textLabel2->hide();
     ui->textLabel3->hide();
     ui->OopsLabel->hide();
+    ui->toNoteTakingButton->hide();
+    ui->toHiddenSinglesButton->hide();
+    ui->toHiddenPairsButton->hide();
+    ui->toNakedPairsButton->hide();
+
 
     introduction = new Tutorial(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt", "Intro"); //TODO these are not the offical file names yet
     noteTaking = new Tutorial(":/textFiles/tutorials/SudokuNoteTaking.txt", "Note Taking");
@@ -644,7 +649,14 @@ void MainWindow::startIntroduction()
 void MainWindow::endOfTutorial()
 {
     ui->NextButton->hide();
-    ui->toNoteTakingButton->show();
+    if(currentTutorial==introduction)
+        ui->toNoteTakingButton->show();
+    else if (currentTutorial==noteTaking)
+        ui->toHiddenSinglesButton->show();
+    else if (currentTutorial==hiddenSingles)
+        ui->toHiddenPairsButton->show();
+    else if (currentTutorial==hiddenPairs)
+        ui->toNakedPairsButton->show();
 }
 
 void MainWindow::startNoteTaking()

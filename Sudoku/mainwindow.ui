@@ -2556,6 +2556,45 @@ color: rgb(0, 0, 0);</string>
        <string>Oops! Try again!</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="toHiddenSinglesButton">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>70</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Next Tutorial</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="toHiddenPairsButton">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>70</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Next Tutorial</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="toNakedPairsButton">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>70</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Next Tutorial</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="IntroductionTutorial">
      <widget class="QLabel" name="label_7">
@@ -4808,7 +4847,7 @@ border-color: rgb(0, 0, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>838</width>
-     <height>21</height>
+     <height>36</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

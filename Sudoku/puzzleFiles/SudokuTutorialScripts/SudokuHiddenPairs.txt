@@ -1,5 +1,5 @@
 ﻿[] [] [textBox1] A hidden pair is when you have two candidates in precisely two cells with the same row, column, or 3x3 box.
-[] [] [textBox2] What makes them hidden is that there is at least one other candidate in at least one of these cells.
+51 53 [textBox2] What makes them hidden is that there is at least one other candidate in at least one of these cells.
 [] [] [textBox3] When this happens, you can immediately eliminate all other candidates from the two cells that the pair occupies.
 [] [] [textBox1] In this case, these are the only two cells in the row and 3x3 box that contain a 3 or 8 as candidates. This reduces the number of candidates being considered in these cells.
 [] [] [textBox2] There is one hidden pair somewhere in this puzzle. Click on two cells to identify them.
