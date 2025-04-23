@@ -171,6 +171,12 @@ signals:
     void enableCell(int cellIndex);
 
     /**
+     * @brief awaitCell
+     * @param cellIndex
+     */
+    void awaitCell(int cellIndex);
+
+    /**
      * @brief endOfIntoTutorial
      */
     void endOfIntroTutorial();
@@ -210,6 +216,8 @@ public slots:
      * @param words
      */
     void decipherNextLine(QStringList words);
+
+    bool checkInput(int index);
 };
 
 #endif // SUDOKUMODEL_H

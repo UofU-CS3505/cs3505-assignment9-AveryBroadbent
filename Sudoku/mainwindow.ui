@@ -2533,6 +2533,29 @@ color: rgb(0, 0, 0);</string>
        <string>Next Tutorial</string>
       </property>
      </widget>
+     <widget class="QLabel" name="OopsLabel">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>60</y>
+        <width>161</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(83, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Oops! Try again!</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="IntroductionTutorial">
      <widget class="QLabel" name="label_7">
@@ -4785,7 +4808,7 @@ border-color: rgb(0, 0, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>838</width>
-     <height>17</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

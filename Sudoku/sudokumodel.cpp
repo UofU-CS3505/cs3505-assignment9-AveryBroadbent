@@ -276,6 +276,10 @@ void SudokuModel::updateSudoku(std::vector<int>* sudoku, int changedIndex, int g
     }
 }
 
+bool SudokuModel::checkInput(int index) {
+    return cellContents.at(index) == answerKey.at(index);
+}
+
 void SudokuModel::genCellContents(){
     cellContents.clear();
     for(int i = 0; i < 81; i++){
@@ -320,9 +324,7 @@ void SudokuModel::introTutorial(int x)
 {
     currentTutorialIndex = x;
     currentTutorialLines = introduction->getLines();
-    tutorialSetup();
     decipherNextLine(currentTutorialLines.at(x));
-
 }
 
 void SudokuModel::noteTutorial()
@@ -366,9 +368,10 @@ void SudokuModel::decipherNextLine(QStringList words)
         {
             if(words.at(0)!="[]")
             {
-                emit highlightCell(words.at(0).toInt());
-                emit enableCell(words.at(0).toInt());
-                // this means the tutorial is expecting user input rather jsut than clicking to continue. Perhaps emitting another signal waitUserInput?
+                int index = words.at(0).toInt();
+                emit awaitCell(index);
+                emit enableCell(index);
+                // this means the tutorial is expecting user input rather jsut than clicking to continue.
             }
             words.removeFirst(); //remove command prompt
         }

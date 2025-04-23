@@ -3,10 +3,12 @@
 
 #include <QMainWindow>
 #include <vector>
+#include <list>
 #include "sudokubox.h"
 #include "sudokumodel.h"
 
 using std::vector;
+using std::list;
 #include <Box2D/Box2D.h>
 #include <QLabel>
 
@@ -38,6 +40,8 @@ private:
     vector<SudokuBox*> correctCells;
     vector<SudokuBox*> incorrectCells;
     int counter = 0;
+
+    list<SudokuBox*> awaitingInputs;
 
 public:
     MainWindow(SudokuModel* model, QWidget *parent = nullptr);
@@ -144,6 +148,8 @@ public slots:
     void displayTextBox2(QString text);
     void displayTextBox3(QString text);
     void highlightCell(int x);
+    void awaitInput(int index);
+
 
     void startGame();
     void startIntroduction();
@@ -159,6 +165,9 @@ signals:
      * @param value - the value of the sudoku box.
      */
     void updateCell(int index, int value);
+
+    void finishedInputs();
+    bool checkCell(int index);
 
 };
 #endif // MAINWINDOW_H

@@ -9,6 +9,7 @@
 #include <QJsonDocument>
 #include <QFileDialog>
 #include <QVariant>
+#include <algorithm>
 
 MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     : QMainWindow(parent)
@@ -20,6 +21,8 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     ui->setupUi(this);
     m = model;
 
+    awaitingInputs = list<SudokuBox*>();
+
     // starts stackedWidget at the home page
     ui->stackedWidget->setCurrentWidget(ui->HomePage);
     connect(ui->StartButton, &QPushButton::clicked, this, &MainWindow::startGame);
@@ -30,6 +33,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     ui->textLabel1->hide();
     ui->textLabel2->hide();
     ui->textLabel3->hide();
+    ui->OopsLabel->hide();
 
 
     // Setup for SudokuGame widget
@@ -87,6 +91,11 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &QPushButton::clicked,
             model,
             &SudokuModel::introTutorial);
+
+    connect(ui->IntroductionButton,
+            &QPushButton::clicked,
+            model,
+            &SudokuModel::tutorialSetup);
     // ui->startTutorialButton->hide();
 
 
@@ -160,8 +169,14 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &MainWindow::displayTextBox3);
 
     connect(ui->NextButton,
-            &QPushButton::clicked, this, [=]() {
-                model->introTutorial(counter);});
+            &QPushButton::clicked,
+            this,
+            [=]() {model->introTutorial(counter);});
+
+    connect(this,
+            &MainWindow::finishedInputs,
+            this,
+            [=]() {model->introTutorial(counter);});
 
     connect(ui->toNoteTakingButton,
             &QPushButton::clicked,
@@ -173,7 +188,20 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             this,
             &MainWindow::endOfIntroTutorial);
 
-    connect(model, &SudokuModel::highlightCell, this, &MainWindow::highlightCell);
+    connect(model,
+            &SudokuModel::highlightCell,
+            this,
+            &MainWindow::highlightCell);
+
+    connect(model,
+            &SudokuModel::awaitCell,
+            this,
+            &MainWindow::awaitInput);
+
+    connect(this,
+            &MainWindow::checkCell,
+            model,
+            &SudokuModel::checkInput);
 }
 
 MainWindow::~MainWindow()
@@ -238,6 +266,31 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
     else {
         selectedCell->updateText(value);
         emit updateCell(index, value);
+        // Handle awaiting inputs
+        if (std::find(awaitingInputs.begin(), awaitingInputs.end(), selectedCell) != awaitingInputs.end()) {
+
+            if (emit checkCell(index)) {
+
+                m->checkInputs();
+
+                // selected cell was awaited and is correct
+                awaitingInputs.remove(selectedCell);
+                ui->OopsLabel->hide();
+                // selectedCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);"); // reset color
+                // selectedCell->setDisabled(true);
+                selectedCell = nullptr;
+
+                // check if list is now empty
+                if (awaitingInputs.empty()) {
+                    emit finishedInputs();
+                    ui->NextButton->show();
+                }
+            }
+            else {
+                //Oops! Wrong input!
+                ui->OopsLabel->show();
+            }
+        }
     }
 }
 
@@ -586,4 +639,10 @@ void MainWindow::highlightCell(int x)
     SudokuBox *selectedCell = cells.at(x);
     if (selectedCell != nullptr)
         selectedCell->setStyleSheet("background-color: rgb(100, 220, 100); border-width: 2px"); // White
+}
+
+void MainWindow::awaitInput(int index) {
+    awaitingInputs.push_back(cells.at(index));
+    cells.at(index)->setStyleSheet("background-color: rgb(100, 220, 100); border-width: 2px");
+    ui->NextButton->hide();
 }
