@@ -41,7 +41,9 @@ public:
      * @brief getNextLine calls the file reader to read the lines from a tutorial's text file
      * @return a vector of QStringLists- each QStringList is derived from a line from the text file
      */
-    vector<QStringList> getLines();
+    void loadLines();
+
+    QStringList getLine(int line);
 
 signals:
 
@@ -57,6 +59,8 @@ private:
      * @brief file tutorial's script file
      */
     QFile file;
+
+    vector<QStringList> lines;
 
 
 

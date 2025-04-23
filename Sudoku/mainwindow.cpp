@@ -35,6 +35,9 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     ui->textLabel3->hide();
     ui->OopsLabel->hide();
 
+    introduction = new Tutorial(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt", "Intro"); //TODO these are not the offical file names yet
+    noteTaking = new Tutorial(":/textFiles/tutorials/SudokuNoteTaking.txt", "Note Taking");
+
 
     // Setup for SudokuGame widget
     timeStep = 1.0f / 60.0f;
@@ -86,16 +89,66 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             this,
             &MainWindow::pickSaveFile);
 
-    //might want to change which button is mapped to tutorial setup
+    // Tutorial connections
     connect(ui->IntroductionButton,
             &QPushButton::clicked,
-            model,
-            &SudokuModel::introTutorial);
+            this,
+            &MainWindow::startGame);
 
-    connect(ui->IntroductionButton,
+    connect(this,
+            &MainWindow::readLine,
+            m,
+            &SudokuModel::decipherNextLine);
+
+    connect(this,
+            &MainWindow::setupTutorial,
+            m,
+            &SudokuModel::tutorialGridSetup);
+
+    connect(model,
+            &SudokuModel::updateTutorialTextBox1,
+            this,
+            &MainWindow::displayTextBox1);
+
+    connect(model,
+            &SudokuModel::updateTutorialTextBox2,
+            this,
+            &MainWindow::displayTextBox2);
+
+    connect(model,
+            &SudokuModel::updateTutorialTextBox3,
+            this,
+            &MainWindow::displayTextBox3);
+
+    connect(ui->NextButton,
             &QPushButton::clicked,
+            this,
+            &MainWindow::progressTutorial);
+
+    // connect(ui->toNoteTakingButton,
+    //         &QPushButton::clicked,
+    //         model,
+    //         &SudokuModel::tutorialSetup);
+
+    connect(model,
+            &SudokuModel::endOfIntroTutorial,
+            this,
+            &MainWindow::endOfTutorial);
+
+    connect(model,
+            &SudokuModel::highlightCell,
+            this,
+            &MainWindow::highlightCell);
+
+    connect(model,
+            &SudokuModel::awaitCell,
+            this,
+            &MainWindow::awaitInput);
+
+    connect(this,
+            &MainWindow::checkCell,
             model,
-            &SudokuModel::tutorialSetup);
+            &SudokuModel::checkInput);
 
     // ui->startTutorialButton->hide();
 
@@ -154,55 +207,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &MainWindow::boxFinished);
 
     // introduction tutorial connections
-    connect(model,
-            &SudokuModel::updateTutorialTextBox1,
-            this,
-            &MainWindow::displayTextBox1);
 
-    connect(model,
-            &SudokuModel::updateTutorialTextBox2,
-            this,
-            &MainWindow::displayTextBox2);
-
-    connect(model,
-            &SudokuModel::updateTutorialTextBox3,
-            this,
-            &MainWindow::displayTextBox3);
-
-    connect(ui->NextButton,
-            &QPushButton::clicked,
-            this,
-            [=]() {model->introTutorial(counter);});
-
-    connect(this,
-            &MainWindow::finishedInputs,
-            this,
-            [=]() {model->introTutorial(counter);});
-
-    connect(ui->toNoteTakingButton,
-            &QPushButton::clicked,
-            model,
-            &SudokuModel::tutorialSetup);
-
-    connect(model,
-            &SudokuModel::endOfIntroTutorial,
-            this,
-            &MainWindow::endOfIntroTutorial);
-
-    connect(model,
-            &SudokuModel::highlightCell,
-            this,
-            &MainWindow::highlightCell);
-
-    connect(model,
-            &SudokuModel::awaitCell,
-            this,
-            &MainWindow::awaitInput);
-
-    connect(this,
-            &MainWindow::checkCell,
-            model,
-            &SudokuModel::checkInput);
 }
 
 MainWindow::~MainWindow()
@@ -290,8 +295,8 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
 
                 // check if list is now empty
                 if (awaitingInputs.empty()) {
-                    emit finishedInputs();
                     ui->NextButton->show();
+                    progressTutorial();
                 }
             }
             else {
@@ -606,6 +611,9 @@ void MainWindow::startGame()
 
 void MainWindow::startIntroduction()
 {
+    emit setupTutorial(":/textFiles/puzzleFiles/TutorialPuzzle.txt", ":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
+    introduction->loadLines();
+
     disableAllBoxes();
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
     ui->TitleLabel->setText("Introduction");
@@ -617,9 +625,12 @@ void MainWindow::startIntroduction()
     ui->noteCheck->hide();
     ui->NextButton->show();
     ui->toNoteTakingButton->hide();
+
+    currentTutorial = introduction;
+    progressTutorial();
 }
 
-void MainWindow::endOfIntroTutorial()
+void MainWindow::endOfTutorial()
 {
     ui->NextButton->hide();
     ui->toNoteTakingButton->show();
@@ -637,6 +648,10 @@ void MainWindow::startNoteTaking()
     ui->newPuzzleButton->hide();
     ui->noteCheck->show();
     ui->NextButton->show();
+}
+
+void MainWindow::progressTutorial() {
+    emit readLine(currentTutorial->getLine(counter));
 }
 
 void MainWindow::toHomePage()

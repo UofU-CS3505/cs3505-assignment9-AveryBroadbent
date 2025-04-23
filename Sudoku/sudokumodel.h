@@ -32,6 +32,7 @@ private:
 
     int currentTutorial = 0;
 
+
 public:
     SudokuModel();
     ~SudokuModel();
@@ -78,15 +79,7 @@ public:
 
     void fromJson(const QJsonArray& loadedFile);
 
-    /**
-     * @brief introduction tutorial
-     */
-    Tutorial *introduction;
 
-    /**
-     * @brief noteTaking
-     */
-    Tutorial *noteTaking;
 
 
 
@@ -204,27 +197,17 @@ public slots:
     void getHint();
 
     /**
-     * @brief tutorialSetup - Sets up a template tutorial from a preset file location.
-     */
-    void tutorialSetup();
-
-    /**
-     * @brief introTutorial handles the logic when the intro tutorial has been selected in mainwindow
-     */
-    void introTutorial(int x);
-
-    /**
-     * @brief noteTutorial handles the logic when the note taking tutorial has been selected in mainwindow
-     */
-    void noteTutorial();
-
-    /**
      * @brief decipherNextLine
      * @param words
      */
     void decipherNextLine(QStringList words);
 
     bool checkInput(int index);
+
+    /**
+     * Sets up a the starting values of the sudoku grid from a key & a starting file.
+     */
+    void tutorialGridSetup(QString keyFile, QString startFile);
 };
 
 #endif // SUDOKUMODEL_H

@@ -54,6 +54,18 @@ private:
 
     list<SudokuBox*> awaitingInputs;
 
+    /**
+     * @brief introduction tutorial
+     */
+    Tutorial *introduction;
+
+    /**
+     * @brief noteTaking
+     */
+    Tutorial *noteTaking;
+
+    Tutorial* currentTutorial;
+
 public:
     MainWindow(SudokuModel* model, QWidget *parent = nullptr);
     ~MainWindow();
@@ -174,7 +186,8 @@ public slots:
 
     void startGame();
     void startIntroduction();
-    void endOfIntroTutorial();
+    void endOfTutorial();
+    void progressTutorial();
     void startNoteTaking();
     void toHomePage();
 
@@ -189,6 +202,10 @@ signals:
 
     void finishedInputs();
     bool checkCell(int index);
+
+    void readLine(QStringList words);
+
+    void setupTutorial(QString keyFile, QString startFile);
 
 };
 #endif // MAINWINDOW_H

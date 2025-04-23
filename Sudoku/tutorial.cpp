@@ -6,7 +6,7 @@ Tutorial::Tutorial(const QString &filename, QString tutorialName): file(filename
 {
 }
 
-vector<QStringList> Tutorial::getLines()
+void Tutorial::loadLines()
 {
     QFile file(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -16,7 +16,7 @@ vector<QStringList> Tutorial::getLines()
 
     QTextStream in(&file);
 
-    vector<QStringList> lines;
+    lines.clear();
     while (!in.atEnd()) {
         QString line = in.readLine();
         QStringList words = line.split(QRegularExpression("\\s+"), Qt::SkipEmptyParts);
@@ -24,5 +24,8 @@ vector<QStringList> Tutorial::getLines()
     }
 
     file.close();
-    return lines;
+}
+
+QStringList Tutorial::getLine(int line) {
+    return lines.at(line);
 }

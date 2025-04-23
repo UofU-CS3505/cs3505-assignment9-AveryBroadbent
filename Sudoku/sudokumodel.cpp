@@ -10,25 +10,21 @@ SudokuModel::SudokuModel() {
     cellContents = vector<int>(81, 0);
     answerKey = vector<int>(81, 5);
 
-    introduction = new Tutorial(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt", "Intro"); //TODO these are not the offical file names yet
-    noteTaking = new Tutorial(":/textFiles/tutorials/SudokuNoteTaking.txt", "Note Taking");
-
     currentTutorialIndex = 0;
 
 }
 
 SudokuModel::~SudokuModel() {
-
-    delete introduction;
 }
 
-void SudokuModel::tutorialSetup(QString key, QString startingValues) {
+void SudokuModel::tutorialGridSetup(QString keyFile, QString startFile) {
     //uploadKey(":/textFiles/puzzleFiles/TutorialPuzzle.txt"); //key
-    uploadKey(key);
+    uploadKey(keyFile);
     vector<int> startingIndexes;
     std::map<int, int> startingValues; //<index, val>
 
-    QFile file(":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
+    //QFile file(":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
+    QFile file(startFile);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // error
         QMessageBox::information(nullptr, QString("Could not load key file"), file.errorString());
@@ -314,21 +310,13 @@ void SudokuModel::fromJson(const QJsonArray& loadedFile) {
     }
 }
 
-void SudokuModel::introTutorial(int x)
-{
-    tutorialSetup();
-    currentTutorialIndex = 0;
-    currentTutorialLines = introduction->getLines();
-    decipherNextLine(currentTutorialLines.at(x));
-    tutorialSetup();
-}
-
-void SudokuModel::noteTutorial()
-{
-    currentTutorialIndex = 0;
-    //currentTutorialLines = noteTaking->getLines();
-    decipherNextLine(currentTutorialLines.at(currentTutorialIndex));
-}
+// Needs to be refactored into main window
+// void SudokuModel::noteTutorial()
+// {
+//     currentTutorialIndex = 0;
+//     //currentTutorialLines = noteTaking->getLines();
+//     decipherNextLine(currentTutorialLines.at(currentTutorialIndex));
+// }
 
 void SudokuModel::decipherNextLine(QStringList words)
 {
