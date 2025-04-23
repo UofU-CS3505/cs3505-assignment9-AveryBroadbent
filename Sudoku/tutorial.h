@@ -45,6 +45,8 @@ public:
 
     QStringList getLine(int line);
 
+    bool isAtEnd(int line);
+
 signals:
 
 

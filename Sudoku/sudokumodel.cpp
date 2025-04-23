@@ -388,13 +388,5 @@ void SudokuModel::decipherNextLine(QStringList words)
         }
         emit updateTutorialTextBox3(text);
     }
-    currentTutorialIndex++;
-    if (currentTutorialIndex == currentTutorialLines.size())
-    {
-        if(currentTutorial == 0)
-        {
-            currentTutorial++;
-            emit endOfIntroTutorial();
-        }
-    }
+
 }

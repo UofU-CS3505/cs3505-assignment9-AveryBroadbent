@@ -93,7 +93,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     connect(ui->IntroductionButton,
             &QPushButton::clicked,
             this,
-            &MainWindow::startGame);
+            &MainWindow::startIntroduction);
 
     connect(this,
             &MainWindow::readLine,
@@ -284,20 +284,25 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
 
             if (emit checkCell(index)) {
 
-                m->checkInputs();
+
 
                 // selected cell was awaited and is correct
+                qDebug() << awaitingInputs.size();
                 awaitingInputs.remove(selectedCell);
                 ui->OopsLabel->hide();
                 // selectedCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);"); // reset color
                 // selectedCell->setDisabled(true);
                 selectedCell = nullptr;
 
+                m->checkInputs();
+
                 // check if list is now empty
                 if (awaitingInputs.empty()) {
                     ui->NextButton->show();
                     progressTutorial();
                 }
+
+                qDebug() << awaitingInputs.size();
             }
             else {
                 //Oops! Wrong input!
@@ -598,6 +603,9 @@ void MainWindow::displayTextBox3(QString text)
 
 void MainWindow::startGame()
 {
+    // TODO: Clear grid since it doesn't do that after a tutorial
+
+    qDebug() << "Calling Start Game";
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
     ui->TitleLabel->setText("Game");
     ui->checkAnswerButton->show();
@@ -611,7 +619,8 @@ void MainWindow::startGame()
 
 void MainWindow::startIntroduction()
 {
-
+    counter = 0;
+    qDebug() << "Calling Introduction";
     emit setupTutorial(":/textFiles/puzzleFiles/TutorialPuzzle.txt", ":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
     qDebug() << "after emit";
     introduction->loadLines();
@@ -653,7 +662,10 @@ void MainWindow::startNoteTaking()
 }
 
 void MainWindow::progressTutorial() {
-    emit readLine(currentTutorial->getLine(counter));
+    if (currentTutorial->isAtEnd(counter))
+        endOfTutorial();
+    else
+        readLine(currentTutorial->getLine(counter));
 }
 
 void MainWindow::toHomePage()
@@ -671,5 +683,6 @@ void MainWindow::highlightCell(int x)
 void MainWindow::awaitInput(int index) {
     awaitingInputs.push_back(cells.at(index));
     cells.at(index)->setStyleSheet("background-color: rgb(100, 220, 100); border-width: 2px");
+    cells.at(index)->setDisabled(false);
     ui->NextButton->hide();
 }

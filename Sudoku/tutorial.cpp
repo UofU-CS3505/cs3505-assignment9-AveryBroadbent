@@ -29,3 +29,7 @@ void Tutorial::loadLines()
 QStringList Tutorial::getLine(int line) {
     return lines.at(line);
 }
+
+bool Tutorial::isAtEnd(int line) {
+    return line == (int) lines.size();
+}
