@@ -96,6 +96,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &QPushButton::clicked,
             model,
             &SudokuModel::tutorialSetup);
+
     // ui->startTutorialButton->hide();
 
 
@@ -207,6 +208,13 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::disableAllBoxes(){
+    for(int i = 0; i < (int)cells.size(); i++){
+        cells.at(i) -> setDisabled(true);
+        //qDebug()<<i;
+    }
 }
 
 void MainWindow::keyPressEvent(QKeyEvent* event){
@@ -598,6 +606,7 @@ void MainWindow::startGame()
 
 void MainWindow::startIntroduction()
 {
+    disableAllBoxes();
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
     ui->TitleLabel->setText("Introduction");
     ui->TitleLabel->show();
@@ -618,6 +627,7 @@ void MainWindow::endOfIntroTutorial()
 
 void MainWindow::startNoteTaking()
 {
+    disableAllBoxes();
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
     ui->TitleLabel->setText("Note Taking");
     ui->TitleLabel->show();

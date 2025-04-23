@@ -57,9 +57,19 @@ private:
 public:
     MainWindow(SudokuModel* model, QWidget *parent = nullptr);
     ~MainWindow();
-
+    /**
+     * @brief Handles all key presses to take in numbers for
+     * the sudiku box
+     *
+     * @param event is number entered
+     */
     void keyPressEvent(QKeyEvent* event);
     // void mousePressEvent(QMouseEvent *event) override;
+
+    /**
+     * @brief disable all boxes in sudoku box
+     */
+    void disableAllBoxes();
 
     /**
      * @brief Called by pickSaveFile(). Creates a QJsonArray and

@@ -22,8 +22,9 @@ SudokuModel::~SudokuModel() {
     delete introduction;
 }
 
-void SudokuModel::tutorialSetup() {
-    uploadKey(":/textFiles/puzzleFiles/TutorialPuzzle.txt");
+void SudokuModel::tutorialSetup(QString key, QString startingValues) {
+    //uploadKey(":/textFiles/puzzleFiles/TutorialPuzzle.txt"); //key
+    uploadKey(key);
     vector<int> startingIndexes;
     std::map<int, int> startingValues; //<index, val>
 
@@ -315,9 +316,11 @@ void SudokuModel::fromJson(const QJsonArray& loadedFile) {
 
 void SudokuModel::introTutorial(int x)
 {
-    currentTutorialIndex = x;
+    tutorialSetup();
+    currentTutorialIndex = 0;
     currentTutorialLines = introduction->getLines();
     decipherNextLine(currentTutorialLines.at(x));
+    tutorialSetup();
 }
 
 void SudokuModel::noteTutorial()
