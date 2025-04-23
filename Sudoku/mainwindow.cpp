@@ -211,8 +211,10 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             this,
             &MainWindow::boxFinished);
 
-    // introduction tutorial connections
-
+    //TODO create startNoteTaking method to initiate note tutorial, similar to how intro is initiated
+    // connect(ui->toNoteTakingButton,
+    //         &QPushButton::clicked,
+    //         model, &SudokuModel::startNoteTaking);
 }
 
 MainWindow::~MainWindow()
