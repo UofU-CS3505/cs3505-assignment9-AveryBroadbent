@@ -51,10 +51,6 @@ void SudokuModel::tutorialSetup() {
     // introTutorial(0);
 }
 
-void SudokuModel::uploadNewPuzzle() {
-
-}
-
 void SudokuModel::updateInput(int index, int value) {
     cellContents.at(index) = value;
 }
@@ -191,7 +187,7 @@ void SudokuModel::newPuzzleSetup(){
     for(int i = 0; i < 81; i++){
         if(cellContents.at(i) != 0){
             startingValues.insert({i, cellContents.at(i)});
-            std::cout<<cellContents.at(i) << std::endl;
+            //std::cout<<cellContents.at(i) << std::endl;
             //cellContents.at(i);
         }
     }
@@ -199,9 +195,6 @@ void SudokuModel::newPuzzleSetup(){
 }
 
 void SudokuModel::genKey(){
-    //Make a backing double array. The way
-    //Wave propogate works is the following:
-    //
     std::vector<int>* solvedSudoku = new std::vector<int>[81];
     srand(time(NULL));
     for(int i=0; i <81; i++){

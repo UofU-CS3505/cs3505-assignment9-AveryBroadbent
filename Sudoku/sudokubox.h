@@ -1,3 +1,14 @@
+/**
+    This Class is used to represent the
+    currently displayed boxes in the qt
+    window. It's connected to the users clicks
+    and inputs in the qt boxes. It can set
+    notes, and save and read from json.
+
+    Author: AMANDA STOFEY, ADRIANA BATRES,
+        MASON AYERS, ALEXANDER GOFF, DREW BROADBENT
+    Date: 4/22/2025
+ */
 #ifndef SUDOKUBOX_H
 #define SUDOKUBOX_H
 

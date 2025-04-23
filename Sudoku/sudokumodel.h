@@ -1,9 +1,18 @@
+/**
+    A class that holds a backing vector of cell
+    contents and the answer key. Used by
+    sudokubox to determine if rows are
+    finished. Can use wave propogation
+    collapse to generate new puzzles
+
+    Author: AMANDA STOFEY, ADRIANA BATRES,
+        MASON AYERS, ALEXANDER GOFF, DREW BROADBENT
+    Date: 4/22/2025
+ */
 #ifndef SUDOKUMODEL_H
 #define SUDOKUMODEL_H
 #include <vector>
 #include <QObject>
-#include <iostream>
-#include <algorithm>
 #include "tutorial.h"
 using std::vector;
 
@@ -26,8 +35,6 @@ private:
 public:
     SudokuModel();
     ~SudokuModel();
-
-    void uploadNewPuzzle();
 
     /**
      * Checks each value in each non-zero cell for matching values to the answer key.

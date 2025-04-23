@@ -1,8 +1,11 @@
 /**
- * Tutorial class
- *
- * @author Mason Ayers
- * @version April 20, 2025
+    Tutorial class that reads from a text
+    file and produces a QStringList of
+    lines for the mainwindow to display.
+
+    Author: AMANDA STOFEY, ADRIANA BATRES,
+        MASON AYERS, ALEXANDER GOFF, DREW BROADBENT
+    Date: 4/22/2025
  */
 #ifndef TUTORIAL_H
 #define TUTORIAL_H

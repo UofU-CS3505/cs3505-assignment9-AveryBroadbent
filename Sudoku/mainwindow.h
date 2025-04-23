@@ -1,3 +1,14 @@
+/**
+    This program is an application that provides
+    tutorials for sudoku solving techniques and
+    then allows the user to practice what they've
+    learned on procedurally generated puzzles with
+    the ability to take notes and ask for hints.
+
+    Author: AMANDA STOFEY, ADRIANA BATRES,
+        MASON AYERS, ALEXANDER GOFF, DREW BROADBENT
+    Date: 4/22/2025
+ */
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
