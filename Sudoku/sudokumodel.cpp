@@ -268,6 +268,7 @@ void SudokuModel::updateSudoku(std::vector<int>* sudoku, int changedIndex, int g
 }
 
 bool SudokuModel::checkInput(int index) {
+
     return cellContents.at(index) == answerKey.at(index);
 }
 

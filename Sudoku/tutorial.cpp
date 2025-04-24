@@ -6,9 +6,10 @@ Tutorial::Tutorial(const QString &filename, QString tutorialName): file(filename
 {
 }
 
-void Tutorial::loadLines()
+void Tutorial::loadLines(QString filename)
 {
-    QFile file(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt");
+    QFile file(filename);
+    // QFile file(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // error
         QMessageBox::information(nullptr, QString("Could not load key file"), file.errorString());

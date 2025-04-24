@@ -39,9 +39,9 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     ui->toHiddenPairsButton->hide();
     ui->toNakedPairsButton->hide();
 
-
-    introduction = new Tutorial(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt", "Intro"); //TODO these are not the offical file names yet
-    noteTaking = new Tutorial(":/textFiles/tutorials/SudokuNoteTaking.txt", "Note Taking");
+    // ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt"
+    introduction = new Tutorial(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt", "Intro");
+    noteTaking = new Tutorial(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuNoteTaking.txt", "Note Taking");
 
 
     // Setup for SudokuGame widget
@@ -76,8 +76,6 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &QPushButton::clicked,
             this,
             &MainWindow::toHomePage);
-    //     connect(ui->Start, &QPushButton::clicked, this, &MainWindow::startIntroduction);
-
 
     connect(ui->checkAnswerButton,
             &QPushButton::clicked,
@@ -212,9 +210,9 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &MainWindow::boxFinished);
 
     //TODO create startNoteTaking method to initiate note tutorial, similar to how intro is initiated
-    // connect(ui->toNoteTakingButton,
-    //         &QPushButton::clicked,
-    //         model, &SudokuModel::startNoteTaking);
+    connect(ui->toNoteTakingButton,
+            &QPushButton::clicked,
+            this, &MainWindow::startNoteTaking);
 }
 
 MainWindow::~MainWindow()
@@ -290,9 +288,6 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
         if (std::find(awaitingInputs.begin(), awaitingInputs.end(), selectedCell) != awaitingInputs.end()) {
 
             if (emit checkCell(index)) {
-
-
-
                 // selected cell was awaited and is correct
                 qDebug() << awaitingInputs.size();
                 awaitingInputs.remove(selectedCell);
@@ -630,7 +625,8 @@ void MainWindow::startIntroduction()
     qDebug() << "Calling Introduction";
     emit setupTutorial(":/textFiles/puzzleFiles/TutorialPuzzle.txt", ":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
     qDebug() << "after emit";
-    introduction->loadLines();
+    QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt";
+    introduction->loadLines(filename);
 
     disableAllBoxes();
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
@@ -663,6 +659,11 @@ void MainWindow::endOfTutorial()
 
 void MainWindow::startNoteTaking()
 {
+    counter = 0;
+    emit setupTutorial(":/textFiles/puzzleFiles/NotesPuzzle.txt", ":/textFiles/puzzleFiles/NotesStartingIndexes.txt");
+    QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuNoteTaking.txt";
+    noteTaking->loadLines(filename);
+
     disableAllBoxes();
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
     ui->TitleLabel->setText("Note Taking");
@@ -672,14 +673,21 @@ void MainWindow::startNoteTaking()
     ui->checkAnswerButton->hide();
     ui->newPuzzleButton->hide();
     ui->noteCheck->show();
+    ui->toNoteTakingButton->hide();
     ui->NextButton->show();
+
+    currentTutorial = noteTaking;
+    progressTutorial();
 }
 
 void MainWindow::progressTutorial() {
     if (currentTutorial->isAtEnd(counter))
         endOfTutorial();
     else
+    {
         readLine(currentTutorial->getLine(counter));
+        // ui->NextButton->show();
+    }
 }
 
 void MainWindow::toHomePage()
@@ -700,3 +708,4 @@ void MainWindow::awaitInput(int index) {
     cells.at(index)->setDisabled(false);
     ui->NextButton->hide();
 }
+
