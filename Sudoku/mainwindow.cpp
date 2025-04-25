@@ -77,6 +77,11 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             this,
             &MainWindow::toHomePage);
 
+    connect(ui->homeButtonTutorial,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::toHomePage);
+
     connect(ui->checkAnswerButton,
             &QPushButton::clicked,
             model,
@@ -92,11 +97,22 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             this,
             &MainWindow::pickSaveFile);
 
-    // Tutorial connections
+    // Home button connections
     connect(ui->IntroductionButton,
             &QPushButton::clicked,
             this,
             &MainWindow::startIntroduction);
+
+    connect(ui->TutorialsButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::goToTutorialsPage);
+
+    connect(ui->tutorialIntroductionButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::startIntroduction);
+
 
     connect(this,
             &MainWindow::readLine,
@@ -152,9 +168,6 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &MainWindow::checkCell,
             model,
             &SudokuModel::checkInput);
-
-    // ui->startTutorialButton->hide();
-
 
     connect(ui->newPuzzleButton,
             &QPushButton::clicked,
@@ -599,7 +612,11 @@ void MainWindow::displayTextBox3(QString text)
 
     ui->textLabel1->hide();
     ui->textLabel2->hide();
+}
 
+void MainWindow::goToTutorialsPage()
+{
+    ui->stackedWidget->setCurrentWidget(ui->TutorialsPage);
 }
 
 void MainWindow::startGame()
@@ -643,19 +660,6 @@ void MainWindow::startIntroduction()
     progressTutorial();
 }
 
-void MainWindow::endOfTutorial()
-{
-    ui->NextButton->hide();
-    if(currentTutorial==introduction)
-        ui->toNoteTakingButton->show();
-    else if (currentTutorial==noteTaking)
-        ui->toHiddenSinglesButton->show();
-    else if (currentTutorial==hiddenSingles)
-        ui->toHiddenPairsButton->show();
-    else if (currentTutorial==hiddenPairs)
-        ui->toNakedPairsButton->show();
-}
-
 void MainWindow::startNoteTaking()
 {
     counter = 0;
@@ -677,6 +681,90 @@ void MainWindow::startNoteTaking()
 
     currentTutorial = noteTaking;
     progressTutorial();
+}
+
+void MainWindow::startHiddenSingles()
+{
+    counter = 0;
+    qDebug() << "Calling Hidden Singles";
+    emit setupTutorial(":/textFiles/puzzleFiles/TutorialPuzzle.txt", ":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
+    qDebug() << "after emit";
+    QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuHiddenSingles.txt";
+    hiddenSingles->loadLines(filename);
+
+    disableAllBoxes();
+    ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
+    ui->TitleLabel->setText("Hidden Singles");
+    ui->TitleLabel->show();
+    ui->startTutorialButton->hide();
+    ui->hintButton->hide();
+    ui->checkAnswerButton->hide();
+    ui->newPuzzleButton->hide();
+    ui->noteCheck->hide();
+    ui->NextButton->show();
+    ui->toNoteTakingButton->show();
+
+    currentTutorial = introduction;
+    progressTutorial();
+}
+
+void MainWindow::startHiddenPairs()
+{
+    counter = 0;
+    emit setupTutorial(":/textFiles/puzzleFiles/NotesPuzzle.txt", ":/textFiles/puzzleFiles/NotesStartingIndexes.txt");
+    QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuHiddenPairs.txt";
+    noteTaking->loadLines(filename);
+
+    disableAllBoxes();
+    ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
+    ui->TitleLabel->setText("Hidden Pairs");
+    ui->TitleLabel->show();
+    ui->startTutorialButton->hide();
+    ui->hintButton->hide();
+    ui->checkAnswerButton->hide();
+    ui->newPuzzleButton->hide();
+    ui->noteCheck->show();
+    ui->toNoteTakingButton->hide();
+    ui->NextButton->show();
+
+    currentTutorial = noteTaking;
+    progressTutorial();
+}
+
+void MainWindow::startNakedPairs()
+{
+    counter = 0;
+    emit setupTutorial(":/textFiles/puzzleFiles/NotesPuzzle.txt", ":/textFiles/puzzleFiles/NotesStartingIndexes.txt");
+    QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuHiddenPairs.txt";
+    noteTaking->loadLines(filename);
+
+    disableAllBoxes();
+    ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
+    ui->TitleLabel->setText("Naked Pairs");
+    ui->TitleLabel->show();
+    ui->startTutorialButton->hide();
+    ui->hintButton->hide();
+    ui->checkAnswerButton->hide();
+    ui->newPuzzleButton->hide();
+    ui->noteCheck->show();
+    ui->toNoteTakingButton->hide();
+    ui->NextButton->show();
+
+    currentTutorial = noteTaking;
+    progressTutorial();
+}
+
+void MainWindow::endOfTutorial()
+{
+    ui->NextButton->hide();
+    if(currentTutorial==introduction)
+        ui->toNoteTakingButton->show();
+    else if (currentTutorial==noteTaking)
+        ui->toHiddenSinglesButton->show();
+    else if (currentTutorial==hiddenSingles)
+        ui->toHiddenPairsButton->show();
+    else if (currentTutorial==hiddenPairs)
+        ui->toNakedPairsButton->show();
 }
 
 void MainWindow::progressTutorial() {

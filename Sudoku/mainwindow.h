@@ -201,12 +201,41 @@ public slots:
     void highlightCell(int x);
     void awaitInput(int index);
 
+    /**
+     * @brief goToTutorialsPage
+     */
+    void goToTutorialsPage();
 
     void startGame();
+
+    /**
+     * @brief startIntroduction
+     */
     void startIntroduction();
+
+    /**
+     * @brief startNoteTaking
+     */
+    void startNoteTaking();
+
+    /**
+     * @brief startHiddenSingles
+     */
+    void startHiddenSingles();
+
+    /**
+     * @brief startHiddenPairs
+     */
+    void startHiddenPairs();
+
+    /**
+     * @brief startNakedPairs
+     */
+    void startNakedPairs();
+
+
     void endOfTutorial();
     void progressTutorial();
-    void startNoteTaking();
     void toHomePage();
 
 
