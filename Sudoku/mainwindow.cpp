@@ -612,6 +612,8 @@ void MainWindow::loadGame(const QString& filePath){
     }
 
     m->fromJson(root["Model"].toArray());
+
+    startGame();
 }
 
 void MainWindow::displayTextBox1(QString text)
@@ -655,11 +657,11 @@ void MainWindow::startGame()
 
     qDebug() << "Calling Start Game";
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
-    ui->TitleLabel->setText("Game");
+    ui->TitleLabel->setText("Sudoku");
     ui->checkAnswerButton->show();
     ui->hintButton->show();
     ui->hintButton->setEnabled(true);
-    ui->newPuzzleButton->show();
+    ui->saveGameButton->show();
     ui->noteCheck->show();
     ui->NextButton->hide();
     ui->toNoteTakingButton->hide();
@@ -681,7 +683,7 @@ void MainWindow::startIntroduction()
     ui->TitleLabel->show();
     ui->hintButton->hide();
     ui->checkAnswerButton->hide();
-    ui->newPuzzleButton->hide();
+    ui->saveGameButton->hide();
     ui->noteCheck->hide();
     ui->NextButton->show();
     ui->toNoteTakingButton->hide();
@@ -703,7 +705,7 @@ void MainWindow::startNoteTaking()
     ui->TitleLabel->show();
     ui->hintButton->hide();
     ui->checkAnswerButton->hide();
-    ui->newPuzzleButton->hide();
+    ui->saveGameButton->hide();
     ui->noteCheck->show();
     ui->toNoteTakingButton->hide();
     ui->NextButton->show();
@@ -729,7 +731,7 @@ void MainWindow::startHiddenSingles()
     ui->TitleLabel->show();
     ui->hintButton->hide();
     ui->checkAnswerButton->hide();
-    ui->newPuzzleButton->hide();
+    ui->saveGameButton->hide();
     ui->noteCheck->hide();
     ui->NextButton->show();
     ui->toNoteTakingButton->show();
@@ -751,7 +753,7 @@ void MainWindow::startHiddenPairs()
     ui->TitleLabel->show();
     ui->hintButton->hide();
     ui->checkAnswerButton->hide();
-    ui->newPuzzleButton->hide();
+    ui->saveGameButton->hide();
     ui->noteCheck->show();
     ui->toNoteTakingButton->hide();
     ui->NextButton->show();
@@ -774,7 +776,7 @@ void MainWindow::startNakedPairs()
     ui->hintButton->show();
     ui->hintButton->setEnabled(false);
     ui->checkAnswerButton->hide();
-    ui->newPuzzleButton->hide();
+    ui->saveGameButton->hide();
     ui->noteCheck->show();
     ui->toNoteTakingButton->hide();
     ui->NextButton->show();
