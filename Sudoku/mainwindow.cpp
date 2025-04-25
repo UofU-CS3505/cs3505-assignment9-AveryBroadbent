@@ -648,6 +648,7 @@ void MainWindow::startGame()
     ui->TitleLabel->setText("Game");
     ui->checkAnswerButton->show();
     ui->hintButton->show();
+    ui->hintButton->setEnabled(true);
     ui->newPuzzleButton->show();
     ui->noteCheck->show();
     ui->NextButton->hide();
@@ -765,7 +766,8 @@ void MainWindow::startNakedPairs()
     ui->TitleLabel->setText("Naked Pairs");
     ui->TitleLabel->show();
     ui->startTutorialButton->hide();
-    ui->hintButton->hide();
+    ui->hintButton->show();
+    ui->hintButton->setEnabled(false);
     ui->checkAnswerButton->hide();
     ui->newPuzzleButton->hide();
     ui->noteCheck->show();
