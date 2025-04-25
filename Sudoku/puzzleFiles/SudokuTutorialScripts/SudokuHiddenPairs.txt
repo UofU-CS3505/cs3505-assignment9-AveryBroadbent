@@ -1,6 +1,7 @@
-﻿[] [] [textBox1] A hidden pair is when you have two candidates in precisely two cells with the same row, column, or 3x3 box.
-51 53 [textBox2] What makes them hidden is that there is at least one other candidate in at least one of these cells.
-[] [] [textBox3] When this happens, you can immediately eliminate all other candidates from the two cells that the pair occupies.
-[] [] [textBox1] In this case, these are the only two cells in the row and 3x3 box that contain a 3 or 8 as candidates. This reduces the number of candidates being considered in these cells.
-[] [] [textBox2] There is one hidden pair somewhere in this puzzle. Click on two cells to identify them.
-[] [] [textBox3] Right on! Click Next Tutorial to keep learning, or click Home to return to the home page.
+﻿[] [] [textBox1] A hidden pair is when you have only two candidates with two of the same possiblilites in the same row, column, or 3x3 box.
+[] [] [textBox2] When this happens, you can immediately eliminate all other candidates from the two cells that the pair occupies.
+[] [] [textBox3] When 2 boxes are the only way for 2 candidates, like a 1 and 2, those boxes only candidates are 1 and 2.
+51 53 [textBox1] Use notes to fill in the candidates, and look for a hidden pair. When you find it, remove all but those 2 candidates.
+[] [] [textBox2] In this case, these are the only two cells in the row and 3x3 box that contain a 3 or 8 as candidates.
+[] [] [textBox3] Nothing else in this box can contain a 2 or 8, so they must be in the two cells.
+[] [] [textBox1] This extends to hidden tripples on the same too. Click Next Tutorial to keep learning, or click Home to return to the home page.
