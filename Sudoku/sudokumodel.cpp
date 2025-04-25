@@ -359,7 +359,7 @@ void SudokuModel::decipherNextLine(QStringList words)
                 int index = words.at(0).toInt();
                 emit awaitCell(index);
                 emit enableCell(index);
-                // this means the tutorial is expecting user input rather jsut than clicking to continue.
+                // this means the tutorial is expecting user input rather just than clicking to continue.
             }
             words.removeFirst(); //remove command prompt
         }

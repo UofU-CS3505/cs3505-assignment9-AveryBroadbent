@@ -764,7 +764,7 @@ void MainWindow::startHiddenSingles()
     ui->saveGameButton->hide();
     ui->noteCheck->hide();
     ui->NextButton->show();
-    ui->toNoteTakingButton->show();
+    ui->toNoteTakingButton->hide();
     ui->toHiddenPairsButton->hide();
     ui->toHiddenSinglesButton->hide();
     ui->toNakedPairsButton->hide();
@@ -832,8 +832,12 @@ void MainWindow::endOfTutorial()
         ui->toNoteTakingButton->show();
     else if (currentTutorial==noteTaking)
         ui->toHiddenSinglesButton->show();
-    else if (currentTutorial==hiddenSingles)
+    else if (currentTutorial==hiddenSingles) {
         ui->toHiddenPairsButton->show();
+        qDebug() << "Showing hidden pairs button";
+    }
+
+
     else if (currentTutorial==hiddenPairs)
         ui->toNakedPairsButton->show();
 }
@@ -844,7 +848,6 @@ void MainWindow::progressTutorial() {
     else
     {
         readLine(currentTutorial->getLine(counter));
-        // ui->NextButton->show();
     }
 }
 

@@ -4,4 +4,4 @@
 [] [] [textBox1] Similarly to hidden pairs, this means that you can eliminate all other candidate pairs from the row/column/box
 [] [] [textBox2] There is one naked pair somewhere in this puzzle. Click the two cells that make up the naked pair.
 [] [] [textBox3] Great! Using this technique is a great way to keep the puzzle organized.
-[] [] [textBox1] You’ve reached the end of the tutorials. Click practice to try out a puzzle on your own! You can also revisit any tutorial by clicking ‘Tutorials’.
+[] [] [textBox1] You’ve reached the end of the tutorials. Click Home to return to the main menu! You can also revisit any tutorial by clicking ‘Tutorials'.
