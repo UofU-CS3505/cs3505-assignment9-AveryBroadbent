@@ -224,6 +224,22 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &QPushButton::clicked,
             this, &MainWindow::startNoteTaking);
 
+    connect(ui->toHiddenPairsButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::startHiddenPairs);
+
+    connect(ui->toHiddenSinglesButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::startHiddenSingles);
+
+    connect(ui->toNakedPairsButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::startNakedPairs);
+
+
     //Tutorial Page connections
     connect(ui->homeButtonTutorial,
             &QPushButton::clicked,
