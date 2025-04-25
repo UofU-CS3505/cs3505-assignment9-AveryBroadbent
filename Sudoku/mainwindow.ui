@@ -26,8 +26,13 @@
       <height>700</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Sorts Mill Goudy</family>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(50, 50, 50);</string>
+     <string notr="true">background-color: rgb(255, 247, 238);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::NoFrame</enum>
@@ -39,17 +44,18 @@
      <number>1</number>
     </property>
     <widget class="QWidget" name="HomePage">
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="Title">
       <property name="geometry">
        <rect>
-        <x>225</x>
-        <y>130</y>
+        <x>220</x>
+        <y>140</y>
         <width>400</width>
         <height>70</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>50</pointsize>
        </font>
       </property>
@@ -60,37 +66,45 @@
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QPushButton" name="StartButton">
+     <widget class="QPushButton" name="newGameButton">
       <property name="geometry">
        <rect>
-        <x>325</x>
-        <y>325</y>
+        <x>200</x>
+        <y>490</y>
         <width>200</width>
         <height>50</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>25</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
       <property name="text">
-       <string>Practice</string>
+       <string>New Game</string>
       </property>
      </widget>
      <widget class="QPushButton" name="IntroductionButton">
       <property name="geometry">
        <rect>
-        <x>325</x>
-        <y>225</y>
+        <x>320</x>
+        <y>250</y>
         <width>200</width>
         <height>50</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>25</pointsize>
+        <family>Sorts Mill Goudy</family>
+        <pointsize>24</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Introduction</string>
@@ -99,19 +113,67 @@
      <widget class="QPushButton" name="TutorialsButton">
       <property name="geometry">
        <rect>
-        <x>325</x>
-        <y>275</y>
+        <x>320</x>
+        <y>320</y>
         <width>200</width>
         <height>50</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>25</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
       <property name="text">
        <string>Tutorials</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="loadGameButton">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>490</y>
+        <width>200</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Sorts Mill Goudy</family>
+        <pointsize>25</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Load Game</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="practiceTitle">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>440</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Sorts Mill Goudy</family>
+        <pointsize>26</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Practice!</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
     </widget>
@@ -119,14 +181,15 @@
      <widget class="QLabel" name="TitleLabel">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>-10</y>
+        <x>40</x>
+        <y>20</y>
         <width>271</width>
         <height>61</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>30</pointsize>
        </font>
       </property>
@@ -148,6 +211,7 @@
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>25</pointsize>
        </font>
       </property>
@@ -2425,17 +2489,38 @@ color: rgb(0, 0, 0);</string>
      <widget class="QCheckBox" name="noteCheck">
       <property name="geometry">
        <rect>
-        <x>420</x>
-        <y>650</y>
-        <width>91</width>
-        <height>22</height>
+        <x>390</x>
+        <y>631</y>
+        <width>161</width>
+        <height>51</height>
        </rect>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>0</width>
+        <height>10</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Sorts Mill Goudy</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::LeftToRight</enum>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
       <property name="text">
        <string>Note Mode</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>35</width>
+        <height>35</height>
+       </size>
       </property>
      </widget>
      <widget class="QPushButton" name="newPuzzleButton">
@@ -2447,11 +2532,17 @@ color: rgb(0, 0, 0);</string>
         <height>41</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Sorts Mill Goudy</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
       <property name="text">
-       <string>Generate Puzzle</string>
+       <string>Save Puzzle</string>
       </property>
      </widget>
      <widget class="QLabel" name="textLabel1">
@@ -2465,6 +2556,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>11</pointsize>
        </font>
       </property>
@@ -2489,6 +2581,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>11</pointsize>
        </font>
       </property>
@@ -2510,6 +2603,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>11</pointsize>
        </font>
       </property>
@@ -2523,11 +2617,17 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="NextButton">
       <property name="geometry">
        <rect>
-        <x>650</x>
-        <y>640</y>
-        <width>80</width>
-        <height>18</height>
+        <x>700</x>
+        <y>630</y>
+        <width>131</width>
+        <height>51</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Sorts Mill Goudy</family>
+        <pointsize>20</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Next</string>
@@ -2542,6 +2642,12 @@ color: rgb(0, 0, 0);</string>
         <height>41</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Sorts Mill Goudy</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Next Tutorial</string>
       </property>
@@ -2549,14 +2655,15 @@ color: rgb(0, 0, 0);</string>
      <widget class="QLabel" name="OopsLabel">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>60</y>
+        <x>40</x>
+        <y>70</y>
         <width>161</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>14</pointsize>
         <italic>true</italic>
         <bold>true</bold>
@@ -2578,6 +2685,12 @@ color: rgb(0, 0, 0);</string>
         <height>41</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Sorts Mill Goudy</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Next Tutorial</string>
       </property>
@@ -2591,6 +2704,12 @@ color: rgb(0, 0, 0);</string>
         <height>41</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Sorts Mill Goudy</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Next Tutorial</string>
       </property>
@@ -2598,11 +2717,17 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="toNakedPairsButton">
       <property name="geometry">
        <rect>
-        <x>510</x>
+        <x>560</x>
         <y>630</y>
         <width>131</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Sorts Mill Goudy</family>
+        <pointsize>14</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Next Tutorial</string>
@@ -2613,40 +2738,44 @@ color: rgb(0, 0, 0);</string>
      <widget class="QLabel" name="tutorialsLabel">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>10</y>
+        <x>340</x>
+        <y>80</y>
         <width>171</width>
         <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>30</pointsize>
-        <italic>true</italic>
-        <bold>true</bold>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="text">
        <string>Tutorials</string>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
      </widget>
      <widget class="QPushButton" name="homeButtonTutorial">
       <property name="geometry">
        <rect>
-        <x>600</x>
-        <y>10</y>
+        <x>360</x>
+        <y>560</y>
         <width>125</width>
         <height>50</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>25</pointsize>
+        <family>Sorts Mill Goudy</family>
+        <pointsize>22</pointsize>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);</string>
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Home</string>
@@ -2656,15 +2785,19 @@ color: rgb(0, 0, 0);</string>
       <property name="geometry">
        <rect>
         <x>25</x>
-        <y>150</y>
+        <y>180</y>
         <width>200</width>
         <height>50</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>22</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string>background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Introduction</string>
@@ -2673,16 +2806,20 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="tutorialHiddenSinglesButton">
       <property name="geometry">
        <rect>
-        <x>625</x>
-        <y>150</y>
+        <x>610</x>
+        <y>180</y>
         <width>200</width>
         <height>50</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>22</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string>background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Hidden Singles</string>
@@ -2691,16 +2828,20 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="tutorialNoteTakingButton">
       <property name="geometry">
        <rect>
-        <x>325</x>
-        <y>150</y>
-        <width>200</width>
+        <x>310</x>
+        <y>180</y>
+        <width>221</width>
         <height>50</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>22</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string>background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Note Taking</string>
@@ -2710,14 +2851,17 @@ color: rgb(0, 0, 0);</string>
       <property name="geometry">
        <rect>
         <x>25</x>
-        <y>200</y>
+        <y>230</y>
         <width>200</width>
         <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>14</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="text">
@@ -2736,15 +2880,18 @@ color: rgb(0, 0, 0);</string>
      <widget class="QLabel" name="noteInfoLabel">
       <property name="geometry">
        <rect>
-        <x>325</x>
-        <y>200</y>
-        <width>200</width>
+        <x>310</x>
+        <y>230</y>
+        <width>221</width>
         <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>14</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="text">
@@ -2763,15 +2910,18 @@ color: rgb(0, 0, 0);</string>
      <widget class="QLabel" name="hiddenSinglesInfoLabel">
       <property name="geometry">
        <rect>
-        <x>625</x>
-        <y>200</y>
+        <x>610</x>
+        <y>230</y>
         <width>200</width>
         <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>14</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="text">
@@ -2790,15 +2940,18 @@ color: rgb(0, 0, 0);</string>
      <widget class="QLabel" name="hiddenPairsInfoLabel">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>400</y>
+        <x>170</x>
+        <y>430</y>
         <width>200</width>
         <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>14</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="text">
@@ -2817,15 +2970,18 @@ color: rgb(0, 0, 0);</string>
      <widget class="QLabel" name="nakedPairsinfoLabel">
       <property name="geometry">
        <rect>
-        <x>500</x>
-        <y>400</y>
+        <x>480</x>
+        <y>430</y>
         <width>200</width>
         <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>14</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="text">
@@ -2844,16 +3000,20 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="tutorialHiddenPairsButton">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>350</y>
+        <x>170</x>
+        <y>380</y>
         <width>200</width>
         <height>50</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>22</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string>background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Hidden Pairs</string>
@@ -2862,16 +3022,20 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="tutorialsNakedPairsButton">
       <property name="geometry">
        <rect>
-        <x>500</x>
-        <y>350</y>
+        <x>480</x>
+        <y>380</y>
         <width>200</width>
         <height>50</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Sorts Mill Goudy</family>
         <pointsize>22</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string>background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Naked Pairs</string>
@@ -2880,24 +3044,6 @@ color: rgb(0, 0, 0);</string>
     </widget>
     <widget class="QWidget" name="ExtraWidget1"/>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>838</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="actionSave"/>
-    <addaction name="actionLoad"/>
-   </widget>
-   <addaction name="menuFile"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSave">

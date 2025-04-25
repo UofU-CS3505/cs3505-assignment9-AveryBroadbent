@@ -25,7 +25,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
 
     // starts stackedWidget at the home page
     ui->stackedWidget->setCurrentWidget(ui->HomePage);
-    connect(ui->StartButton, &QPushButton::clicked, this, &MainWindow::startGame);
+    connect(ui->newGameButton, &QPushButton::clicked, this, &MainWindow::startGame);
 
     //
     connect(ui->IntroductionButton, &QPushButton::clicked, this, &MainWindow::startIntroduction);
