@@ -669,7 +669,6 @@ void MainWindow::startIntroduction()
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
     ui->TitleLabel->setText("Introduction");
     ui->TitleLabel->show();
-    ui->startTutorialButton->hide();
     ui->hintButton->hide();
     ui->checkAnswerButton->hide();
     ui->newPuzzleButton->hide();
@@ -692,7 +691,6 @@ void MainWindow::startNoteTaking()
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
     ui->TitleLabel->setText("Note Taking");
     ui->TitleLabel->show();
-    ui->startTutorialButton->hide();
     ui->hintButton->hide();
     ui->checkAnswerButton->hide();
     ui->newPuzzleButton->hide();
@@ -719,7 +717,6 @@ void MainWindow::startHiddenSingles()
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
     ui->TitleLabel->setText("Hidden Singles");
     ui->TitleLabel->show();
-    ui->startTutorialButton->hide();
     ui->hintButton->hide();
     ui->checkAnswerButton->hide();
     ui->newPuzzleButton->hide();
@@ -742,7 +739,6 @@ void MainWindow::startHiddenPairs()
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
     ui->TitleLabel->setText("Hidden Pairs");
     ui->TitleLabel->show();
-    ui->startTutorialButton->hide();
     ui->hintButton->hide();
     ui->checkAnswerButton->hide();
     ui->newPuzzleButton->hide();
@@ -765,7 +761,6 @@ void MainWindow::startNakedPairs()
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
     ui->TitleLabel->setText("Naked Pairs");
     ui->TitleLabel->show();
-    ui->startTutorialButton->hide();
     ui->hintButton->show();
     ui->hintButton->setEnabled(false);
     ui->checkAnswerButton->hide();
