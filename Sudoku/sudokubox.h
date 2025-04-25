@@ -29,8 +29,16 @@ private:
     bool notes[9] = {};
 
 public:
+    /**
+     * Constructor for a sudokuBox object that represents one box in a sudoku grid
+     * @param parent - The parent of SudokuBox is QWidget
+     */
     explicit SudokuBox(QWidget *parent = nullptr);
 
+    /**
+     * This method activates when the user interacts with this object using the mouse
+     * @param event - The type of mouse interaction
+     */
     void mousePressEvent(QMouseEvent* event)override;
 
     /**
@@ -49,15 +57,23 @@ public:
      */
     void reset();
 
+    /**
+     * Creates a QJsonArray out of this object.
+     * @return A QJsonArray representing this object
+     */
     QJsonArray toJson() const;
 
+    /**
+     * Translates a QJsonArray into this object
+     * @param loadedFile - The information to be loaded into this object
+     */
     void fromJson(const QJsonArray& loadedFile);
 
 protected:
+    /**
+     * A paint event used to paint notes in the SudokuBox
+     */
     void paintEvent(QPaintEvent* event) override;
-
-public slots:
-
 
 signals:
     /**

@@ -22,19 +22,20 @@ class SudokuModel: public QObject
 private:
     vector<int> cellContents;
     vector<int> answerKey;
-
-    /**
-     * @brief currentTutorialLines
-     */
     vector<QStringList> currentTutorialLines;
-
     size_t currentTutorialIndex;
-
     int currentTutorial = 0;
 
 
 public:
+    /**
+     * default constructor for a SudokuModel object
+     */
     SudokuModel();
+
+    /**
+     * Destructor for a SudokuModel object
+     */
     ~SudokuModel();
 
     /**
@@ -71,20 +72,21 @@ public:
     void genCellContents();
 
     /**
-     * @brief newPuzzleSetup
+     * Sets up a newly generated sudoku puzzle
      */
     void newPuzzleSetup();
 
+    /**
+     * Converts this object to a QJsonArray
+     * @return A QJsonArray representing this object
+     */
     QJsonArray toJson() const;
 
+    /**
+     * translates a QJsonArray into this object
+     * @param loadedFile - The file to get the information for this object from.
+     */
     void fromJson(const QJsonArray& loadedFile);
-
-
-
-
-
-
-
 
 signals:
     /**
@@ -165,19 +167,18 @@ signals:
     void highlightCell(int cellIndex);
 
     /**
-     * @brief enableCell
-     * @param cellIndex
+     * signals to the view to enable the cell at the specified index to allow it to be edited
+     * @param cellIndex - the index of the cell to be enabled
      */
     void enableCell(int cellIndex);
 
     /**
-     * @brief awaitCell
-     * @param cellIndex
-     */
+     * signals to the view to await input for the cell at the specified index
+     * @param cellIndex - the index of the cell awaiting input
     void awaitCell(int cellIndex);
 
     /**
-     * @brief endOfIntoTutorial
+     * Signals to the view that the end of the tutorial has been reached
      */
     void endOfIntroTutorial();
 
@@ -197,11 +198,16 @@ public slots:
     void getHint();
 
     /**
-     * @brief decipherNextLine
-     * @param words
+     * Gets the next line of the tutorial and deciphers what needs to be done and what cells need inputs based on tags in the txt file.
+     * @param words - The list of words to be displayed by the view for the tutorial along with cells to be highlighted/enabled/awaited.
      */
     void decipherNextLine(QStringList words);
 
+    /**
+     * Checks the input of the cell at the given index against the answer key
+     * @param index - the index of the cell needing to be checked
+     * @return true if the cell contains a value that matches the answer key, false if not.
+     */
     bool checkInput(int index);
 
     /**

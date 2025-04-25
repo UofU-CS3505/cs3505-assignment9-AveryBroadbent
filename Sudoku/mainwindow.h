@@ -55,40 +55,53 @@ private:
     list<SudokuBox*> awaitingInputs;
 
     /**
-     * @brief introduction tutorial
+     * The introductory tutorial to explain the basics of sudoku
      */
     Tutorial *introduction;
 
     /**
-     * @brief noteTaking
+     * The tutorial on how to take notes in the sudoku application
      */
     Tutorial *noteTaking;
 
     /**
-     * @brief hiddenSingles
+     * The tutorial for the hidden Singles technique
      */
     Tutorial *hiddenSingles;
 
     /**
-     * @brief hiddenPairs
+     * The tutorial for the hidden pairs technique
      */
     Tutorial *hiddenPairs;
 
     /**
-     * @brief nakedPairs
+     * The tutorial for the naked pairs technique
      */
     Tutorial *nakedPairs;
 
     /**
-     * @brief currentTutorial
+     * The current tutorial being displayed
      */
     Tutorial* currentTutorial;
 
+    /**
+     * A method to clear all the tutorial labels.
+     */
     void clearLabels();
 
 public:
+    /**
+     * Constructor for the MainWindow object
+     * @param model - Our Sudoku Model that contains all the information for sudoku puzzles
+     * @param parent - The Parent of MainWindow is QWidget
+     */
     MainWindow(SudokuModel* model, QWidget *parent = nullptr);
+
+    /**
+     * Destructor for MainWindow
+     */
     ~MainWindow();
+
     /**
      * @brief Handles all key presses to take in numbers for
      * the sudiku box
@@ -96,7 +109,6 @@ public:
      * @param event is number entered
      */
     void keyPressEvent(QKeyEvent* event);
-    // void mousePressEvent(QMouseEvent *event) override;
 
     /**
      * @brief disable all boxes in sudoku box
@@ -131,6 +143,10 @@ public slots:
      */
     void updateSelected(SudokuBox* currentSelection);
 
+    /**
+     * Enables the box to be edited at the selected index
+     * @param index - the index of the box to be enabled
+     */
     void enableBox (int index);
 
     /**
@@ -198,48 +214,84 @@ public slots:
      */
     void pickSaveFile();
 
-
+    /**
+     * Displays text in the text Box at the top of the tutorial text box list
+     * @param text - the text to be displayed
+     */
     void displayTextBox1(QString text);
+
+    /**
+     * Displays text in the text Box in the middle of the tutorial text box list
+     * @param text - the text to be displayed
+     */
     void displayTextBox2(QString text);
+
+    /**
+     * Displays text in the text Box at the bottom of the tutorial text box list
+     * @param text - the text to be displayed
+     */
     void displayTextBox3(QString text);
-    void highlightBox(int x);
+
+    /**
+     * hightlights the box at the selected index within the grid
+     * @param index - the index of the box to be highlighted
+     */
+    void highlightBox(int index);
+
+    /**
+     * Adds the box at the selected index to the vector of items awaiting inputs
+     * @param index - the index of the box awaiting an input
+     */
     void awaitInput(int index);
 
     /**
-     * @brief goToTutorialsPage
+     * Changes the view to the tutorials page
      */
     void goToTutorialsPage();
 
+    /**
+     * starts the game with a random sudoku puzzle
+     */
     void startGame();
 
     /**
-     * @brief startIntroduction
+     * starts the introductory tutorial
      */
     void startIntroduction();
 
     /**
-     * @brief startNoteTaking
+     * Starts the tutorial for note taking
      */
     void startNoteTaking();
 
     /**
-     * @brief startHiddenSingles
+     * Starts the tutorial for Hidden Singles
      */
     void startHiddenSingles();
 
     /**
-     * @brief startHiddenPairs
+     * Starts the tutorial for Hidden Pairs
      */
     void startHiddenPairs();
 
     /**
-     * @brief startNakedPairs
+     * Starts the tutorial for Naked Pairs
      */
     void startNakedPairs();
 
-
+    /**
+     * Moves onto the next tutorial if one is available
+     */
     void endOfTutorial();
+
+    /**
+     * Progresses the current tutorial to the next part. If the tutorial is at the end, calls endOfTutorial
+     */
     void progressTutorial();
+
+    /**
+     * Sets the UI back to the homepage
+     */
     void toHomePage();
 
 
@@ -251,11 +303,24 @@ signals:
      */
     void updateCell(int index, int value);
 
-    void finishedInputs();
+    /**
+     * Checks with the model to see if the box at the current index has the correct input
+     * @param index - the index of the box to be checked
+     * @return true if the box contains the correct value, false if not.
+     */
     bool checkCell(int index);
 
+    /**
+     * Gets the next line for the tutorial to be displayed
+     * @param words - The list of words to be displayed in the tutorial.
+     */
     void readLine(QStringList words);
 
+    /**
+     * Sets up the tutorial sudoku puzzle by getting the answer key and the starting values from the given text files.
+     * @param keyFile - The file that contains the answer key
+     * @param startFile - The file that contains the starting values
+     */
     void setupTutorial(QString keyFile, QString startFile);
 
 };

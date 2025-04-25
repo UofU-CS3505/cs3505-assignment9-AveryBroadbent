@@ -23,6 +23,10 @@ class Tutorial : public QWidget
 {
     Q_OBJECT
 
+private:
+
+    vector<QStringList> lines;
+
 public:
 
     /**
@@ -43,26 +47,19 @@ public:
      */
     void loadLines(QString filename);
 
+    /**
+     * Gets the line at the given index in the list of Strings
+     * @param line - The index of the line to return
+     * @return the line at the given index
+     */
     QStringList getLine(int line);
 
+    /**
+     * Checks if we're at the end of the list of lines
+     * @param line - The index of the current line
+     * @return true if we're at the end of lines, false if not
+     */
     bool isAtEnd(int line);
-
-signals:
-
-
-
-
-public slots:
-
-
-private:
-
-    vector<QStringList> lines;
-
-
-
-
-
 };
 
 #endif // TUTORIAL_H
