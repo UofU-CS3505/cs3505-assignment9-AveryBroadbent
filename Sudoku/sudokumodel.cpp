@@ -18,6 +18,7 @@ SudokuModel::~SudokuModel() {
 }
 
 void SudokuModel::tutorialGridSetup(QString keyFile, QString startingIndexesFile) {
+    cellContents = vector<int>(81, 0);
     //uploadKey(":/textFiles/puzzleFiles/TutorialPuzzle.txt"); //key
     uploadKey(keyFile);
     qDebug() << "uploadKey keyFile ran";
