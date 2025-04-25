@@ -85,13 +85,13 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             model,
             &SudokuModel::checkInputs);
 
-    connect(ui->actionLoad,
-            &QAction::triggered,
+    connect(ui->loadGameButton,
+            &QPushButton::clicked,
             this,
             &MainWindow::pickLoadFile);
 
-    connect(ui->actionSave,
-            &QAction::triggered,
+    connect(ui->saveGameButton,
+            &QPushButton::clicked,
             this,
             &MainWindow::pickSaveFile);
 
@@ -161,7 +161,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             model,
             &SudokuModel::checkInput);
 
-    connect(ui->newPuzzleButton,
+    connect(ui->newGameButton,
             &QPushButton::clicked,
             model,
             &SudokuModel::newPuzzleSetup);
