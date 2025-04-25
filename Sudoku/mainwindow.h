@@ -131,6 +131,8 @@ public slots:
      */
     void updateSelected(SudokuBox* currentSelection);
 
+    void enableBox (int index);
+
     /**
      * Displays a list of sudokubox indexs as correct, animates them, and disables them.
      * @param correctIndexes - A vector of indexes representing the locations of the correct sudoku boxes.
@@ -200,7 +202,7 @@ public slots:
     void displayTextBox1(QString text);
     void displayTextBox2(QString text);
     void displayTextBox3(QString text);
-    void highlightCell(int x);
+    void highlightBox(int x);
     void awaitInput(int index);
 
     /**

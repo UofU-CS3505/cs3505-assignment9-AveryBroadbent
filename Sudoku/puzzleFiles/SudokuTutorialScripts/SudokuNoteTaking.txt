@@ -1,5 +1,5 @@
 ﻿[] [] [textBox1] Sometimes, a more difficult puzzle to solve won’t have cells with only one possible solution that you can fill in using visual elimination. These are called “Open Singles”
 [] [] [textBox2] When there are no open singles, it’s a good idea to keep track of possible solutions for each cell. A helpful tactic is pencilling in possible solutions, or “Candidates”
-55 [] [textBox3] To add these candidates, enable the note mode at the bottom of the screen, and enter all possible candidates for this cell.
-55 [] [textBox1] Well done, there are only two possible numbers which you've identified. Taking notes is a great technique to use in sudoku.
+highlight 55 [] [textBox3] To add these candidates, enable the note mode at the bottom of the screen, and enter all possible candidates for this cell.
+highlight 55 [] [textBox1] Well done, there are only two possible numbers which you've identified. Taking notes is a great technique to use in sudoku.
 [] [] [textBox2] Click Next Tutorial to keep learning, or click home to return to the home page.

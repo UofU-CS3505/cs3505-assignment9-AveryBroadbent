@@ -149,7 +149,12 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     connect(model,
             &SudokuModel::highlightCell,
             this,
-            &MainWindow::highlightCell);
+            &MainWindow::highlightBox);
+
+    connect(model,
+            &SudokuModel::enableCell,
+            this,
+            &MainWindow::enableBox);
 
     connect(model,
             &SudokuModel::awaitCell,
@@ -813,18 +818,21 @@ void MainWindow::toHomePage()
     ui->stackedWidget->setCurrentWidget(ui->HomePage);
 }
 
-void MainWindow::highlightCell(int x)
+void MainWindow::highlightBox(int x)
 {
     SudokuBox *selectedCell = cells.at(x);
     if (selectedCell != nullptr)
-        selectedCell->setStyleSheet("background-color: rgb(100, 220, 100); border-width: 2px"); // White
+        selectedCell->setStyleSheet("background-color: rgb(100, 220, 100); border-width: 2px");
 }
-
 void MainWindow::awaitInput(int index) {
     awaitingInputs.push_back(cells.at(index));
     cells.at(index)->setStyleSheet("background-color: rgb(100, 220, 100); border-width: 2px");
     cells.at(index)->setDisabled(false);
     ui->NextButton->hide();
+}
+
+void MainWindow::enableBox (int index) {
+    cells.at(index)->setDisabled(false);
 }
 
 void MainWindow::clearLabels() {
