@@ -84,6 +84,8 @@ private:
      */
     Tutorial* currentTutorial;
 
+    void clearLabels();
+
 public:
     MainWindow(SudokuModel* model, QWidget *parent = nullptr);
     ~MainWindow();

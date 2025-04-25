@@ -25,7 +25,7 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
 
     // starts stackedWidget at the home page
     ui->stackedWidget->setCurrentWidget(ui->HomePage);
-    connect(ui->StartButton, &QPushButton::clicked, this, &MainWindow::startGame);
+    connect(ui->newGameButton, &QPushButton::clicked, this, &MainWindow::startGame);
 
     //
     connect(ui->IntroductionButton, &QPushButton::clicked, this, &MainWindow::startIntroduction);
@@ -40,8 +40,11 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     ui->toNakedPairsButton->hide();
 
     // ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt"
-    introduction = new Tutorial(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt", "Intro");
-    noteTaking = new Tutorial(":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuNoteTaking.txt", "Note Taking");
+    introduction = new Tutorial("Intro");
+    noteTaking = new Tutorial("Note Taking");
+    hiddenPairs = new Tutorial("Hidden Pairs");
+    hiddenSingles = new Tutorial("Hideen Singles");
+    nakedPairs = new Tutorial("Naked Pairs");
 
 
     // Setup for SudokuGame widget
@@ -251,6 +254,12 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+
+    delete introduction;
+    delete noteTaking;
+    delete hiddenPairs;
+    delete hiddenSingles;
+    delete nakedPairs;
 }
 
 void MainWindow::disableAllBoxes(){
@@ -642,6 +651,7 @@ void MainWindow::goToTutorialsPage()
 void MainWindow::startGame()
 {
     // TODO: Clear grid since it doesn't do that after a tutorial
+    clearLabels();
 
     qDebug() << "Calling Start Game";
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
@@ -709,8 +719,8 @@ void MainWindow::startHiddenSingles()
     emit setupTutorial(":/textFiles/puzzleFiles/TutorialPuzzle.txt", ":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
 
     QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuHiddenSingles.txt";
-
     hiddenSingles->loadLines(filename);
+
     qDebug() << "after loading hidden singles file"; //This line is never reached, meaning the program crashes at loadlines call
 
     disableAllBoxes();
@@ -724,7 +734,7 @@ void MainWindow::startHiddenSingles()
     ui->NextButton->show();
     ui->toNoteTakingButton->show();
 
-    currentTutorial = introduction;
+    currentTutorial = hiddenSingles;
     progressTutorial();
 }
 
@@ -733,7 +743,7 @@ void MainWindow::startHiddenPairs()
     counter = 0;
     emit setupTutorial(":/textFiles/puzzleFiles/NotesPuzzle.txt", ":/textFiles/puzzleFiles/NotesStartingIndexes.txt");
     QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuHiddenPairs.txt";
-    noteTaking->loadLines(filename);
+    hiddenPairs->loadLines(filename);
 
     disableAllBoxes();
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
@@ -746,7 +756,7 @@ void MainWindow::startHiddenPairs()
     ui->toNoteTakingButton->hide();
     ui->NextButton->show();
 
-    currentTutorial = noteTaking;
+    currentTutorial = hiddenPairs;
     progressTutorial();
 }
 
@@ -755,7 +765,7 @@ void MainWindow::startNakedPairs()
     counter = 0;
     emit setupTutorial(":/textFiles/puzzleFiles/NotesPuzzle.txt", ":/textFiles/puzzleFiles/NotesStartingIndexes.txt");
     QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuNakedPairs.txt";
-    noteTaking->loadLines(filename);
+    nakedPairs->loadLines(filename);
 
     disableAllBoxes();
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
@@ -769,7 +779,7 @@ void MainWindow::startNakedPairs()
     ui->toNoteTakingButton->hide();
     ui->NextButton->show();
 
-    currentTutorial = noteTaking;
+    currentTutorial = nakedPairs;
     progressTutorial();
 }
 
@@ -813,5 +823,11 @@ void MainWindow::awaitInput(int index) {
     cells.at(index)->setStyleSheet("background-color: rgb(100, 220, 100); border-width: 2px");
     cells.at(index)->setDisabled(false);
     ui->NextButton->hide();
+}
+
+void MainWindow::clearLabels() {
+    ui->textLabel1->setText("");
+    ui->textLabel2->setText("");
+    ui->textLabel3->setText("");
 }
 
