@@ -665,6 +665,9 @@ void MainWindow::startGame()
     ui->noteCheck->show();
     ui->NextButton->hide();
     ui->toNoteTakingButton->hide();
+    ui->toHiddenPairsButton->hide();
+    ui->toHiddenSinglesButton->hide();
+    ui->toNakedPairsButton->hide();
 
 }
 
@@ -687,6 +690,9 @@ void MainWindow::startIntroduction()
     ui->noteCheck->hide();
     ui->NextButton->show();
     ui->toNoteTakingButton->hide();
+    ui->toHiddenPairsButton->hide();
+    ui->toHiddenSinglesButton->hide();
+    ui->toNakedPairsButton->hide();
 
     currentTutorial = introduction;
     progressTutorial();
@@ -709,6 +715,9 @@ void MainWindow::startNoteTaking()
     ui->noteCheck->show();
     ui->toNoteTakingButton->hide();
     ui->NextButton->show();
+    ui->toHiddenPairsButton->hide();
+    ui->toHiddenSinglesButton->hide();
+    ui->toNakedPairsButton->hide();
 
     currentTutorial = noteTaking;
     progressTutorial();
@@ -735,6 +744,9 @@ void MainWindow::startHiddenSingles()
     ui->noteCheck->hide();
     ui->NextButton->show();
     ui->toNoteTakingButton->show();
+    ui->toHiddenPairsButton->hide();
+    ui->toHiddenSinglesButton->hide();
+    ui->toNakedPairsButton->hide();
 
     currentTutorial = hiddenSingles;
     progressTutorial();
@@ -757,6 +769,9 @@ void MainWindow::startHiddenPairs()
     ui->noteCheck->show();
     ui->toNoteTakingButton->hide();
     ui->NextButton->show();
+    ui->toHiddenPairsButton->hide();
+    ui->toHiddenSinglesButton->hide();
+    ui->toNakedPairsButton->hide();
 
     currentTutorial = hiddenPairs;
     progressTutorial();
@@ -780,6 +795,10 @@ void MainWindow::startNakedPairs()
     ui->noteCheck->show();
     ui->toNoteTakingButton->hide();
     ui->NextButton->show();
+    ui->toHiddenPairsButton->hide();
+    ui->toHiddenSinglesButton->hide();
+    ui->toNakedPairsButton->hide();
+
 
     currentTutorial = nakedPairs;
     progressTutorial();
