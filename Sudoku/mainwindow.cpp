@@ -77,11 +77,6 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             this,
             &MainWindow::toHomePage);
 
-    connect(ui->homeButtonTutorial,
-            &QPushButton::clicked,
-            this,
-            &MainWindow::toHomePage);
-
     connect(ui->checkAnswerButton,
             &QPushButton::clicked,
             model,
@@ -107,12 +102,6 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
             &QPushButton::clicked,
             this,
             &MainWindow::goToTutorialsPage);
-
-    connect(ui->tutorialIntroductionButton,
-            &QPushButton::clicked,
-            this,
-            &MainWindow::startIntroduction);
-
 
     connect(this,
             &MainWindow::readLine,
@@ -226,6 +215,37 @@ MainWindow::MainWindow(SudokuModel* model, QWidget *parent)
     connect(ui->toNoteTakingButton,
             &QPushButton::clicked,
             this, &MainWindow::startNoteTaking);
+
+    //Tutorial Page connections
+    connect(ui->homeButtonTutorial,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::toHomePage);
+
+    connect(ui->tutorialIntroductionButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::startIntroduction);
+
+    connect(ui->tutorialNoteTakingButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::startNoteTaking);
+
+    connect(ui->tutorialHiddenSinglesButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::startHiddenSingles);
+
+    connect(ui->tutorialHiddenPairsButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::startHiddenPairs);
+
+    connect(ui->tutorialsNakedPairsButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::startNakedPairs);
 }
 
 MainWindow::~MainWindow()
@@ -688,9 +708,11 @@ void MainWindow::startHiddenSingles()
     counter = 0;
     qDebug() << "Calling Hidden Singles";
     emit setupTutorial(":/textFiles/puzzleFiles/TutorialPuzzle.txt", ":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
-    qDebug() << "after emit";
+
     QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuHiddenSingles.txt";
+
     hiddenSingles->loadLines(filename);
+    qDebug() << "after loading hidden singles file"; //This line is never reached, meaning the program crashes at loadlines call
 
     disableAllBoxes();
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
@@ -735,7 +757,7 @@ void MainWindow::startNakedPairs()
 {
     counter = 0;
     emit setupTutorial(":/textFiles/puzzleFiles/NotesPuzzle.txt", ":/textFiles/puzzleFiles/NotesStartingIndexes.txt");
-    QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuHiddenPairs.txt";
+    QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuNakedPairs.txt";
     noteTaking->loadLines(filename);
 
     disableAllBoxes();
