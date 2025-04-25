@@ -344,6 +344,7 @@ void SudokuModel::decipherNextLine(QStringList words)
             if(words.at(0)!="[]")
             {
                 emit highlightCell(words.at(0).toInt());
+                emit enableCell(words.at(0).toInt());
             }
             words.removeFirst(); //remove command prompt
         }
