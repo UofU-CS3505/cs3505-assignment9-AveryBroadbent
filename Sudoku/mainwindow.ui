@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgb(50,50,50)</string>
+     <string notr="true">background-color: rgb(50, 50, 50);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::NoFrame</enum>
@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Plain</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="HomePage">
      <widget class="QLabel" name="label">
@@ -2422,22 +2422,6 @@ color: rgb(0, 0, 0);</string>
        </size>
       </property>
      </widget>
-     <widget class="QPushButton" name="startTutorialButton">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>50</y>
-        <width>121</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="text">
-       <string>Start Tutorial</string>
-      </property>
-     </widget>
      <widget class="QCheckBox" name="noteCheck">
       <property name="geometry">
        <rect>
@@ -2457,7 +2441,7 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="newPuzzleButton">
       <property name="geometry">
        <rect>
-        <x>410</x>
+        <x>240</x>
         <y>50</y>
         <width>121</width>
         <height>41</height>
@@ -2473,15 +2457,15 @@ color: rgb(0, 0, 0);</string>
      <widget class="QLabel" name="textLabel1">
       <property name="geometry">
        <rect>
-        <x>570</x>
+        <x>560</x>
         <y>110</y>
-        <width>251</width>
+        <width>261</width>
         <height>161</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>15</pointsize>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2505,7 +2489,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>15</pointsize>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2526,7 +2510,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>15</pointsize>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2588,8 +2572,8 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="toHiddenSinglesButton">
       <property name="geometry">
        <rect>
-        <x>690</x>
-        <y>110</y>
+        <x>600</x>
+        <y>120</y>
         <width>131</width>
         <height>41</height>
        </rect>
@@ -2601,8 +2585,8 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="toHiddenPairsButton">
       <property name="geometry">
        <rect>
-        <x>450</x>
-        <y>0</y>
+        <x>420</x>
+        <y>50</y>
         <width>131</width>
         <height>41</height>
        </rect>
@@ -2614,8 +2598,8 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="toNakedPairsButton">
       <property name="geometry">
        <rect>
-        <x>730</x>
-        <y>10</y>
+        <x>510</x>
+        <y>630</y>
         <width>131</width>
         <height>41</height>
        </rect>
@@ -2631,13 +2615,15 @@ color: rgb(0, 0, 0);</string>
        <rect>
         <x>20</x>
         <y>10</y>
-        <width>161</width>
+        <width>171</width>
         <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <pointsize>30</pointsize>
+        <italic>true</italic>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -2677,7 +2663,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>25</pointsize>
+        <pointsize>22</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2695,7 +2681,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>25</pointsize>
+        <pointsize>22</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2713,7 +2699,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>25</pointsize>
+        <pointsize>22</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2731,7 +2717,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>20</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2758,7 +2744,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>20</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2785,7 +2771,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>20</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2812,7 +2798,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>20</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2839,7 +2825,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>20</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2866,7 +2852,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>25</pointsize>
+        <pointsize>22</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2884,7 +2870,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>25</pointsize>
+        <pointsize>22</pointsize>
        </font>
       </property>
       <property name="text">
@@ -2901,7 +2887,7 @@ color: rgb(0, 0, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>838</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
