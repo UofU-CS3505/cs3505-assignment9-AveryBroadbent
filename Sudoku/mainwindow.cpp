@@ -351,7 +351,6 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
 
             if (emit checkCell(index)) {
                 // selected cell was awaited and is correct
-                qDebug() << awaitingInputs.size();
                 awaitingInputs.remove(selectedCell);
                 ui->OopsLabel->hide();
                 // selectedCell->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border-color: rgb(0, 0, 0);"); // reset color
@@ -365,8 +364,6 @@ void MainWindow::keyPressEvent(QKeyEvent* event){
                     ui->NextButton->show();
                     progressTutorial();
                 }
-
-                qDebug() << awaitingInputs.size();
             }
             else {
                 //Oops! Wrong input!
@@ -675,8 +672,6 @@ void MainWindow::startGame()
 {
     // TODO: Clear grid since it doesn't do that after a tutorial
     clearLabels();
-
-    qDebug() << "Calling Start Game";
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
     ui->TitleLabel->setText("Sudoku");
     ui->checkAnswerButton->show();
@@ -695,9 +690,7 @@ void MainWindow::startGame()
 void MainWindow::startIntroduction()
 {
     counter = 0;
-    qDebug() << "Calling Introduction";
     emit setupTutorial(":/textFiles/puzzleFiles/TutorialPuzzle.txt", ":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
-    qDebug() << "after emit";
     QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuIntroduction.txt";
     introduction->loadLines(filename);
 
@@ -747,13 +740,10 @@ void MainWindow::startNoteTaking()
 void MainWindow::startHiddenSingles()
 {
     counter = 0;
-    qDebug() << "Calling Hidden Singles";
     emit setupTutorial(":/textFiles/puzzleFiles/TutorialPuzzle.txt", ":/textFiles/puzzleFiles/TutorialStartingIndexes.txt");
 
     QString filename = ":/textFiles/puzzleFiles/SudokuTutorialScripts/SudokuHiddenSingles.txt";
     hiddenSingles->loadLines(filename);
-
-    qDebug() << "after loading hidden singles file"; //This line is never reached, meaning the program crashes at loadlines call
 
     disableAllBoxes();
     ui->stackedWidget->setCurrentWidget(ui->SudokuGame);
@@ -834,7 +824,6 @@ void MainWindow::endOfTutorial()
         ui->toHiddenSinglesButton->show();
     else if (currentTutorial==hiddenSingles) {
         ui->toHiddenPairsButton->show();
-        qDebug() << "Showing hidden pairs button";
     }
 
 
