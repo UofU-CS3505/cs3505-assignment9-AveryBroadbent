@@ -175,6 +175,7 @@ signals:
     /**
      * signals to the view to await input for the cell at the specified index
      * @param cellIndex - the index of the cell awaiting input
+     */
     void awaitCell(int cellIndex);
 
     /**
