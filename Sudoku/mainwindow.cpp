@@ -223,7 +223,6 @@ MainWindow::~MainWindow()
 void MainWindow::disableAllBoxes(){
     for(int i = 0; i < (int)cells.size(); i++){
         cells.at(i) -> setDisabled(true);
-        //qDebug()<<i;
     }
 }
 
