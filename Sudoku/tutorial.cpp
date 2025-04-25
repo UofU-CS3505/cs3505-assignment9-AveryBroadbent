@@ -2,8 +2,9 @@
 #include <QDebug>
 
 
-Tutorial::Tutorial(const QString &filename, QString tutorialName): file(filename), tutorialName(tutorialName)
+Tutorial::Tutorial(QString tutorialName): tutorialName(tutorialName)
 {
+    lines = vector<QStringList>();
 }
 
 void Tutorial::loadLines(QString filename)

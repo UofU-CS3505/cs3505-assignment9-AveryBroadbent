@@ -30,7 +30,7 @@ public:
      * @param filename the textFile associated with a given tutorial
      * @param tutorialName the tutorial name that will be set as the header
      */
-    Tutorial(const QString &filename, QString tutorialName);
+    Tutorial(QString tutorialName);
 
     /**
      * @brief tutorialName the tutorial name that will be set as the header
@@ -56,11 +56,6 @@ public slots:
 
 
 private:
-
-    /**
-     * @brief file tutorial's script file
-     */
-    QFile file;
 
     vector<QStringList> lines;
 
